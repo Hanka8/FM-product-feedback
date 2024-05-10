@@ -1,0 +1,20 @@
+:root {
+  --violet: #AD1FEA;
+  --light-blue: #62BCFA;
+  --blue: #4661E6;
+  --very-dark-blue: #373F68;
+  --dark-blue: #3A4374;
+  --white: #FFFFFF;
+  --lightblue-grey: #F2F4FF;
+  --light-grey: #F7F8FD;
+  --grey: #647196;
+  --orange: #F49F85;
+  --red: #D73737;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Jost", sans-serif;
+}
