@@ -1,3 +1,15 @@
+.back {
+    background: url(../assets/shared/icon-arrow-left.svg) no-repeat center left;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--grey);
+    padding-left: 16px;
+    position: absolute;
+    left: 0;
+    top: -68px;
+}
+
 .form {
     display: flex;
     flex-direction: column;
@@ -10,13 +22,15 @@
     font-size: calc(14rem / 16);
     width: 540px;
     position:relative;
+    margin-top: 160px;
+    margin-bottom: 160px;
 }
 
 .form::after {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -28px;
+    left: 42px;
     width: 56px;
     height: 56px;
     background: url(../assets/shared/icon-new-feedback.svg) no-repeat center center;
