@@ -1,10 +1,13 @@
-import './index.css'
+import './styles/index.css'
+import AddFeedbackForm from './components/AddFeedbackForm'
 
 function App(): JSX.Element {
 
   return (
     <>
-      <h1>React App</h1>
+    <main>
+      <AddFeedbackForm />
+    </main>
     </>
   )
 }

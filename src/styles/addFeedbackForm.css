@@ -1,0 +1,104 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: var(--white);
+    padding: 52px 42px;
+    color: var(--dark-blue);
+    border-radius: 10px;
+    font-size: calc(14rem / 16);
+    width: 540px;
+    position:relative;
+}
+
+.form::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 56px;
+    height: 56px;
+    background: url(../assets/shared/icon-new-feedback.svg) no-repeat center center;
+}
+
+@media screen and (max-width: 500px){
+    .form {
+        width: 87.2%;
+        padding: 44px 24px;
+    }
+}
+
+.form-title {
+    font-size: calc(24rem / 16);
+    font-weight: 700;
+    margin-bottom: calc(40rem / 16);
+}
+
+@media screen and (max-width: 500px){
+    .form-title {
+        font-size: calc(18rem / 16);
+        margin-bottom: calc(24rem / 16);
+    } 
+}
+
+.label {
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.label-description {
+    color: var(--grey);
+    margin-bottom: 1rem;
+}
+
+.input {
+    background-color: var(--light-grey);
+    margin-bottom: 24px;
+    width: 100%;
+    border-radius: 5px;
+    padding: 14px;
+    border: none;
+}
+
+.input:hover {
+    outline: 2px solid var(--blue);
+}
+
+.input:active {
+    outline: 1px solid var(--blue);
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    gap: 1rem;
+}
+
+.btn {
+    border-radius: 10px;
+    border: none;
+    padding: 12px 24px;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--lightblue-grey);
+    transition: background-color 100ms ease-in-out;
+}
+
+.cancel {
+    background-color: var(--dark-blue);
+}
+
+.cancel:hover {
+    background-color: var(--hover-1);
+}
+
+.submit {
+    background-color: var(--violet);
+    color: var(--white);
+}
+
+.submit:hover {
+    background-color: var(--hover-2);
+}
