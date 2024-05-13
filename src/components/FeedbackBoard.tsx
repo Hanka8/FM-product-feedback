@@ -1,9 +1,8 @@
 import '../styles/feedbackBoard.css';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { query, collection, onSnapshot, updateDoc, doc, addDoc, deleteDoc } from 'firebase/firestore';
+import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
-import NoFeedbacks from './NoFeedbacks';
 import Feedbacks from './Feedbacks';
 
 interface FeedbackBoardProps {
@@ -36,17 +35,17 @@ function FeedbackBoard({all, ui, ux, enhancement, bug, feature} : FeedbackBoardP
                 <p className='header-number'>{`${numberOfFeedbacks} suggestions`}</p>
                 <Link className='header-addbtn' to='/addfeedback'>+ Add Feedback</Link>
             </header>
-            {numberOfFeedbacks === 0 ? 
-                <NoFeedbacks /> 
-                : 
-                <Feedbacks 
+
+                <Feedbacks
+                    setNumberOfFeedbacks={setNumberOfFeedbacks}
                     all={all}
                     ui={ui}
                     ux={ux}
                     enhancement={enhancement}
                     bug={bug}
                     feature={feature}
-                />}
+                />
+
         </div>
     )
 }

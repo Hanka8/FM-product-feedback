@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
-import { query, collection, onSnapshot, where } from 'firebase/firestore';
+import { query, collection, onSnapshot, where, Query } from 'firebase/firestore';
 import { db } from '../firebase';
 import '../styles/feedbacks.css';
+import NoFeedbacks from './NoFeedbacks';
 
 interface FeedbacksProps {
+    setNumberOfFeedbacks: (num: number) => void;
     all: boolean;
     ui: boolean;
     ux: boolean;
@@ -19,25 +21,29 @@ interface Feedback {
     detail: string;
 }
 
-function Feedbacks({all, ui, ux, enhancement, bug, feature} : FeedbacksProps): JSX.Element {
+function Feedbacks({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, feature }: FeedbacksProps): JSX.Element {
 
     const [feedbacks, setFeedbacks] = useState<Feedback[]>([]);
 
-    console.log(all, ui, ux, enhancement, bug, feature);
-
     useEffect(() => {
         const feedbacksCollection = collection(db, 'feedback');
-        let queryFilters = [];
+        let queryFilters: any[] = [];
 
         if (!all) {
-            if (ui) queryFilters.push(where('category', '==', 'ui'));
-            if (ux) queryFilters.push(where('category', '==', ''));
-            if (enhancement) queryFilters.push(where('category', '==', 'enhancement'));
-            if (bug) queryFilters.push(where('category', '==', 'bug'));
-            if (feature) queryFilters.push(where('category', '==', 'feature'));
+            const selectedCategories: string[] = [];
+            if (ui) selectedCategories.push('ui');
+            if (ux) selectedCategories.push('ux');
+            if (enhancement) selectedCategories.push('enhancement');
+            if (bug) selectedCategories.push('bug');
+            if (feature) selectedCategories.push('feature');
+
+            if (selectedCategories.length > 0) {
+                const categoryFilter = where('category', 'in', selectedCategories);
+                queryFilters.push(categoryFilter);
+            }
         }
 
-        const filteredQuery = query(feedbacksCollection, ...queryFilters);
+        const filteredQuery: Query = query(feedbacksCollection, ...queryFilters);
 
         const unsubscribe = onSnapshot(filteredQuery, (snapshot) => {
             let feedbacks: Feedback[] = [];
@@ -50,17 +56,17 @@ function Feedbacks({all, ui, ux, enhancement, bug, feature} : FeedbacksProps): J
                 });
             });
             setFeedbacks(feedbacks);
+            setNumberOfFeedbacks(feedbacks.length);
         });
-
 
         return () => {
             unsubscribe();
         }
-    }, [all, ui, ux, enhancement, bug, feature]);
+    }, [all, ui, ux, enhancement, bug, feature, setNumberOfFeedbacks]);
 
     return (
         <div className='feedbacks'>
-            {feedbacks.map((feedback) => (
+            {feedbacks.length > 0 ? feedbacks.map((feedback) => (
                 <div key={feedback.id} className='feedback'>
                     <div className='feedback-info'>
                         <p className='feedback-title'>{feedback.title}</p>
@@ -68,7 +74,7 @@ function Feedbacks({all, ui, ux, enhancement, bug, feature} : FeedbacksProps): J
                         <p className='feedback-category'>{feedback.category}</p>
                     </div>
                 </div>
-            ))}
+            )) : <NoFeedbacks />}
         </div>
     )
 }
