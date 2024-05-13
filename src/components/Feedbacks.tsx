@@ -1,23 +1,45 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { query, collection, onSnapshot, updateDoc, doc, addDoc, deleteDoc } from 'firebase/firestore';
+import { query, collection, onSnapshot, where } from 'firebase/firestore';
 import { db } from '../firebase';
 import '../styles/feedbacks.css';
 
-function Feedbacks(): JSX.Element {
+interface FeedbacksProps {
+    all: boolean;
+    ui: boolean;
+    ux: boolean;
+    enhancement: boolean;
+    bug: boolean;
+    feature: boolean;
+}
 
-    interface Feedback {
-        id: string;
-        title: string;
-        category: string;
-        detail: string;
-    }
+interface Feedback {
+    id: string;
+    title: string;
+    category: string;
+    detail: string;
+}
+
+function Feedbacks({all, ui, ux, enhancement, bug, feature} : FeedbacksProps): JSX.Element {
 
     const [feedbacks, setFeedbacks] = useState<Feedback[]>([]);
 
+    console.log(all, ui, ux, enhancement, bug, feature);
+
     useEffect(() => {
         const feedbacksCollection = collection(db, 'feedback');
-        const unsubscribe = onSnapshot(feedbacksCollection, (snapshot) => {
+        let queryFilters = [];
+
+        if (!all) {
+            if (ui) queryFilters.push(where('category', '==', 'ui'));
+            if (ux) queryFilters.push(where('category', '==', ''));
+            if (enhancement) queryFilters.push(where('category', '==', 'enhancement'));
+            if (bug) queryFilters.push(where('category', '==', 'bug'));
+            if (feature) queryFilters.push(where('category', '==', 'feature'));
+        }
+
+        const filteredQuery = query(feedbacksCollection, ...queryFilters);
+
+        const unsubscribe = onSnapshot(filteredQuery, (snapshot) => {
             let feedbacks: Feedback[] = [];
             snapshot.docs.forEach(doc => {
                 feedbacks.push({
@@ -28,22 +50,23 @@ function Feedbacks(): JSX.Element {
                 });
             });
             setFeedbacks(feedbacks);
-            console.log(feedbacks);
         });
+
 
         return () => {
             unsubscribe();
         }
-    }, []);
-
+    }, [all, ui, ux, enhancement, bug, feature]);
 
     return (
         <div className='feedbacks'>
             {feedbacks.map((feedback) => (
                 <div key={feedback.id} className='feedback'>
-                    <p>{feedback.title}</p>
-                    <p>{feedback.category}</p>
-                    <p>{feedback.detail}</p>
+                    <div className='feedback-info'>
+                        <p className='feedback-title'>{feedback.title}</p>
+                        <p className='feedback-detail'>{feedback.detail}</p>
+                        <p className='feedback-category'>{feedback.category}</p>
+                    </div>
                 </div>
             ))}
         </div>

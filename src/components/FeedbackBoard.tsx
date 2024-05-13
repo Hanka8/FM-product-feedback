@@ -6,7 +6,16 @@ import { db } from '../firebase';
 import NoFeedbacks from './NoFeedbacks';
 import Feedbacks from './Feedbacks';
 
-function FeedbackBoard(): JSX.Element {
+interface FeedbackBoardProps {
+    all: boolean;
+    ui: boolean;
+    ux: boolean;
+    enhancement: boolean;
+    bug: boolean;
+    feature: boolean;
+}
+
+function FeedbackBoard({all, ui, ux, enhancement, bug, feature} : FeedbackBoardProps): JSX.Element {
 
     const [numberOfFeedbacks, setNumberOfFeedbacks] = useState<number>(0);
 
@@ -27,7 +36,17 @@ function FeedbackBoard(): JSX.Element {
                 <p className='header-number'>{`${numberOfFeedbacks} suggestions`}</p>
                 <Link className='header-addbtn' to='/addfeedback'>+ Add Feedback</Link>
             </header>
-            {numberOfFeedbacks === 0 ? <NoFeedbacks /> : <Feedbacks />}
+            {numberOfFeedbacks === 0 ? 
+                <NoFeedbacks /> 
+                : 
+                <Feedbacks 
+                    all={all}
+                    ui={ui}
+                    ux={ux}
+                    enhancement={enhancement}
+                    bug={bug}
+                    feature={feature}
+                />}
         </div>
     )
 }
