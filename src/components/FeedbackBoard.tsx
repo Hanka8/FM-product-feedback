@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { query, collection, onSnapshot, updateDoc, doc, addDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import NoFeedbacks from './NoFeedbacks';
+import Feedbacks from './Feedbacks';
 
 function FeedbackBoard(): JSX.Element {
 
@@ -26,7 +27,7 @@ function FeedbackBoard(): JSX.Element {
                 <p className='header-number'>{`${numberOfFeedbacks} suggestions`}</p>
                 <Link className='header-addbtn' to='/addfeedback'>+ Add Feedback</Link>
             </header>
-            {numberOfFeedbacks === 0 ? <NoFeedbacks /> : <p>there are some feedbacks</p>}
+            {numberOfFeedbacks === 0 ? <NoFeedbacks /> : <Feedbacks />}
         </div>
     )
 }
