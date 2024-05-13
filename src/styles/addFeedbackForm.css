@@ -1,3 +1,13 @@
+.addfeedback-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light-grey);
+    min-height: 100vh;
+    position: relative;
+}
+
 .back {
     background: url(../assets/shared/icon-arrow-left.svg) no-repeat center left;
     border: none;
@@ -21,7 +31,7 @@
     border-radius: 10px;
     font-size: calc(14rem / 16);
     width: 540px;
-    position:relative;
+    position: relative;
     margin-top: 160px;
     margin-bottom: 160px;
 }
@@ -59,6 +69,7 @@
 .label {
     font-weight: 700;
     margin-bottom: 2px;
+    margin-top: 24px;
 }
 
 .label-description {
@@ -68,11 +79,11 @@
 
 .input {
     background-color: var(--light-grey);
-    margin-bottom: 24px;
     width: 100%;
     border-radius: 5px;
     padding: 14px;
     border: none;
+    position: relative;
 }
 
 .input:hover {
@@ -88,6 +99,7 @@
     justify-content: flex-end;
     width: 100%;
     gap: 1rem;
+    margin-top: 1rem;
 }
 
 .btn {
@@ -115,4 +127,23 @@
 
 .submit:hover {
     background-color: var(--hover-2);
+}
+
+.empty-input {
+    border: 2px solid var(--red);
+    outline: none;
+}
+
+.empty-input:hover {
+    outline: none;
+}
+
+.empty-input:active {
+    outline: none;
+}
+
+.error-message {
+    color: var(--red);
+    font-size: calc(14rem / 16);
+    margin-top: 4px;
 }

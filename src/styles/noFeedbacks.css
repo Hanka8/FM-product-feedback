@@ -1,0 +1,28 @@
+.no-feedbacks {
+    border-radius: 10px;
+    background-color: var(--white);
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15% 20%;
+}
+
+.no-feedbacks-img {
+    margin-bottom: 107px;
+}
+
+.no-feedbacks-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--dark-blue);
+    margin-bottom: 20px;
+}
+
+.no-feedbacks-text {
+    font-size: 16px;
+    color: var(--grey);
+    margin-bottom: 40px;
+}

@@ -1,0 +1,37 @@
+.feedback-board {
+    width: calc(825rem / 16);
+}
+
+.board-header {
+    border-radius: 10px;
+    background-color: var(--very-dark-blue);
+    background-image: url("./assets/suggestions/icon-suggestions.svg");
+    background-repeat: no-repeat;
+    background-position: 24px 50%;
+    color: var(--white);
+    padding: 24px;
+    padding-left: 63px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: calc(24rem / 16);
+}
+
+.header-number {
+    font-size: calc(18rem / 16);
+    font-weight: 700;
+}
+
+.header-addbtn {
+    background-color: var(--violet);
+    border-radius: 10px;
+    padding: 12px 24px;
+    cursor: pointer;
+    color: var(--white);
+    font-weight: 700;
+}
+
+.header-addbtn:hover {
+    background-color: var(--hover-2);
+}

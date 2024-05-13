@@ -12,6 +12,7 @@
   --red: #D73737;
   --hover-1: #656EA3;
   --hover-2: #C75AF6;
+  --filter-hover: #CFD7FF;
 }
 
 * {
@@ -21,11 +22,6 @@
   font-family: "Jost", sans-serif;
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background-color: var(--light-grey);
+a {
+  text-decoration: none;
 }

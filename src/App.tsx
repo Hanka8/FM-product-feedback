@@ -1,12 +1,12 @@
 import './styles/index.css'
-import AddFeedbackForm from './components/AddFeedbackForm'
+import AnimatedRoutes from './components/AnimatedRoutes'
 
 function App(): JSX.Element {
 
   return (
     <>
     <main>
-      <AddFeedbackForm />
+      <AnimatedRoutes />
     </main>
     </>
   )
