@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { query, collection, onSnapshot, where, Query } from 'firebase/firestore';
 import { db } from '../firebase';
+import { Link } from 'react-router-dom';
 import '../styles/feedbacks.css';
 import NoFeedbacks from './NoFeedbacks';
 
@@ -67,13 +68,15 @@ function Feedbacks({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, featur
     return (
         <div className='feedbacks'>
             {feedbacks.length > 0 ? feedbacks.map((feedback) => (
-                <div key={feedback.id} className='feedback'>
-                    <div className='feedback-info'>
-                        <p className='feedback-title'>{feedback.title}</p>
-                        <p className='feedback-detail'>{feedback.detail}</p>
-                        <p className='feedback-category'>{feedback.category}</p>
+                <Link to={`/${feedback.id}`} key={feedback.id} title={feedback.title} >
+                    <div key={feedback.id} className='feedback'>
+                        <div className='feedback-info'>
+                            <p className='feedback-title'>{feedback.title}</p>
+                            <p className='feedback-detail'>{feedback.detail}</p>
+                            <p className='feedback-category'>{feedback.category}</p>
+                        </div>
                     </div>
-                </div>
+                </Link>
             )) : <NoFeedbacks />}
         </div>
     )

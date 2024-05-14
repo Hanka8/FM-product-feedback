@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Landing from './Landing';
 import AddFeedbackForm from './AddFeedbackForm';
+import FeedbackDetail from './FeedbackDetail';
  
  function AnimatedRoutes():JSX.Element {
 
@@ -12,8 +13,12 @@ import AddFeedbackForm from './AddFeedbackForm';
             path='/' 
             element={<Landing />} />
           <Route 
-            path={'/:addfeedback'} 
+            path={'/addfeedback'} 
             element={<AddFeedbackForm />} />
+          <Route
+            path={'/:id'}
+            element={<FeedbackDetail />} 
+            />
       </Routes>
     </AnimatePresence>
   )

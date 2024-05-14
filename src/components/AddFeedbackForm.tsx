@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { query, collection, onSnapshot, updateDoc, doc, addDoc, deleteDoc } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import '../styles/addFeedbackForm.css';
 
 function AddFeedbackForm(): JSX.Element {
 
-    type categoryType = 'bug' | 'feature' | 'enhancement';
+    type categoryType = 'bug' | 'feature' | 'enhancement' | 'ux' | 'ui';
 
     const [title, setTitle] = useState<string>('');
     const [category, setCategory] = useState<categoryType>('bug');
@@ -26,10 +26,12 @@ function AddFeedbackForm(): JSX.Element {
                 title: title,
                 category: category,
                 detail: detail,
+                status: 'planned',
             });
         setTitle('');
         setCategory('bug');
         setDetail('');
+        (e.target as HTMLFormElement).reset();
         } catch (error) {
             console.error('Error adding document: ', error);
         }
@@ -59,14 +61,14 @@ function AddFeedbackForm(): JSX.Element {
                 <label className='label' htmlFor="category">Category</label>
                 <p className='label-description'>Choose a category for your feedback</p>
                 <select 
-                    className='input select'
-                    onChange={(e) => setCategory(e.target.value as categoryType)} 
-                    id="category">
+                  className='input select'
+                  onChange={(e) => setCategory(e.target.value as categoryType)}
+                  id="category">
                     <option value="bug">Bug</option>
                     <option value="feature">Feature</option>
                     <option value="enhancement">Enhancement</option>
-                    <option value="other">UX</option>
-                    <option value="design">UI</option>
+                    <option value="ux">UX</option>
+                    <option value="ui">UI</option>
                 </select>
                 <label className='label' htmlFor="detail">Feedback Detail</label>
                 <p className='label-description'>Give more context on your feedback</p>

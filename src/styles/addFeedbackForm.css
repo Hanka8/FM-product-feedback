@@ -77,6 +77,10 @@
     margin-bottom: 1rem;
 }
 
+#category {
+    width: 100%;
+}
+
 .input {
     background-color: var(--light-grey);
     width: 100%;
@@ -84,6 +88,7 @@
     padding: 14px;
     border: none;
     position: relative;
+    font-size: calc(15rem / 16);
 }
 
 .input:hover {
@@ -146,4 +151,9 @@
     color: var(--red);
     font-size: calc(14rem / 16);
     margin-top: 4px;
+}
+
+.form textarea {
+    resize: none;
+    height: 100px;
 }
