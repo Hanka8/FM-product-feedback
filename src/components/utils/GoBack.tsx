@@ -1,7 +1,11 @@
-function GoBack(): JSX.Element {
+function GoBack({deleted = false} : {deleted?: boolean}): JSX.Element {
     
     const goBack = () => {
+        if (deleted) {
+            window.location.href = '/';
+        } else {
         window.history.back();
+      }
     }
 
     return (
