@@ -37,14 +37,16 @@ function EditFeedback(): JSX.Element {
                 <input 
                     className="input text"
                     type="text" 
-                    id="title" 
+                    id="title"
+                    defaultValue={feedback?.title} 
                     />
                 <p className='error-message'></p>
                 <label className='label' htmlFor="category">Category</label>
                 <p className='label-description'>Change a category for your feedback</p>
                 <select
                   className='input select'
-                  id="category">
+                  id="category"
+                  defaultValue={feedback?.category}>
                     <option value="bug">Bug</option>
                     <option value="feature">Feature</option>
                     <option value="enhancement">Enhancement</option>
@@ -55,14 +57,17 @@ function EditFeedback(): JSX.Element {
                 <p className='label-description'>Change {feedback?.category} state</p>
                 <select 
                   className='input select'
-                  id="updateStatus">
+                  id="updateStatus"
+                  defaultValue={feedback?.status}>
+                    <option value="suggestion">Suggestion</option>
                     <option value="planned">Planned</option>
                     <option value="in-progress">In Progress</option>
                     <option value="live">Live</option>
                 </select>
                 <label className='label' htmlFor="detail">Feedback Detail</label>
                 <p className='label-description'>Give more context on your feedback</p>
-                <textarea 
+                <textarea
+                    defaultValue={feedback?.detail}
                     className="input"
                     id="detail"> 
                 </textarea>

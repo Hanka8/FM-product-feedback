@@ -7,6 +7,7 @@ interface Feedback {
     title: string;
     category: string;
     detail: string;
+    status?: string;
 }
 
 const useFeedbackDetail = (id: string) => {
