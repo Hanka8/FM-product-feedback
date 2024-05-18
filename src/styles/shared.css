@@ -12,6 +12,7 @@
   --red: #D73737;
   --hover-1: #656EA3;
   --hover-2: #C75AF6;
+  --hover-3: #E98888;
   --filter-hover: #CFD7FF;
 }
 
@@ -65,5 +66,13 @@ a {
 
 .btn-secondary:hover {
   background-color: var(--hover-1);
+}
+
+.btn-tertiary {
+  background-color: var(--red);
+}
+
+.btn-tertiary:hover {
+  background-color: var(--hover-3);
 }
 

@@ -3,6 +3,7 @@ import { AnimatePresence } from 'framer-motion';
 import Landing from './Landing';
 import AddFeedbackForm from './AddFeedbackForm';
 import FeedbackDetail from './FeedbackDetail';
+import EditFeedback from './EditFeedbackForm';
  
  function AnimatedRoutes():JSX.Element {
 
@@ -19,6 +20,10 @@ import FeedbackDetail from './FeedbackDetail';
             path={'/:id'}
             element={<FeedbackDetail />} 
             />
+          <Route
+            path={'/:id/editfeedback'}
+            element={<EditFeedback />} 
+          />
       </Routes>
     </AnimatePresence>
   )

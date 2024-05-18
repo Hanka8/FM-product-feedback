@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import useFeedbackDetail from "../hooks/useFeedbackDetail";
 import "../styles/feedbacks.css";
 import "../styles/feedbackDetail.css";
@@ -14,7 +14,9 @@ function FeedbackDetail(): JSX.Element {
             <div className="container">
                 <div className="buttons">
                     <GoBack />
-                    <button className="btn btn-primary">Edit Feedback</button>
+                    <Link to={`/${id}/editfeedback`}>
+                        <button className="btn btn-primary">Edit Feedback</button>
+                    </Link>
                 </div>
                 <div className='feedback'>
                     {loading && <p>Loading...</p>}

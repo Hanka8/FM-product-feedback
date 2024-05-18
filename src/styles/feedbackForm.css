@@ -30,7 +30,7 @@
     margin-bottom: 160px;
 }
 
-.form::after {
+.form-add::after {
     content: "";
     position: absolute;
     top: -28px;
@@ -38,6 +38,16 @@
     width: 56px;
     height: 56px;
     background: url(../assets/shared/icon-new-feedback.svg) no-repeat center center;
+}
+
+.form-edit::after {
+    content: "";
+    position: absolute;
+    top: -28px;
+    left: 42px;
+    width: 56px;
+    height: 56px;
+    background: url(../assets/shared/icon-edit-feedback.svg) no-repeat center center;
 }
 
 @media screen and (max-width: 500px){
@@ -99,6 +109,14 @@
     width: 100%;
     gap: 1rem;
     margin-top: 1rem;
+}
+
+.buttons-container.edit {
+    justify-content: space-between;
+}
+
+.delete {
+    margin-right: 110px;  
 }
 
 .empty-input {

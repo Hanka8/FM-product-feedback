@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase';
-import '../styles/addFeedbackForm.css';
+import '../styles/feedbackForm.css';
 import GoBack from './utils/GoBack';
 
 function AddFeedbackForm(): JSX.Element {
@@ -44,7 +44,7 @@ function AddFeedbackForm(): JSX.Element {
 
     return (
         <main className='addfeedback-main'>   
-            <form className='form' onSubmit={addFeedback}>
+            <form className='form form-add' onSubmit={addFeedback}>
                 <GoBack />
                 <h2 className='form-title'>Create New Feedback</h2>
                 <label className='label' htmlFor="title">Feedback Title</label>
