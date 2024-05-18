@@ -1,0 +1,69 @@
+:root {
+  --violet: #AD1FEA;
+  --light-blue: #62BCFA;
+  --blue: #4661E6;
+  --very-dark-blue: #373F68;
+  --dark-blue: #3A4374;
+  --white: #FFFFFF;
+  --lightblue-grey: #F2F4FF;
+  --light-grey: #F7F8FD;
+  --grey: #647196;
+  --orange: #F49F85;
+  --red: #D73737;
+  --hover-1: #656EA3;
+  --hover-2: #C75AF6;
+  --filter-hover: #CFD7FF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Jost", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.go-back {
+  background: url(../assets/shared/icon-arrow-left.svg) no-repeat center left;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--grey);
+  padding-left: 16px;
+}
+
+.go-back:hover {
+  color: var(--dark-blue);
+  text-decoration: underline;
+}
+
+.btn {
+  border-radius: 10px;
+  border: none;
+  padding: 12px 24px;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--lightblue-grey);
+  transition: background-color 100ms ease-in-out;
+}
+
+.btn-primary {
+  background-color: var(--violet);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: var(--hover-2);
+}
+
+.btn-secondary {
+  background-color: var(--dark-blue);
+}
+
+.btn-secondary:hover {
+  background-color: var(--hover-1);
+}
+

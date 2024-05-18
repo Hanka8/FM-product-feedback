@@ -1,0 +1,21 @@
+#feedbackDetail {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 80px;
+    background-color: var(--lightblue-grey);
+    min-height: 100vh;
+}
+
+.container {
+    width: 730px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: calc(32rem / 16);
+    margin-bottom: calc(24rem / 16);
+}

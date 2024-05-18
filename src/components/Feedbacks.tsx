@@ -68,7 +68,7 @@ function Feedbacks({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, featur
     return (
         <div className='feedbacks'>
             {feedbacks.length > 0 ? feedbacks.map((feedback) => (
-                <Link to={`/${feedback.id}`} key={feedback.id} title={feedback.title} >
+                <Link to={`/${feedback.id}`} key={feedback.id}  state={{ some: "value"}}>
                     <div key={feedback.id} className='feedback'>
                         <div className='feedback-info'>
                             <p className='feedback-title'>{feedback.title}</p>

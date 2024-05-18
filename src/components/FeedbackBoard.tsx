@@ -33,9 +33,8 @@ function FeedbackBoard({all, ui, ux, enhancement, bug, feature} : FeedbackBoardP
         <div className='feedback-board'>
             <header className='board-header'>
                 <p className='header-number'>{`${numberOfFeedbacks} suggestions`}</p>
-                <Link className='header-addbtn' to='/addfeedback'>+ Add Feedback</Link>
+                <Link className='btn btn-primary' to='/addfeedback'>+ Add Feedback</Link>
             </header>
-
                 <Feedbacks
                     setNumberOfFeedbacks={setNumberOfFeedbacks}
                     all={all}
@@ -45,7 +44,6 @@ function FeedbackBoard({all, ui, ux, enhancement, bug, feature} : FeedbackBoardP
                     bug={bug}
                     feature={feature}
                 />
-
         </div>
     )
 }

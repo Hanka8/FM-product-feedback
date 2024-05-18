@@ -8,16 +8,10 @@
     position: relative;
 }
 
-.back {
-    background: url(../assets/shared/icon-arrow-left.svg) no-repeat center left;
-    border: none;
-    cursor: pointer;
-    font-weight: 700;
-    color: var(--grey);
-    padding-left: 16px;
-    position: absolute;
-    left: 0;
-    top: -68px;
+.form .go-back {
+  position: absolute;
+  left: 0;
+  top: -68px;
 }
 
 .form {
@@ -105,33 +99,6 @@
     width: 100%;
     gap: 1rem;
     margin-top: 1rem;
-}
-
-.btn {
-    border-radius: 10px;
-    border: none;
-    padding: 12px 24px;
-    font-weight: 700;
-    cursor: pointer;
-    color: var(--lightblue-grey);
-    transition: background-color 100ms ease-in-out;
-}
-
-.cancel {
-    background-color: var(--dark-blue);
-}
-
-.cancel:hover {
-    background-color: var(--hover-1);
-}
-
-.submit {
-    background-color: var(--violet);
-    color: var(--white);
-}
-
-.submit:hover {
-    background-color: var(--hover-2);
 }
 
 .empty-input {

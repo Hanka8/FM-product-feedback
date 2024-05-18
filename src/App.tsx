@@ -1,4 +1,4 @@
-import './styles/index.css'
+import './styles/shared.css'
 import AnimatedRoutes from './components/AnimatedRoutes'
 
 function App(): JSX.Element {

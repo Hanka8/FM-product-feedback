@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import '../styles/addFeedbackForm.css';
+import GoBack from './utils/GoBack';
 
 function AddFeedbackForm(): JSX.Element {
 
@@ -44,7 +45,7 @@ function AddFeedbackForm(): JSX.Element {
     return (
         <main className='addfeedback-main'>   
             <form className='form' onSubmit={addFeedback}>
-                <button className='back' type='button' onClick={goBack}>Go Back</button>
+                <GoBack />
                 <h2 className='form-title'>Create New Feedback</h2>
                 <label className='label' htmlFor="title">Feedback Title</label>
                 <p className='label-description'>Add a short, descriptive headline</p>
@@ -82,8 +83,8 @@ function AddFeedbackForm(): JSX.Element {
                 </textarea>
                 <p className='error-message'>{emptyDetail ? "Can´t be empty" : ""}</p>
                 <div className='buttons-container'>
-                    <button className='btn cancel' type='reset'>Cancel</button>
-                    <button className='btn submit' type='submit'>Add Feedback</button>
+                    <button className='btn btn-secondary' type='button' onClick={goBack}>Cancel</button>
+                    <button className='btn btn-primary' type='submit'>Add Feedback</button>
                 </div>
             </form>
         </main>
