@@ -9,6 +9,8 @@ interface CommentProps {
 
 function AddComment( {id}: CommentProps ):JSX.Element {
 
+    const MAX_CHARACTERS = 250;
+
     const [comment, setComment] = useState<string>('');
     const [emptyComment, setEmptyComment] = useState<boolean>(false);
 
@@ -36,12 +38,18 @@ function AddComment( {id}: CommentProps ):JSX.Element {
     return (
         <form className="add-comment" onSubmit={handleSubmit}>
             <label className="comment-heading" htmlFor="comment">Add Comment</label>
-            <textarea className={`${emptyComment ? "empty-input" : ""} input`} id="comment" placeholder="Type your comment here" rows={3} 
-                onChange={(e) => setComment(e.target.value)}>
+            <textarea 
+                className={`${emptyComment ? "empty-input" : ""} input`} 
+                id="comment" 
+                placeholder="Type your comment here" 
+                rows={3} 
+                onChange={(e) => setComment(e.target.value)}
+                maxLength={MAX_CHARACTERS}
+                >
             </textarea>
             <p className='error-message'>{emptyComment ? "Can´t be empty" : ""}</p>
             <div className="form-row">
-                <p>250 Characters left</p>
+                <p>{MAX_CHARACTERS - comment.length} Characters left</p>
                 <button type="submit" className="btn btn-primary">Post Comment</button>
             </div>
         </form>

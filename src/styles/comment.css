@@ -63,3 +63,19 @@
 .empty-input:active {
     outline: none;
 }
+
+.comments {
+    margin-top: 3rem;
+    background-color: var(--white);
+    border-radius: 5px;
+    padding: 14px;
+    margin-bottom: calc(27rem / 16);
+    padding: 24px 34px;
+}
+
+.comment {
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--grey);
+}
