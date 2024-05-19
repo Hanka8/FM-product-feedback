@@ -4,6 +4,12 @@ import "../styles/feedbacks.css";
 import "../styles/feedbackDetail.css";
 import GoBack from "./utils/GoBack";
 
+interface Comment {
+    id: string;
+    comment: string;
+    feedbackId: string;
+}
+
 function FeedbackDetail(): JSX.Element {
 
     const { id } = useParams<{ id: string }>();

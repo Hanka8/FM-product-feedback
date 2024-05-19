@@ -39,6 +39,7 @@ a {
 .go-back:hover {
   color: var(--dark-blue);
   text-decoration: underline;
+  transition: 100ms ease-in-out;
 }
 
 .btn {

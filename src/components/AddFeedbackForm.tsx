@@ -19,7 +19,7 @@ function AddFeedbackForm(): JSX.Element {
 
     const addFeedback = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!title || !category || !detail) {
+        if (!title || !detail) {
             if (!title) setEmptyTitle(true);
             if (!detail) setEmptyDetail(true);
             return;
@@ -37,6 +37,7 @@ function AddFeedbackForm(): JSX.Element {
         (e.target as HTMLFormElement).reset();
         } catch (error) {
             console.error('Error adding document: ', error);
+            return;
         }
         setFeedbackAdded(true);
     }
@@ -61,7 +62,6 @@ function AddFeedbackForm(): JSX.Element {
                             Add Another
                         </button>
                     </>
-
                     :
                     <>
                         <label className='label' htmlFor="title">Feedback Title</label>
