@@ -1,0 +1,65 @@
+.input {
+    background-color: var(--light-grey);
+    width: 100%;
+    border-radius: 5px;
+    padding: 14px;
+    border: none;
+    position: relative;
+    font-size: calc(15rem / 16);
+}
+
+.input:hover {
+    outline: 2px solid var(--blue);
+}
+
+.input:active {
+    outline: 1px solid var(--blue);
+}
+
+.comment-heading {
+    font-size: calc(18rem / 16);
+    color: var(--dark-blue);
+    font-weight: 700;
+}
+
+.add-comment textarea {
+    resize: none;
+    height: 100px;
+    margin-bottom: 1rem;
+    margin-top: calc(27rem / 16);
+}
+
+.add-comment {
+    background-color: var(--white);
+    padding: 24px 34px;
+    color: var(--dark-blue);
+    border-radius: 10px;
+    font-size: calc(15rem / 16);
+    margin-bottom: 5rem;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.error-message {
+    color: var(--red);
+    font-size: calc(14rem / 16);
+    margin-top: 4px;
+}
+
+.empty-input {
+    border: 2px solid var(--red);
+    outline: none;
+}
+
+.empty-input:hover {
+    outline: none;
+}
+
+.empty-input:active {
+    outline: none;
+}

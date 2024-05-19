@@ -119,6 +119,22 @@
     margin-right: 110px;  
 }
 
+.form textarea {
+    resize: none;
+    height: 100px;
+}
+
+.added-message {
+    font-size: calc(14rem / 16);
+    margin-bottom: 3rem;   
+}
+
+.error-message {
+    color: var(--red);
+    font-size: calc(14rem / 16);
+    margin-top: 4px;
+}
+
 .empty-input {
     border: 2px solid var(--red);
     outline: none;
@@ -130,20 +146,4 @@
 
 .empty-input:active {
     outline: none;
-}
-
-.error-message {
-    color: var(--red);
-    font-size: calc(14rem / 16);
-    margin-top: 4px;
-}
-
-.form textarea {
-    resize: none;
-    height: 100px;
-}
-
-.added-message {
-    font-size: calc(14rem / 16);
-    margin-bottom: 3rem;   
 }

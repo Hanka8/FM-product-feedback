@@ -3,16 +3,11 @@ import useFeedbackDetail from "../hooks/useFeedbackDetail";
 import "../styles/feedbacks.css";
 import "../styles/feedbackDetail.css";
 import GoBack from "./utils/GoBack";
-
-interface Comment {
-    id: string;
-    comment: string;
-    feedbackId: string;
-}
+import AddComment from "./AddComment";
 
 function FeedbackDetail(): JSX.Element {
 
-    const { id } = useParams<{ id: string }>();
+    const { id } = useParams<{ id: string }>() as { id: string };
     const { feedback, loading, error } = useFeedbackDetail(id!);
 
     return (
@@ -35,7 +30,9 @@ function FeedbackDetail(): JSX.Element {
                         </div>
                     )}
                 </div>
+                <AddComment id={id} />
             </div>
+            
         </section>
     )
 }
