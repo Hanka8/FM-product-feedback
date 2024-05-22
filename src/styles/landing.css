@@ -6,4 +6,14 @@
     min-height: 100vh;
     background-color: var(--light-grey);
     padding-top: 94px;
+    margin-inline: 40px;
+}
+
+@media screen and (max-width: 930px) {
+    .landing {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        padding-top: 64px;
+    }
 }

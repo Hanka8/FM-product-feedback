@@ -2,6 +2,12 @@
     width: calc(825rem / 16);
 }
 
+@media screen and (max-width: 930px) {
+    .feedback-board {
+        width: 100%;
+    }
+}
+
 .board-header {
     border-radius: 10px;
     background-color: var(--very-dark-blue);
