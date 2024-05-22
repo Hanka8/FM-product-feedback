@@ -8,6 +8,7 @@ interface Feedback {
     category: string;
     detail: string;
     status?: string;
+    numberOfComments?: number;
 }
 
 const useFeedbackDetail = (id: string) => {
@@ -26,6 +27,8 @@ const useFeedbackDetail = (id: string) => {
                         title: data.title,
                         category: data.category,
                         detail: data.detail,
+                        status: data.status,
+                        numberOfComments: data.numberOfComments,
                     });
                 } else {
                     setError('Feedback not found');

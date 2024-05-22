@@ -61,7 +61,6 @@ function FeedbackBoard({all, ui, ux, enhancement, bug, feature} : FeedbackBoardP
                         <li className='menu-option' role="option" onClick={() => setSort("least-upvotes")}>Least Upvotes</li>
                         <li className='menu-option' role="option" onClick={() => setSort("most-comments")}>Most Comments</li>
                         <li className='menu-option' role="option" onClick={() => setSort("least-comments")}>Least Comments</li>
-
                     </ul>
                 </div>
                 <Link className='btn btn-primary' to='/addfeedback'>+ Add Feedback</Link>

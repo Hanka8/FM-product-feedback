@@ -33,6 +33,7 @@ function AddFeedbackForm(): JSX.Element {
                 category: category,
                 detail: detail,
                 status: 'planned',
+                numberOfComments: 0,
             });
         setTitle('');
         setCategory('bug');

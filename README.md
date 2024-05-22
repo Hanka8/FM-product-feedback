@@ -10,3 +10,5 @@ Why Use It:
     Direct Access: Data can be passed directly through the URL and hooks.
 
     other options: Context API, Redux (state management library)
+
+** with deleting feedback delete also comments!

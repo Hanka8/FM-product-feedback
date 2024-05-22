@@ -4,7 +4,6 @@ import { db } from '../firebase';
 import { Link } from 'react-router-dom';
 import '../styles/feedbacks.css';
 import NoFeedbacks from './NoFeedbacks';
-import useComments from '../hooks/useComments';
 
 interface FeedbacksProps {
     setNumberOfFeedbacks: (num: number) => void;
@@ -21,6 +20,7 @@ interface Feedback {
     title: string;
     category: string;
     detail: string;
+    numberOfComments: number;
 }
 
 function Feedbacks({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, feature }: FeedbacksProps): JSX.Element {
@@ -54,7 +54,8 @@ function Feedbacks({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, featur
                     id: doc.id,
                     title: doc.data().title,
                     category: doc.data().category,
-                    detail: doc.data().detail
+                    detail: doc.data().detail,
+                    numberOfComments: doc.data().numberOfComments,
                 });
             });
             setFeedbacks(feedbacks);
@@ -75,6 +76,10 @@ function Feedbacks({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, featur
                             <p className='feedback-title'>{feedback.title}</p>
                             <p className='feedback-detail'>{feedback.detail}</p>
                             <p className='feedback-category'>{feedback.category}</p>
+                        </div>
+                        <div className="feedback-comments">
+                            <img src="assets/shared/icon-comments.svg" alt="comments ico" />
+                            <p>{feedback.numberOfComments}</p>
                         </div>
                     </div>
                 </Link>
