@@ -28,6 +28,10 @@ a {
   text-decoration: none;
 }
 
+li {
+  list-style: none;
+}
+
 .go-back {
   background: url(../assets/shared/icon-arrow-left.svg) no-repeat center left;
   border: none;

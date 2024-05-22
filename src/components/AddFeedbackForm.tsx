@@ -17,6 +17,8 @@ function AddFeedbackForm(): JSX.Element {
 
     const [feedbackAdded, setFeedbackAdded] = useState<boolean>(false);
 
+    const [openedDropdown, setOpenedDropdown] = useState<boolean>(false);
+
     const addFeedback = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!title || !detail) {
@@ -45,6 +47,11 @@ function AddFeedbackForm(): JSX.Element {
     const goBack = () => {
         window.history.back();
     }
+
+    function capitalize(string: string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
 
     return (
         <main className='addfeedback-main'>   
@@ -78,16 +85,25 @@ function AddFeedbackForm(): JSX.Element {
                         <p className='error-message'>{emptyTitle ? "Can´t be empty" : ""}</p>
                         <label className='label' htmlFor="category">Category</label>
                         <p className='label-description'>Choose a category for your feedback</p>
-                        <select 
-                        className='input select'
-                        onChange={(e) => setCategory(e.target.value as categoryType)}
-                        id="category">
-                            <option value="bug">Bug</option>
-                            <option value="feature">Feature</option>
-                            <option value="enhancement">Enhancement</option>
-                            <option value="ux">UX</option>
-                            <option value="ui">UI</option>
-                        </select>
+                        <button
+                            onClick={() => setOpenedDropdown(!openedDropdown)}
+                            className={`dropdown-btn ${openedDropdown ? "opened" : ""}`}
+                            role="combobox"
+                            id="select"
+                            value="Select"
+                            type='button'
+                            aria-controls="listbox"
+                            aria-haspopup="listbox"
+                            aria-expanded="false">
+                            {capitalize(category)}
+                        </button>
+                        <ul className={`dropdown-menu ${openedDropdown ? "opened" : ""}`} role="listbox" id="category" onClick={() => setOpenedDropdown(!openedDropdown)}>
+                            <li className='menu-option' role="option" onClick={() => setCategory("bug")}>Bug</li>
+                            <li className='menu-option' role="option" onClick={() => setCategory("feature")}>Feature</li>
+                            <li className='menu-option' role="option" onClick={() => setCategory("enhancement")}>Enhancement</li>
+                            <li className='menu-option' role="option" onClick={() => setCategory("ux")}>UX</li>
+                            <li className='menu-option' role="option" onClick={() => setCategory("ui")}>UI</li>
+                        </ul>
                         <label className='label' htmlFor="detail">Feedback Detail</label>
                         <p className='label-description'>Give more context on your feedback</p>
                         <textarea 

@@ -22,6 +22,9 @@ function EditFeedback(): JSX.Element {
 
     const [feedbackAdded, setFeedbackAdded] = useState<boolean>(false);
 
+    const [openedDropdown, setOpenedDropdown] = useState<boolean>(false);
+    const [openedDropdown2, setOpenedDropdown2] = useState<boolean>(false);
+
     useEffect(() => {
         if (feedback) {
             setTitle(feedback.title);
@@ -72,7 +75,9 @@ function EditFeedback(): JSX.Element {
         setFeedbackAdded(true);
     }
 
-    console.log(title)
+    function capitalize(string: string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
 
     return (
          <main className='addfeedback-main'>   
@@ -96,31 +101,45 @@ function EditFeedback(): JSX.Element {
                 <p className='error-message'>{emptyTitle ? "Can´t be empty" : ""}</p>
                 <label className='label' htmlFor="category">Category</label>
                 <p className='label-description'>Change a category for your feedback</p>
-                <select
-                  className='input select'
-                  id="category"
-                  defaultValue={feedback?.category || 'bug'}
-                  onChange={(e) => setCategory(e.target.value as string)}
-                  >
-                    <option value="bug">Bug</option>
-                    <option value="feature">Feature</option>
-                    <option value="enhancement">Enhancement</option>
-                    <option value="ux">UX</option>
-                    <option value="ui">UI</option>
-                </select>
+                <button
+                    onClick={() => setOpenedDropdown(!openedDropdown)}
+                    className={`dropdown-btn ${openedDropdown ? "opened" : ""}`}
+                    role="combobox"
+                    id="select"
+                    value="Select"
+                    type='button'
+                    aria-controls="listbox"
+                    aria-haspopup="listbox"
+                    aria-expanded="false">
+                    {capitalize(category)}
+                </button>
+                <ul className={`dropdown-menu ${openedDropdown ? "opened" : ""}`} role="listbox" id="category" onClick={() => setOpenedDropdown(!openedDropdown)}>
+                    <li className='menu-option' role="option" onClick={() => setCategory("bug")}>Bug</li>
+                    <li className='menu-option' role="option" onClick={() => setCategory("feature")}>Feature</li>
+                    <li className='menu-option' role="option" onClick={() => setCategory("enhancement")}>Enhancement</li>
+                    <li className='menu-option' role="option" onClick={() => setCategory("ux")}>UX</li>
+                    <li className='menu-option' role="option" onClick={() => setCategory("ui")}>UI</li>
+                </ul>
                 <label className="label" htmlFor="updateStatus">Update status</label>
                 <p className='label-description'>Change {feedback?.category} state</p>
-                <select 
-                  className='input select'
-                  id="updateStatus"
-                  defaultValue={feedback?.status || 'suggestion'}
-                  onChange={(e) => setStatus(e.target.value as string)}
-                  >
-                    <option value="suggestion">Suggestion</option>
-                    <option value="planned">Planned</option>
-                    <option value="in-progress">In Progress</option>
-                    <option value="live">Live</option>
-                </select>
+                <button
+                    onClick={() => setOpenedDropdown2(!openedDropdown2)}
+                    className={`dropdown-btn ${openedDropdown2 ? "opened" : ""}`}
+                    role="combobox"
+                    id="select"
+                    value="Select"
+                    type='button'
+                    aria-controls="listbox"
+                    aria-haspopup="listbox"
+                    aria-expanded="false">
+                    {capitalize(feedback?.status || 'planned')}
+                </button>
+                <ul className={`dropdown-menu ${openedDropdown2 ? "opened" : ""}`} role="listbox" id="category" onClick={() => setOpenedDropdown2(!openedDropdown2)}>
+                    <li className='menu-option' role="option" onClick={() => setStatus("suggestion")}>Suggestion</li>
+                    <li className='menu-option' role="option" onClick={() => setStatus("planned")}>Planned</li>
+                    <li className='menu-option' role="option" onClick={() => setStatus("in-progress")}>In Progress</li>
+                    <li className='menu-option' role="option" onClick={() => setStatus("live")}>Live</li>
+                </ul>
                 <label className='label' htmlFor="detail">Feedback Detail</label>
                 <p className='label-description'>Give more context on your feedback</p>
                 <textarea
