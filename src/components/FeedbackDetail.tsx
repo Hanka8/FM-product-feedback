@@ -27,11 +27,17 @@ function FeedbackDetail(): JSX.Element {
                     {loading && <p>Loading...</p>}
                     {error && <p>{error}</p>}
                     {feedback && (
-                        <div className='feedback-info'>
-                            <p className='feedback-title'>{feedback.title}</p>
-                            <p className='feedback-detail'>{feedback.detail}</p>
-                            <p className='feedback-category'>{feedback.category}</p>
-                        </div>
+                        <>
+                            <div className='feedback-info'>
+                                <p className='feedback-title'>{feedback.title}</p>
+                                <p className='feedback-detail'>{feedback.detail}</p>
+                                <p className='feedback-category'>{feedback.category}</p>
+                            </div>
+                            <div className="feedback-comments">
+                                <img src="assets/shared/icon-comments.svg" alt="comments ico" />
+                                <p>{comments.length}</p>
+                            </div>
+                        </>
                     )}
                 </div>
                 <div className='comments'>

@@ -4,6 +4,9 @@
     padding: 28px 32px;
     margin-bottom: calc(20rem / 16);
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .feedback:hover {
@@ -37,5 +40,13 @@
     border-radius: 10px;
     background-color: var(--lightblue-grey);
     font-size: calc(13rem / 16);
+    font-weight: 600;
+}
+
+.feedback-comments {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(7rem / 16);
     font-weight: 600;
 }

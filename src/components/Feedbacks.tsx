@@ -4,6 +4,7 @@ import { db } from '../firebase';
 import { Link } from 'react-router-dom';
 import '../styles/feedbacks.css';
 import NoFeedbacks from './NoFeedbacks';
+import useComments from '../hooks/useComments';
 
 interface FeedbacksProps {
     setNumberOfFeedbacks: (num: number) => void;

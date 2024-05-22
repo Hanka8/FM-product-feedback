@@ -36,6 +36,7 @@
     border-radius: 10px;
     font-size: calc(15rem / 16);
     margin-bottom: 5rem;
+    margin-top: 3rem;
 }
 
 .form-row {
@@ -76,6 +77,10 @@
 .comment {
     padding-bottom: 1rem;
     margin-top: 1rem;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--lightblue-grey);
     color: var(--grey);
+}
+
+.comment:last-child {
+    border-bottom: none;
 }
