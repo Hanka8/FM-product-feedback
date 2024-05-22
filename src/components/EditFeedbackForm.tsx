@@ -4,7 +4,7 @@ import GoBack from "./utils/GoBack";
 import { useParams } from "react-router-dom";
 import useFeedbackDetail from "../hooks/useFeedbackDetail";
 import { db } from "../firebase";
-import { doc, deleteDoc, updateDoc } from "firebase/firestore";
+import { doc, deleteDoc, updateDoc, query, collection, where, getDocs } from "firebase/firestore";
 import { useState, useEffect } from "react";
 
 function EditFeedback(): JSX.Element {
@@ -41,6 +41,10 @@ function EditFeedback(): JSX.Element {
 
     const deleteFeedback = async () => {
         try {
+            const commentsQuery = query(collection(db, 'comments'), where('feedbackId', '==', id));
+            const commentsSnapshot = await getDocs(commentsQuery);
+            const deleteCommentsPromises = commentsSnapshot.docs.map(commentDoc => deleteDoc(commentDoc.ref));
+            await Promise.all(deleteCommentsPromises);
             await deleteDoc(doc(db, 'feedback', id));
         } catch (error) {
             console.error('Error deleting document: ', error);
@@ -63,10 +67,6 @@ function EditFeedback(): JSX.Element {
                 category: category,
                 status: status,
             });
-            // setTitle('');
-            // setDetail('');
-            // setCategory('bug');
-            // setStatus('planned');
             (e.target as HTMLFormElement).reset();
         }
         catch (error) {
