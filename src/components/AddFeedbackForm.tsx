@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import '../styles/feedbackForm.css';
+import '../styles/dropdown.css';
 import GoBack from './utils/GoBack';
 
 function AddFeedbackForm(): JSX.Element {

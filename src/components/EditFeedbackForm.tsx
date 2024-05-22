@@ -1,4 +1,5 @@
 import "../styles/feedbackForm.css";
+import '../styles/dropdown.css';
 import GoBack from "./utils/GoBack";
 import { useParams } from "react-router-dom";
 import useFeedbackDetail from "../hooks/useFeedbackDetail";
