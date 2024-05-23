@@ -6,8 +6,11 @@ import "../styles/feedbacks.css";
 import "../styles/feedbackDetail.css";
 import GoBack from "./utils/GoBack";
 import AddComment from "./AddComment";
+import useUpvote from "../hooks/useUpvote";
 
 function FeedbackDetail(): JSX.Element {
+
+    const handleUpvote = useUpvote();
 
     const { id } = useParams<{ id: string }>() as { id: string };
 
@@ -29,7 +32,7 @@ function FeedbackDetail(): JSX.Element {
                     {feedback && (
                         <>
                             <div className="flex-start">
-                                <button className="btn btn-upvote">99</button>
+                                <button className="btn btn-upvote" onClick={(e) => handleUpvote(feedback, e)}>{feedback.upvotes}</button>
                                 <div className='feedback-info'>
                                     <p className='feedback-title'>{feedback.title}</p>
                                     <p className='feedback-detail'>{feedback.detail}</p>

@@ -3,10 +3,8 @@ import "../styles/comment.css";
 import { doc, collection, addDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import useComments from "../hooks/useComments";
+import { CommentProps } from "../types";
 
-interface CommentProps {
-    id: string;
-}
 
 function AddComment( {id}: CommentProps ):JSX.Element {
 

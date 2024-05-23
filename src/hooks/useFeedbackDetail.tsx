@@ -1,15 +1,7 @@
 import { useEffect, useState } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
-
-interface Feedback {
-    id: string;
-    title: string;
-    category: string;
-    detail: string;
-    status?: string;
-    numberOfComments?: number;
-}
+import { Feedback } from '../types';
 
 const useFeedbackDetail = (id: string) => {
     const [feedback, setFeedback] = useState<Feedback | null>(null);
@@ -29,6 +21,7 @@ const useFeedbackDetail = (id: string) => {
                         detail: data.detail,
                         status: data.status,
                         numberOfComments: data.numberOfComments,
+                        upvotes: data.upvotes
                     });
                 } else {
                     setError('Feedback not found');

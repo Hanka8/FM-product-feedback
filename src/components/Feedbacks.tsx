@@ -4,28 +4,14 @@ import { db } from '../firebase';
 import { Link } from 'react-router-dom';
 import '../styles/feedbacks.css';
 import NoFeedbacks from './NoFeedbacks';
-
-interface FeedbacksProps {
-    setNumberOfFeedbacks: (num: number) => void;
-    all: boolean;
-    ui: boolean;
-    ux: boolean;
-    enhancement: boolean;
-    bug: boolean;
-    feature: boolean;
-}
-
-interface Feedback {
-    id: string;
-    title: string;
-    category: string;
-    detail: string;
-    numberOfComments: number;
-}
+import useUpvote from '../hooks/useUpvote';
+import { FeedbacksProps, Feedback } from '../types';
 
 function Feedbacks({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, feature }: FeedbacksProps): JSX.Element {
 
     const [feedbacks, setFeedbacks] = useState<Feedback[]>([]);
+
+    const handleUpvote = useUpvote();
 
     useEffect(() => {
         const feedbacksCollection = collection(db, 'feedback');
@@ -56,6 +42,8 @@ function Feedbacks({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, featur
                     category: doc.data().category,
                     detail: doc.data().detail,
                     numberOfComments: doc.data().numberOfComments,
+                    upvotes: doc.data().upvotes,
+                    status: doc.data().status
                 });
             });
             setFeedbacks(feedbacks);
@@ -73,7 +61,7 @@ function Feedbacks({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, featur
                 <Link to={`/${feedback.id}`} key={feedback.id}  state={{ some: "value"}}>
                     <div key={feedback.id} className='feedback'>
                        <div className="flex-start">
-                            <button className="btn btn-upvote">99</button>
+                            <button className="btn btn-upvote" onClick={(e) => handleUpvote(feedback, e)}>{feedback.upvotes}</button>
                             <div className='feedback-info'>
                                 <p className='feedback-title'>{feedback.title}</p>
                                 <p className='feedback-detail'>{feedback.detail}</p>

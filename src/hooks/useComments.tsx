@@ -1,12 +1,7 @@
 import { useState, useEffect } from 'react';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../firebase';
-
-interface Comment {
-    id: string;
-    feedbackId: string;
-    comment: string;
-}
+import { Comment } from '../types';
 
 const useComments = (feedbackId: string) => {
     const [comments, setComments] = useState<Comment[]>([]);

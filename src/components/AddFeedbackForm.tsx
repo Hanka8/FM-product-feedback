@@ -4,10 +4,9 @@ import { db } from '../firebase';
 import '../styles/feedbackForm.css';
 import '../styles/dropdown.css';
 import GoBack from './utils/GoBack';
+import { categoryType } from '../types';
 
 function AddFeedbackForm(): JSX.Element {
-
-    type categoryType = 'bug' | 'feature' | 'enhancement' | 'ux' | 'ui';
 
     const [title, setTitle] = useState<string>('');
     const [category, setCategory] = useState<categoryType>('bug');
@@ -34,6 +33,7 @@ function AddFeedbackForm(): JSX.Element {
                 detail: detail,
                 status: 'planned',
                 numberOfComments: 0,
+                upvotes: 0
             });
         setTitle('');
         setCategory('bug');

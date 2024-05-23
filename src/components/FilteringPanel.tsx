@@ -1,19 +1,5 @@
 import '../styles/filteringPanel.css';
-
-interface FilteringPanelProps {
-    all: boolean;
-    setAll: (value: boolean) => void;
-    ui: boolean;
-    setUi: (value: boolean) => void;
-    ux: boolean;
-    setUx: (value: boolean) => void;
-    enhancement: boolean;
-    setEnhancement: (value: boolean) => void;
-    bug: boolean;
-    setBug: (value: boolean) => void;
-    feature: boolean;
-    setFeature: (value: boolean) => void;
-}
+import { FilteringPanelProps } from '../types';
 
 function FilteringPanel({all, setAll, ui, setUi, ux, setUx, enhancement, setEnhancement, bug, setBug, feature, setFeature} : FilteringPanelProps): JSX.Element {
 

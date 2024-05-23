@@ -5,17 +5,7 @@ import { useState, useEffect } from 'react';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
 import Feedbacks from './Feedbacks';
-
-interface FeedbackBoardProps {
-    all: boolean;
-    ui: boolean;
-    ux: boolean;
-    enhancement: boolean;
-    bug: boolean;
-    feature: boolean;
-}
-
-type Sort = 'most-upvotes' | 'least-upvotes' | 'most-comments' | 'least-comments';
+import { Sort, FeedbackBoardProps } from '../types';
 
 function FeedbackBoard({all, ui, ux, enhancement, bug, feature} : FeedbackBoardProps): JSX.Element {
 
