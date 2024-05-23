@@ -66,3 +66,7 @@
 .btn-upvote:hover {
     background-color: var(--filter-hover);
 }
+
+.comments-num {
+    color: var(--dark-blue);
+}

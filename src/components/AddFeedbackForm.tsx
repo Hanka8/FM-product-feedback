@@ -5,6 +5,7 @@ import '../styles/feedbackForm.css';
 import '../styles/dropdown.css';
 import GoBack from './utils/GoBack';
 import { categoryType } from '../types';
+import { motion } from 'framer-motion';
 
 function AddFeedbackForm(): JSX.Element {
 
@@ -56,6 +57,9 @@ function AddFeedbackForm(): JSX.Element {
 
 
     return (
+        <motion.div
+                initial={{opacity: 0}} 
+                animate={{opacity: 1, transition: {duration: 0.15}}}>
         <main className='addfeedback-main'>   
             <form className='form form-add' onSubmit={addFeedback}>
                 <GoBack />
@@ -124,6 +128,7 @@ function AddFeedbackForm(): JSX.Element {
                     </>}
             </form>
         </main>
+        </motion.div>
     )
 }
 

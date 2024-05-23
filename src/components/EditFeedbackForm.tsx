@@ -6,11 +6,12 @@ import useFeedbackDetail from "../hooks/useFeedbackDetail";
 import { db } from "../firebase";
 import { doc, deleteDoc, updateDoc, query, collection, where, getDocs } from "firebase/firestore";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 function EditFeedback(): JSX.Element {
 
     const { id = "" } = useParams<{ id: string }>();
-    const { feedback } = useFeedbackDetail(id!);
+    const feedback = useFeedbackDetail(id!);
     const [deleted, setDeleted] = useState<boolean>(false);
 
     const [title, setTitle] = useState<string>('');
@@ -81,6 +82,9 @@ function EditFeedback(): JSX.Element {
     }
 
     return (
+         <motion.div
+                initial={{opacity: 0}} 
+                animate={{opacity: 1, transition: {duration: 0.15}}}>
          <main className='addfeedback-main'>   
             <form className='form form-edit' onSubmit={updateFeedback} >
                 <GoBack deleted={deleted} />
@@ -162,6 +166,7 @@ function EditFeedback(): JSX.Element {
                 </>}
             </form>
         </main>
+        </motion.div>
     )
 }
 

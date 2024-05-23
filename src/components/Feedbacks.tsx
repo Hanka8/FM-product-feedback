@@ -6,6 +6,7 @@ import '../styles/feedbacks.css';
 import NoFeedbacks from './NoFeedbacks';
 import useUpvote from '../hooks/useUpvote';
 import { FeedbacksProps, Feedback } from '../types';
+import { motion } from 'framer-motion';
 
 function Feedbacks({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, feature }: FeedbacksProps): JSX.Element {
 
@@ -56,8 +57,12 @@ function Feedbacks({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, featur
     }, [all, ui, ux, enhancement, bug, feature, setNumberOfFeedbacks]);
 
     return (
+
         <div className='feedbacks'>
             {feedbacks.length > 0 ? feedbacks.map((feedback) => (
+            <motion.div
+                initial={{opacity: 0}} 
+                animate={{opacity: 1, transition: {duration: 0.15}}}>
                 <Link to={`/${feedback.id}`} key={feedback.id}  state={{ some: "value"}}>
                     <div key={feedback.id} className='feedback'>
                        <div className="flex-start">
@@ -70,12 +75,14 @@ function Feedbacks({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, featur
                         </div>
                         <div className="feedback-comments">
                             <img src="assets/shared/icon-comments.svg" alt="comments ico" />
-                            <p>{feedback.numberOfComments}</p>
+                            <p className='comments-num'>{feedback.numberOfComments}</p>
                         </div>
                     </div>
                 </Link>
+                </motion.div>
             )) : <NoFeedbacks />}
         </div>
+        
     )
 }
 

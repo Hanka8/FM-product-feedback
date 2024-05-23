@@ -7,6 +7,7 @@ import "../styles/feedbackDetail.css";
 import GoBack from "./utils/GoBack";
 import AddComment from "./AddComment";
 import useUpvote from "../hooks/useUpvote";
+import { motion } from "framer-motion";
 
 function FeedbackDetail(): JSX.Element {
 
@@ -14,11 +15,14 @@ function FeedbackDetail(): JSX.Element {
 
     const { id } = useParams<{ id: string }>() as { id: string };
 
-    let { feedback, loading, error } = useFeedbackDetail(id!);
+    let feedback = useFeedbackDetail(id!);
     let { comments, loading: commentsLoading, error: commentsError } = useComments(id!);
     
 
     return (
+         <motion.div
+                initial={{opacity: 0}} 
+                animate={{opacity: 1, transition: {duration: 0.25}}}>
         <section id="feedbackDetail">
             <div className="container">
                 <div className="buttons">
@@ -28,8 +32,6 @@ function FeedbackDetail(): JSX.Element {
                     </Link>
                 </div>
                 <div className='feedback'>
-                    {loading && <p>Loading...</p>}
-                    {error && <p>{error}</p>}
                     {feedback && (
                         <>
                             <div className="flex-start">
@@ -42,13 +44,13 @@ function FeedbackDetail(): JSX.Element {
                             </div>
                             <div className="feedback-comments">
                                 <img src="assets/shared/icon-comments.svg" alt="comments ico" />
-                                <p>{comments.length}</p>
+                                <p className="comments-num">{comments.length}</p>
                             </div>
                         </>
                     )}
                 </div>
                 <div className='comments'>
-                    <h2 className="comment-heading">Comments</h2>
+                    <h2 className="comment-heading">{comments.length == 0 ? "No comments yet" : "Comments"}</h2>
                     {commentsLoading && <p>Loading comments...</p>}
                     {commentsError && <p>{commentsError}</p>}
                     {comments.map(comment => (
@@ -59,8 +61,8 @@ function FeedbackDetail(): JSX.Element {
                 </div>
                 <AddComment id={id} />
             </div>
-            
         </section>
+        </motion.div>
     )
 }
 

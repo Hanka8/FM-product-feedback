@@ -68,7 +68,7 @@
 .comments {
     margin-top: 3rem;
     background-color: var(--white);
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 14px;
     margin-bottom: calc(27rem / 16);
     padding: 24px 34px;

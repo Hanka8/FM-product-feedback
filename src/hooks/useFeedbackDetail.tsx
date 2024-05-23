@@ -5,8 +5,6 @@ import { Feedback } from '../types';
 
 const useFeedbackDetail = (id: string) => {
     const [feedback, setFeedback] = useState<Feedback | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchFeedback = async () => {
@@ -24,19 +22,17 @@ const useFeedbackDetail = (id: string) => {
                         upvotes: data.upvotes
                     });
                 } else {
-                    setError('Feedback not found');
+                    console.error('No such document');
                 }
             } catch (err) {
-                setError('Error fetching feedback');
-            } finally {
-                setLoading(false);
-            }
+                console.error('Error fetching feedback: ', err);
+            } 
         };
 
         fetchFeedback();
     }, [id, feedback]);
 
-    return { feedback, loading, error };
+    return feedback;
 };
 
 export default useFeedbackDetail;
