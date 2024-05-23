@@ -86,9 +86,11 @@ function EditFeedback(): JSX.Element {
                 <GoBack deleted={deleted} />
                 <h2 className='form-title'>Editing '{feedback?.title}'</h2>
                 {feedbackAdded ? 
-                    <div className='added-message text'>Feedback edited successfully</div>
+                <div className='added-message text'>Feedback edited successfully</div>
                 :
-                deleted ? <div className='deleted-message text'>Feedback deleted successfully</div> :
+                deleted ? 
+                <div className='deleted-message text'>Feedback deleted successfully</div> 
+                :
                 <>
                 <label className='label' htmlFor="title">Feedback Title</label>
                 <p className='label-description'>Add a short, descriptive headline</p>

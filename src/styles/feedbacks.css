@@ -50,3 +50,19 @@
     gap: calc(7rem / 16);
     font-weight: 600;
 }
+
+.btn-upvote {
+    background-image: url(../assets/shared/icon-arrow-up.svg);
+    background-repeat: no-repeat;
+    background-position: center 25%;
+    background-color: var(--lightblue-grey);
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--dark-blue);
+    padding: 26px 11px 11px 11px;
+}
+
+.btn-upvote:hover {
+    background-color: var(--filter-hover);
+}

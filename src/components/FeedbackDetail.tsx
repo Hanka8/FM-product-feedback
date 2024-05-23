@@ -20,7 +20,7 @@ function FeedbackDetail(): JSX.Element {
                 <div className="buttons">
                     <GoBack />
                     <Link to={`/${id}/editfeedback`}>
-                        <button className="btn btn-primary">Edit Feedback</button>
+                        <button className="btn btn-quaternary ">Edit Feedback</button>
                     </Link>
                 </div>
                 <div className='feedback'>
@@ -28,10 +28,13 @@ function FeedbackDetail(): JSX.Element {
                     {error && <p>{error}</p>}
                     {feedback && (
                         <>
-                            <div className='feedback-info'>
-                                <p className='feedback-title'>{feedback.title}</p>
-                                <p className='feedback-detail'>{feedback.detail}</p>
-                                <p className='feedback-category'>{feedback.category}</p>
+                            <div className="flex-start">
+                                <button className="btn btn-upvote">99</button>
+                                <div className='feedback-info'>
+                                    <p className='feedback-title'>{feedback.title}</p>
+                                    <p className='feedback-detail'>{feedback.detail}</p>
+                                    <p className='feedback-category'>{feedback.category}</p>
+                                </div>
                             </div>
                             <div className="feedback-comments">
                                 <img src="assets/shared/icon-comments.svg" alt="comments ico" />

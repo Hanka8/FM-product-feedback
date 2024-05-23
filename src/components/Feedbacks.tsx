@@ -72,10 +72,13 @@ function Feedbacks({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, featur
             {feedbacks.length > 0 ? feedbacks.map((feedback) => (
                 <Link to={`/${feedback.id}`} key={feedback.id}  state={{ some: "value"}}>
                     <div key={feedback.id} className='feedback'>
-                        <div className='feedback-info'>
-                            <p className='feedback-title'>{feedback.title}</p>
-                            <p className='feedback-detail'>{feedback.detail}</p>
-                            <p className='feedback-category'>{feedback.category}</p>
+                       <div className="flex-start">
+                            <button className="btn btn-upvote">99</button>
+                            <div className='feedback-info'>
+                                <p className='feedback-title'>{feedback.title}</p>
+                                <p className='feedback-detail'>{feedback.detail}</p>
+                                <p className='feedback-category'>{feedback.category}</p>
+                            </div>
                         </div>
                         <div className="feedback-comments">
                             <img src="assets/shared/icon-comments.svg" alt="comments ico" />

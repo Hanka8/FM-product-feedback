@@ -13,6 +13,7 @@
   --hover-1: #656EA3;
   --hover-2: #C75AF6;
   --hover-3: #E98888;
+  --hover-4: #7C91F9;
   --filter-hover: #CFD7FF;
   --border: #8C92B3;
 }
@@ -38,6 +39,13 @@ li {
 
 .bold {
   font-weight: 700;
+}
+
+.flex-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 40px;
 }
 
 .go-back {
@@ -88,4 +96,12 @@ li {
 
 .btn-tertiary:hover {
   background-color: var(--hover-3);
+}
+
+.btn-quaternary {
+  background-color: var(--blue);
+}
+
+.btn-quaternary:hover {
+  background-color: var(--hover-4);
 }
