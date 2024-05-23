@@ -34,7 +34,7 @@ const useFeedbackDetail = (id: string) => {
         };
 
         fetchFeedback();
-    }, [id]);
+    }, [id, feedback]);
 
     return { feedback, loading, error };
 };

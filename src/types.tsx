@@ -41,16 +41,6 @@ export interface FeedbacksProps {
     feature: boolean;
 }
 
-export interface Feedback {
-    id: string;
-    title: string;
-    category: string;
-    detail: string;
-    status: string;
-    numberOfComments: number;
-    upvotes: number;
-}
-
 export interface FilteringPanelProps {
     all: boolean;
     setAll: (value: boolean) => void;

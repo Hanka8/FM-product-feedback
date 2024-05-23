@@ -22,7 +22,7 @@ const useComments = (feedbackId: string) => {
         };
 
         fetchComments();
-    }, [feedbackId]);
+    }, [feedbackId, comments]);
 
     return { comments, loading, error };
 }

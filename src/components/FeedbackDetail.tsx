@@ -14,8 +14,9 @@ function FeedbackDetail(): JSX.Element {
 
     const { id } = useParams<{ id: string }>() as { id: string };
 
-    const { feedback, loading, error } = useFeedbackDetail(id!);
+    let { feedback, loading, error } = useFeedbackDetail(id!);
     let { comments, loading: commentsLoading, error: commentsError } = useComments(id!);
+    
 
     return (
         <section id="feedbackDetail">
