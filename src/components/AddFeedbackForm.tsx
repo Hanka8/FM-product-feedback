@@ -104,11 +104,11 @@ function AddFeedbackForm(): JSX.Element {
                             {capitalize(category)}
                         </button>
                         <ul className={`dropdown-menu ${openedDropdown ? "opened" : ""}`} role="listbox" id="category" onClick={() => setOpenedDropdown(!openedDropdown)}>
-                            <li className='menu-option' role="option" onClick={() => setCategory("bug")}>Bug</li>
-                            <li className='menu-option' role="option" onClick={() => setCategory("feature")}>Feature</li>
-                            <li className='menu-option' role="option" onClick={() => setCategory("enhancement")}>Enhancement</li>
-                            <li className='menu-option' role="option" onClick={() => setCategory("ux")}>UX</li>
-                            <li className='menu-option' role="option" onClick={() => setCategory("ui")}>UI</li>
+                            <li className={`menu-option ${category == "bug" && "option-tagged"}`} role="option" onClick={() => setCategory("bug")}>Bug</li>
+                            <li className={`menu-option ${category == "feature" && "option-tagged"}`} onClick={() => setCategory("feature")}>Feature</li>
+                            <li className={`menu-option ${category == "enhancement" && "option-tagged"}`} onClick={() => setCategory("enhancement")}>Enhancement</li>
+                            <li className={`menu-option ${category == "ux" && "option-tagged"}`} onClick={() => setCategory("ux")}>UX</li>
+                            <li className={`menu-option ${category == "ui" && "option-tagged"}`} onClick={() => setCategory("ui")}>UI</li>
                         </ul>
                         <label className='label' htmlFor="detail">Feedback Detail</label>
                         <p className='label-description'>Give more context on your feedback</p>

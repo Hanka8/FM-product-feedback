@@ -76,3 +76,9 @@
 .menu-option:hover {
     color: var(--violet);
 }
+
+.option-tagged {
+    background-image: url(../assets/shared/icon-check.svg);
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+}

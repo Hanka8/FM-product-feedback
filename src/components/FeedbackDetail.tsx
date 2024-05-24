@@ -16,8 +16,8 @@ function FeedbackDetail(): JSX.Element {
     const { id } = useParams<{ id: string }>() as { id: string };
 
     let feedback = useFeedbackDetail(id!);
-    let { comments, loading: commentsLoading, error: commentsError } = useComments(id!);
-    
+
+    let { comments } = useComments(id!);
 
     return (
          <motion.div
@@ -51,8 +51,6 @@ function FeedbackDetail(): JSX.Element {
                 </div>
                 <div className='comments'>
                     <h2 className="comment-heading">{comments.length == 0 ? "No comments yet" : "Comments"}</h2>
-                    {commentsLoading && <p>Loading comments...</p>}
-                    {commentsError && <p>{commentsError}</p>}
                     {comments.map(comment => (
                         <div key={comment.id} className='comment'>
                             <p>{comment.comment}</p>

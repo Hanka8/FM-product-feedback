@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { collection, query, where, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
 import { Comment } from '../types';
 
@@ -9,20 +9,20 @@ const useComments = (feedbackId: string) => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const fetchComments = async () => {
-            try {
-                const commentsCollection = collection(db, 'comments');
-                const commentsSnapshot = await getDocs(query(commentsCollection, where('feedbackId', '==', feedbackId)));
-                setComments(commentsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }) as Comment));
-            } catch (err) {
-                setError('Error fetching comments');
-            } finally {
-                setLoading(false);
-            }
-        };
+        const commentsCollection = collection(db, 'comments');
+        const q = query(commentsCollection, where('feedbackId', '==', feedbackId));
 
-        fetchComments();
-    }, [feedbackId, comments]);
+        const unsubscribe = onSnapshot(q, (snapshot) => {
+            setLoading(true);
+            setComments(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }) as Comment));
+            setLoading(false);
+        }, () => {
+            setError('Error fetching comments');
+            setLoading(false);
+        });
+
+        return () => unsubscribe();
+    }, [feedbackId]);
 
     return { comments, loading, error };
 }

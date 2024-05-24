@@ -2,7 +2,7 @@ export type categoryType = 'bug' | 'feature' | 'enhancement' | 'ux' | 'ui';
 
 export type Sort = 'most-upvotes' | 'least-upvotes' | 'most-comments' | 'least-comments';
 
-export interface CommentProps {
+export interface AddCommentProps {
     id: string;
 }
 

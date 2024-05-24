@@ -61,6 +61,7 @@
     font-weight: 700;
     color: var(--dark-blue);
     padding: 26px 11px 11px 11px;
+    width: calc(40rem / 16);
 }
 
 .btn-upvote:hover {

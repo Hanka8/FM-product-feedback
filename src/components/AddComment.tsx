@@ -3,10 +3,10 @@ import "../styles/comment.css";
 import { doc, collection, addDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import useComments from "../hooks/useComments";
-import { CommentProps } from "../types";
+import { AddCommentProps } from "../types";
 
 
-function AddComment( {id}: CommentProps ):JSX.Element {
+function AddComment( {id }: AddCommentProps ):JSX.Element {
 
     const MAX_CHARACTERS = 250;
 
