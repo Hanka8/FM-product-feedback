@@ -49,6 +49,13 @@ li {
   gap: 40px;
 }
 
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
 .go-back {
   background: url(../assets/shared/icon-arrow-left.svg) no-repeat center left;
   border: none;

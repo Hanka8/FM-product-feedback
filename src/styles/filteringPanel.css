@@ -79,13 +79,13 @@
     font-size: 1rem;
 }
 
-.roadmap-header {
+.panel-roadmap-header {
     margin-bottom: calc(24rem / 16);
     color: var(--dark-blue);
     font-weight: 700;
 }
 
-.roadmap-header h2 {
+.panel-roadmap-header h2 {
     font-size: calc(18rem / 16);
 }
 

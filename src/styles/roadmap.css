@@ -1,0 +1,85 @@
+.roadmap {
+    padding-top: 94px;
+    padding-bottom: 94px;
+    margin-inline: 165px;
+}
+
+@media screen and (max-width: 930px) {
+    .roadmap {
+        padding-top: 56px;
+        padding-bottom: 56px;
+    }
+}
+
+.roadmap-header {
+    color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 28px;
+    border-radius: 10px;
+    background-color: var(--very-dark-blue);
+}
+
+h1 {
+    font-size: calc(24rem / 16);
+    font-weight: 700;
+}
+
+.header-container .go-back {
+    color: var(--white);
+}
+
+.header-container .go-back:hover {
+    color: var(--white);
+    text-transform: underline;
+}
+
+.roadmap-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.roadmap-feedback {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    background-color: var(--white);
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 32px;
+    position: relative;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+}
+
+.roadmap-feedback::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 6px;
+    left: 0;
+    top: -6px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.planned::after {
+    background-color: var(--orange);
+}
+
+.in-progress::after {
+    background-color: var(--violet);
+}
+
+.live::after {
+    background-color: var(--light-blue);
+}

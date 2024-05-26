@@ -8,6 +8,8 @@ import useFeedbackDetail from "../hooks/useFeedbackDetail";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
+//hlásí prázdný když neni prýzdný proč zase
+
 function EditFeedback(): JSX.Element {
 
     const { id = "" } = useParams<{ id: string }>();

@@ -56,7 +56,7 @@ function Feedbacks({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, featur
                     key={feedback.id}
                     initial={{opacity: 0}} 
                     animate={{opacity: 1, transition: {duration: 0.15}}}>
-                    <Link to={`/${feedback.id}`} key={feedback.id}  state={{ some: "value"}}>
+                    <Link to={`/${feedback.id}`} key={feedback.id} >
                         <div key={feedback.id} className='feedback'>
                         <div className="flex-start">
                                 <button className="btn btn-upvote" onClick={(e) => handleUpvote(feedback, e)}>{feedback.upvotes}</button>

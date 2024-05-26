@@ -2,6 +2,7 @@ import '../styles/landing.css';
 import FilteringPanel from './FilteringPanel';
 import FeedbackBoard from './FeedbackBoard';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 function Landing(): JSX.Element {
 
@@ -13,7 +14,10 @@ function Landing(): JSX.Element {
     const [feature, setFeature] = useState<boolean>(false);
 
     return (
-        <div className='landing'>  
+        <motion.div
+            initial={{opacity: 0}} 
+            animate={{opacity: 1, transition: {duration: 0.15}}}>
+        <div className='landing'>
             <FilteringPanel
                 all={all}
                 setAll={setAll}
@@ -37,6 +41,7 @@ function Landing(): JSX.Element {
                 feature={feature}
             />
         </div>
+        </motion.div>
     )
 }
 
