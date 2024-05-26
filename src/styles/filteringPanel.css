@@ -71,3 +71,66 @@
     background-color: var(--blue);
     color: var(--white);
 }
+
+.panel-roadmap {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 19px 24px;
+    font-size: 1rem;
+}
+
+.roadmap-header {
+    margin-bottom: calc(24rem / 16);
+    color: var(--dark-blue);
+    font-weight: 700;
+}
+
+.roadmap-header h2 {
+    font-size: calc(18rem / 16);
+}
+
+.roadmap-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.roadmap-row {
+    color: var(--grey);
+}
+
+.roadmap-row:not(:last-child) {
+    margin-bottom: calc(8rem / 16);
+}
+
+.link {
+    color: var(--blue);
+    font-size: calc(13rem / 16);
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.link:hover {
+    color: var(--link-hover);
+}
+
+.circle {
+    border-radius: 50%;
+    width: calc(8rem / 16);
+    height: calc(8rem / 16);
+    display: inline-block;
+    margin-right: 1rem;
+    margin-bottom: 2px;
+}
+
+.orange {
+    background-color: var(--orange);
+}
+
+.violet {
+    background-color: var(--violet);
+}
+
+.blue {
+    background-color: var(--light-blue);
+}

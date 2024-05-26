@@ -4,6 +4,7 @@ import Landing from './Landing';
 import AddFeedbackForm from './AddFeedbackForm';
 import FeedbackDetail from './FeedbackDetail';
 import EditFeedback from './EditFeedbackForm';
+import Roadmap from './Roadmap';
  
  function AnimatedRoutes():JSX.Element {
 
@@ -23,6 +24,10 @@ import EditFeedback from './EditFeedbackForm';
           <Route
             path={'/:id/editfeedback'}
             element={<EditFeedback />} 
+          />
+          <Route
+            path={'/roadmap'}
+            element={<Roadmap />}
           />
       </Routes>
     </AnimatePresence>
