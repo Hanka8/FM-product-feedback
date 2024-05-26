@@ -29,7 +29,7 @@ function AddFeedbackForm(): JSX.Element {
         } 
         try {
             await addDoc(collection(db, 'feedback'), {
-                title: title,
+                title: title.slice(0, 1).toUpperCase() + title.slice(1),
                 category: category,
                 detail: detail,
                 status: 'planned',

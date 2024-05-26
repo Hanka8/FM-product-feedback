@@ -28,15 +28,18 @@ function EditFeedback(): JSX.Element {
 
     const [openedDropdown, setOpenedDropdown] = useState<boolean>(false);
     const [openedDropdown2, setOpenedDropdown2] = useState<boolean>(false);
+    //e a flag to track whether the initial feedback has been loaded
+    const [initialLoad, setInitialLoad] = useState<boolean>(true);
 
     useEffect(() => {
-        if (feedback) {
+        if (feedback && initialLoad) {
             setTitle(feedback.title);
             setDetail(feedback.detail);
             setCategory(feedback.category);
             setStatus(feedback.status);
+            setInitialLoad(false);
         }
-    }, []);
+    }, [initialLoad, feedback]);
 
     const goBack = () => {
         window.history.back();
@@ -65,15 +68,11 @@ function EditFeedback(): JSX.Element {
         try {
             const feedbackRef = doc(db, 'feedback', id);
             await updateDoc(feedbackRef, {
-                title: title,
+                title: title.slice(0, 1).toUpperCase() + title.slice(1),
                 detail: detail,
                 category: category,
                 status: status,
             });
-            setTitle('');
-            setCategory('bug');
-            setDetail('');
-            setStatus('planned');
             (e.target as HTMLFormElement).reset();
         }
         catch (error) {
@@ -91,6 +90,8 @@ function EditFeedback(): JSX.Element {
             return arr.map((word) =>word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
         }
     };
+
+    console.log(title);
 
     return (
          <motion.div
@@ -115,7 +116,7 @@ function EditFeedback(): JSX.Element {
                         id="title"
                         defaultValue={feedback?.title}
                         onChange={(e) => setTitle(e.target.value as string)}
-                        />
+                    />
                     <p className='error-message'>{emptyTitle ? "Can´t be empty" : ""}</p>
                     <label className='label' htmlFor="category">Category</label>
                     <p className='label-description'>Change a category for your feedback</p>

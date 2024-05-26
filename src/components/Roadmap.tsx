@@ -10,15 +10,14 @@ import useUpvote from "../hooks/useUpvote";
 function Roadmap(): JSX.Element {
 
     //udělat Feedback jako komponentu a použít ji zde
-    //seřadit je podle počtu upvotů
 
     const handleUpvote = useUpvote();
 
     const {feedbacks } = useFeedbacks();
 
-    const planned = feedbacks.filter(feedback => feedback.status === 'planned');
-    const inProgress = feedbacks.filter(feedback => feedback.status === 'in-progress');
-    const live = feedbacks.filter(feedback => feedback.status === 'live');
+    const planned = feedbacks.filter(feedback => feedback.status === 'planned').sort((a, b) => b.upvotes - a.upvotes);
+    const inProgress = feedbacks.filter(feedback => feedback.status === 'in-progress').sort((a, b) => b.upvotes - a.upvotes);
+    const live = feedbacks.filter(feedback => feedback.status === 'live').sort((a, b) => b.upvotes - a.upvotes);
 
     return (
         <motion.div
