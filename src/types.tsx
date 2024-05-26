@@ -39,6 +39,7 @@ export interface FeedbacksProps {
     enhancement: boolean;
     bug: boolean;
     feature: boolean;
+    sort: Sort;
 }
 
 export interface FilteringPanelProps {

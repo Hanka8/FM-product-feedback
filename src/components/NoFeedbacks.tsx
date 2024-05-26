@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import '../styles/noFeedbacks.css';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 function NoFeedbacks(): JSX.Element {

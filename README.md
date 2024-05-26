@@ -21,3 +21,5 @@ You should only include dependencies that directly affect the effect. In this ca
 
 Real-time Updates for Comments:
 Modify the useComments hook to listen for real-time updates to the comments collection in Firebase. You can achieve this by using Firebase's onSnapshot method instead of getDocs.
+
+? custom hooks encapsulation

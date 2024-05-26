@@ -1,7 +1,7 @@
+import { Feedback } from '../types';
 import { updateDoc, doc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { MouseEvent } from 'react';
-import { Feedback } from '../types';
 
 const useUpvote = () => {
     const handleUpvote = async (feedback: Feedback, e: MouseEvent<HTMLButtonElement>) => {

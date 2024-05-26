@@ -1,12 +1,12 @@
 import "../styles/feedbackForm.css";
 import '../styles/dropdown.css';
 import GoBack from "./utils/GoBack";
-import { useParams } from "react-router-dom";
-import useFeedbackDetail from "../hooks/useFeedbackDetail";
 import { db } from "../firebase";
 import { doc, deleteDoc, updateDoc, query, collection, where, getDocs } from "firebase/firestore";
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import useFeedbackDetail from "../hooks/useFeedbackDetail";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 function EditFeedback(): JSX.Element {
 
@@ -82,7 +82,6 @@ function EditFeedback(): JSX.Element {
     }
 
     const editString = (string: string) => {
-        console.log(string);
         if (string === 'ux' || string === 'ui') {
             return string.toUpperCase();
         } else {

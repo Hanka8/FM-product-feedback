@@ -26,14 +26,27 @@
     border: none;
     cursor: pointer;
     background-color: transparent;
-    background-image: url(../assets/shared/icon-arrow-down.svg);
     background-repeat: no-repeat;
     background-position: right center;
-    width: calc(160rem / 16);
+    width: fit-content;
+    position: relative;
 }
 
-.dropdown-btn-board.opened {
-    background-image: url(../assets/shared/icon-arrow-up.svg);
+.dropdown-btn-board:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -20px;
+    width: 15px;
+    height: 15px;
+    background-image: url(../assets/shared/icon-arrow-down-white.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.dropdown-btn-board.opened::after {
+    background-image: url(../assets/shared/icon-arrow-up-white.svg);
 }
 
 .dropdown-menu {

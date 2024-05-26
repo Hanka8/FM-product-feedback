@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { collection, addDoc } from 'firebase/firestore';
-import { db } from '../firebase';
 import '../styles/feedbackForm.css';
 import '../styles/dropdown.css';
-import GoBack from './utils/GoBack';
 import { categoryType } from '../types';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../firebase';
+import GoBack from './utils/GoBack';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 function AddFeedbackForm(): JSX.Element {
 
@@ -51,10 +51,14 @@ function AddFeedbackForm(): JSX.Element {
         window.history.back();
     }
 
-    function capitalize(string: string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-
+    const editString = (string: string) => {
+        if (string === 'ux' || string === 'ui') {
+            return string.toUpperCase();
+        } else {
+            let arr = string.split('-');
+            return arr.map((word) =>word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+        }
+    };
 
     return (
         <motion.div
@@ -101,7 +105,7 @@ function AddFeedbackForm(): JSX.Element {
                             aria-controls="listbox"
                             aria-haspopup="listbox"
                             aria-expanded="false">
-                            {capitalize(category)}
+                            {editString(category)}
                         </button>
                         <ul className={`dropdown-menu ${openedDropdown ? "opened" : ""}`} role="listbox" id="category" onClick={() => setOpenedDropdown(!openedDropdown)}>
                             <li className={`menu-option ${category == "bug" && "option-tagged"}`} role="option" onClick={() => setCategory("bug")}>Bug</li>

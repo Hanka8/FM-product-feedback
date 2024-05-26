@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import '../styles/landing.css';
 import FilteringPanel from './FilteringPanel';
 import FeedbackBoard from './FeedbackBoard';
-import '../styles/landing.css';
+import { useState } from 'react';
 
 function Landing(): JSX.Element {
 

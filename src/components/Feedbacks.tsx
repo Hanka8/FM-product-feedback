@@ -1,17 +1,16 @@
-import { useEffect, useState } from 'react';
+import '../styles/feedbacks.css';
+import { FeedbacksProps, Feedback, Sort } from '../types';
 import { query, collection, onSnapshot, where, Query } from 'firebase/firestore';
 import { db } from '../firebase';
 import { Link } from 'react-router-dom';
-import '../styles/feedbacks.css';
 import NoFeedbacks from './NoFeedbacks';
+import { useEffect, useState, useMemo } from 'react';
 import useUpvote from '../hooks/useUpvote';
-import { FeedbacksProps, Feedback } from '../types';
 import { motion } from 'framer-motion';
 
-function Feedbacks({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, feature }: FeedbacksProps): JSX.Element {
+function Feedbacks({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, feature, sort }: FeedbacksProps): JSX.Element {
 
     const [feedbacks, setFeedbacks] = useState<Feedback[]>([]);
-
     const handleUpvote = useUpvote();
 
     useEffect(() => {
@@ -56,33 +55,52 @@ function Feedbacks({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, featur
         }
     }, [all, ui, ux, enhancement, bug, feature, setNumberOfFeedbacks]);
 
+    const sortedFeedbacks = useMemo(() => {
+        return sortFeedbacks(feedbacks, sort);
+    }, [feedbacks, sort]);
+
+    function sortFeedbacks(feedbacks: Feedback[], sort: Sort): Feedback[] {
+        let sortedFeedbacks: Feedback[] = feedbacks;
+        switch(sort) {
+            case "most-upvotes":
+                return sortedFeedbacks.sort((a, b) => b.upvotes - a.upvotes);
+            case "least-upvotes":
+                return sortedFeedbacks.sort((a, b) => a.upvotes - b.upvotes);
+            case "most-comments":
+                return sortedFeedbacks.sort((a, b) => b.numberOfComments - a.numberOfComments);
+            case "least-comments":
+                return  sortedFeedbacks.sort((a, b) => a.numberOfComments - b.numberOfComments);
+            default:
+                return sortedFeedbacks;
+        }
+    }
+
     return (
 
         <div className='feedbacks'>
-            {feedbacks.length > 0 ? feedbacks.map((feedback) => (
-            <motion.div
-                initial={{opacity: 0}} 
-                animate={{opacity: 1, transition: {duration: 0.15}}}>
-                <Link to={`/${feedback.id}`} key={feedback.id}  state={{ some: "value"}}>
-                    <div key={feedback.id} className='feedback'>
-                       <div className="flex-start">
-                            <button className="btn btn-upvote" onClick={(e) => handleUpvote(feedback, e)}>{feedback.upvotes}</button>
-                            <div className='feedback-info'>
-                                <p className='feedback-title'>{feedback.title}</p>
-                                <p className='feedback-detail'>{feedback.detail}</p>
-                                <p className='feedback-category'>{feedback.category}</p>
+            {feedbacks.length > 0 ? sortedFeedbacks.map((feedback) => (
+                <motion.div
+                    initial={{opacity: 0}} 
+                    animate={{opacity: 1, transition: {duration: 0.15}}}>
+                    <Link to={`/${feedback.id}`} key={feedback.id}  state={{ some: "value"}}>
+                        <div key={feedback.id} className='feedback'>
+                        <div className="flex-start">
+                                <button className="btn btn-upvote" onClick={(e) => handleUpvote(feedback, e)}>{feedback.upvotes}</button>
+                                <div className='feedback-info'>
+                                    <p className='feedback-title'>{feedback.title}</p>
+                                    <p className='feedback-detail'>{feedback.detail}</p>
+                                    <p className='feedback-category'>{feedback.category}</p>
+                                </div>
+                            </div>
+                            <div className="feedback-comments">
+                                <img src="assets/shared/icon-comments.svg" alt="comments ico" />
+                                <p className='comments-num'>{feedback.numberOfComments}</p>
                             </div>
                         </div>
-                        <div className="feedback-comments">
-                            <img src="assets/shared/icon-comments.svg" alt="comments ico" />
-                            <p className='comments-num'>{feedback.numberOfComments}</p>
-                        </div>
-                    </div>
-                </Link>
-                </motion.div>
+                    </Link>
+                    </motion.div>
             )) : <NoFeedbacks />}
         </div>
-        
     )
 }
 

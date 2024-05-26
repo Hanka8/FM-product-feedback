@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { Feedback } from '../types';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
-import { Feedback } from '../types';
+import { useEffect, useState } from 'react';
 
 const useFeedbackDetail = (id: string) => {
     const [feedback, setFeedback] = useState<Feedback | null>(null);

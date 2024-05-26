@@ -1,22 +1,19 @@
-import { useParams, Link } from "react-router-dom";
-import useFeedbackDetail from "../hooks/useFeedbackDetail";
-import useComments from "../hooks/useComments";
 import "../styles/comment.css";
 import "../styles/feedbacks.css";
 import "../styles/feedbackDetail.css";
 import GoBack from "./utils/GoBack";
 import AddComment from "./AddComment";
-import useUpvote from "../hooks/useUpvote";
 import { motion } from "framer-motion";
+import { useParams, Link } from "react-router-dom";
+import useFeedbackDetail from "../hooks/useFeedbackDetail";
+import useComments from "../hooks/useComments";
+import useUpvote from "../hooks/useUpvote";
 
 function FeedbackDetail(): JSX.Element {
 
     const handleUpvote = useUpvote();
-
     const { id } = useParams<{ id: string }>() as { id: string };
-
     let feedback = useFeedbackDetail(id!);
-
     let { comments } = useComments(id!);
 
     return (

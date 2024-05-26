@@ -1,14 +1,12 @@
-import { useState } from "react";
 import "../styles/comment.css";
+import { AddCommentProps } from "../types";
 import { doc, collection, addDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
+import { useState } from "react";
 import useComments from "../hooks/useComments";
-import { AddCommentProps } from "../types";
-
+import { MAX_CHARACTERS } from "../constants";
 
 function AddComment( {id }: AddCommentProps ):JSX.Element {
-
-    const MAX_CHARACTERS = 250;
 
     const currentNumberOfComments = useComments(id).comments.length;
 
