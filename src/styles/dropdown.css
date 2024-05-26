@@ -61,6 +61,10 @@
 }
 
 .dropdown-board {
+    top: 8rem;
+}
+
+.dropdown-board {
     width: calc(255rem / 16);
 }
 

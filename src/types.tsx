@@ -56,3 +56,7 @@ export interface FilteringPanelProps {
     feature: boolean;
     setFeature: (value: boolean) => void;
 }
+
+export interface NoFeedbacksProps {
+    error: string | null;
+}
