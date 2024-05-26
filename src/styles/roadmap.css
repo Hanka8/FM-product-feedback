@@ -1,7 +1,10 @@
 .roadmap {
     padding-top: 94px;
     padding-bottom: 94px;
-    margin-inline: 165px;
+    margin-inline: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+    max-width: calc(1110rem / 16);
 }
 
 @media screen and (max-width: 930px) {
@@ -19,6 +22,7 @@
     padding: 32px 28px;
     border-radius: 10px;
     background-color: var(--very-dark-blue);
+    margin-bottom: calc(48rem / 16);
 }
 
 h1 {
@@ -54,6 +58,20 @@ h1 {
     position: relative;
 }
 
+.roadmap-feedback:hover {
+    transform: translateY(-5px);
+    transition: 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.roadmap-feedback:hover .feedback-title {
+    color: var(--blue);
+}
+
+.content-header {
+    margin-bottom: 8px;
+}
+
 .content-container {
     display: flex;
     flex-direction: column;
@@ -82,4 +100,29 @@ h1 {
 
 .live::after {
     background-color: var(--light-blue);
+}
+
+.header-h2 {
+    font-size: calc(18rem / 16);
+    font-weight: 700;
+    color: var(--dark-blue);
+}
+
+.header-descp {
+    font-size: 1rem;
+    color: var(--grey);
+}
+
+.feedback-state {
+    color: var(--grey);
+}
+
+.roadmap-upvotes-comments {
+    margin-top: .5rem;
+}
+
+.roadmap-upvotes-comments .btn-upvote {
+    background-position: 25% center;
+    padding: 11px 11px 11px 26px;
+    width: calc(69rem / 16);
 }

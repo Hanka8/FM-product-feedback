@@ -10,6 +10,7 @@ import useUpvote from "../hooks/useUpvote";
 function Roadmap(): JSX.Element {
 
     //udělat Feedback jako komponentu a použít ji zde
+    //seřadit je podle počtu upvotů
 
     const handleUpvote = useUpvote();
 
@@ -34,17 +35,17 @@ function Roadmap(): JSX.Element {
             <section className='roadmap-content'>
                 <div className="content-container">
                     <div className='content-header'>
-                        <h2>Planned {planned.length}</h2>
-                        <p>Ideas prioritized for research</p>
+                        <h2 className="header-h2">Planned ({planned.length})</h2>
+                        <p className="header-descp">Ideas prioritized for research</p>
                     </div>
                     {planned.map(feedback => (
                     <Link to={`/${feedback.id}`} key={feedback.id} >
                         <div key={feedback.id} className='roadmap-feedback planned'>
-                                <p><span className='circle orange'></span>Planned</p>
+                                <p className="feedback-state"><span className='circle orange'></span>Planned</p>
                                 <p className='feedback-title'>{feedback.title}</p>
                                 <p className='feedback-detail'>{feedback.detail}</p>
                                 <p className='feedback-category'>{feedback.category}</p>
-                            <div className='flex-between'>
+                            <div className='flex-between roadmap-upvotes-comments'>
                                 <button className="btn btn-upvote" onClick={(e) => handleUpvote(feedback, e)}>{feedback.upvotes}</button> 
                                 <div className="feedback-comments">
                                     <img src="assets/shared/icon-comments.svg" alt="comments ico" />
@@ -57,17 +58,17 @@ function Roadmap(): JSX.Element {
                 </div>
                 <div className="content-container">
                     <div className='content-header'>
-                        <h2>In-Progress {inProgress.length}</h2>
-                        <p>Currently being developed</p>
+                        <h2 className="header-h2">In-Progress ({inProgress.length})</h2>
+                        <p className="header-descp">Currently being developed</p>
                     </div>
                     {inProgress.map(feedback => (
                     <Link to={`/${feedback.id}`} key={feedback.id} >
                         <div key={feedback.id} className='roadmap-feedback in-progress'>
-                                <p><span className='circle violet'></span>In-Progress</p>
+                                <p className="feedback-state"><span className='circle violet'></span>In-Progress</p>
                                 <p className='feedback-title'>{feedback.title}</p>
                                 <p className='feedback-detail'>{feedback.detail}</p>
                                 <p className='feedback-category'>{feedback.category}</p>
-                            <div className='flex-between'>
+                            <div className='flex-between roadmap-upvotes-comments'>
                                 <button className="btn btn-upvote" onClick={(e) => handleUpvote(feedback, e)}>{feedback.upvotes}</button> 
                                 <div className="feedback-comments">
                                     <img src="assets/shared/icon-comments.svg" alt="comments ico" />
@@ -80,17 +81,17 @@ function Roadmap(): JSX.Element {
                 </div>
                 <div className="content-container">
                     <div className='content-header'>
-                        <h2>Live {live.length}</h2>
-                        <p>Released features</p>
+                        <h2 className="header-h2">Live ({live.length})</h2>
+                        <p className="header-descp">Released features</p>
                     </div>
                     {live.map(feedback => (
                     <Link to={`/${feedback.id}`} key={feedback.id} >
                         <div key={feedback.id} className='roadmap-feedback live'>
-                                <p><span className='circle blue'></span>Planned</p>
+                                <p className="feedback-state"><span className='circle blue'></span>Planned</p>
                                 <p className='feedback-title'>{feedback.title}</p>
                                 <p className='feedback-detail'>{feedback.detail}</p>
                                 <p className='feedback-category'>{feedback.category}</p>
-                            <div className='flex-between'>
+                            <div className='flex-between roadmap-upvotes-comments'>
                                 <button className="btn btn-upvote" onClick={(e) => handleUpvote(feedback, e)}>{feedback.upvotes}</button> 
                                 <div className="feedback-comments">
                                     <img src="assets/shared/icon-comments.svg" alt="comments ico" />
