@@ -1,7 +1,14 @@
 import '../styles/filteringPanel.css';
+import { useEffect } from 'react';
 import { FilteringPanelProps } from '../types';
 
 function FilteringPanel({all, setAll, ui, setUi, ux, setUx, enhancement, setEnhancement, bug, setBug, feature, setFeature} : FilteringPanelProps): JSX.Element {
+
+    useEffect(() => {
+        if (!ui && !ux && !enhancement && !bug && !feature) {
+            setAll(true);
+        }
+    }, [ui, ux, enhancement, bug, feature, setAll]);
 
     return (
         <section className='panel'>
