@@ -94,7 +94,7 @@ h1 {
     background-color: var(--orange);
 }
 
-.in-progress::after {
+.inProgress::after {
     background-color: var(--violet);
 }
 

@@ -1,6 +1,6 @@
 export type categoryType = 'bug' | 'feature' | 'enhancement' | 'ux' | 'ui';
 
-export type Sort = 'most-upvotes' | 'least-upvotes' | 'most-comments' | 'least-comments';
+export type sortType = 'most-upvotes' | 'least-upvotes' | 'most-comments' | 'least-comments';
 
 export interface AddCommentProps {
     id: string;
@@ -22,6 +22,11 @@ export interface Feedback {
     upvotes: number;
 }
 
+export interface FeedbackProps {
+    feedback: Feedback;
+    status: string;
+}
+
 export interface FeedbackBoardProps {
     all: boolean;
     ui: boolean;
@@ -31,7 +36,7 @@ export interface FeedbackBoardProps {
     feature: boolean;
 }
 
-export interface FeedbacksProps {
+export interface FeedbacksListProps {
     setNumberOfFeedbacks: (num: number) => void;
     all: boolean;
     ui: boolean;
@@ -39,7 +44,7 @@ export interface FeedbacksProps {
     enhancement: boolean;
     bug: boolean;
     feature: boolean;
-    sort: Sort;
+    sort: sortType;
 }
 
 export interface FilteringPanelProps {

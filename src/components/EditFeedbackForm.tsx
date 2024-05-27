@@ -8,8 +8,6 @@ import useFeedbackDetail from "../hooks/useFeedbackDetail";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-//hlásí prázdný když neni prýzdný proč zase
-
 function EditFeedback(): JSX.Element {
 
     const { id = "" } = useParams<{ id: string }>();
@@ -90,8 +88,6 @@ function EditFeedback(): JSX.Element {
             return arr.map((word) =>word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
         }
     };
-
-    console.log(title);
 
     return (
          <motion.div

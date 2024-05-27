@@ -77,15 +77,15 @@ function FilteringPanel({all, setAll, ui, setUi, ux, setUx, enhancement, setEnha
                 {error ? <p>{error}</p> :
                 <>
                     <div className='roadmap-row roadmap-flex'>
-                        <p><span className='circle orange'></span>Planned</p>
+                        <p><span className='circle planned'></span>Planned</p>
                         <p className='bold'>{planned.length}</p>
                     </div>
                     <div className='roadmap-row roadmap-flex'>
-                        <p><span className='circle violet'></span>In-progress</p>
+                        <p><span className='circle inProgress'></span>In-progress</p>
                         <p className='bold'>{inProgress.length}</p>
                     </div>
                     <div className='roadmap-row roadmap-flex'>
-                        <p><span className='circle blue'></span>Live</p>
+                        <p><span className='circle live'></span>Live</p>
                         <p className='bold'>{live.length}</p>
                     </div>
                 </>

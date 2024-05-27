@@ -1,16 +1,16 @@
 import '../styles/feedbackBoard.css';
 import '../styles/dropdown.css';
-import { Sort, FeedbackBoardProps } from '../types';
+import { sortType, FeedbackBoardProps } from '../types';
 import { Link } from 'react-router-dom';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
-import Feedbacks from './Feedbacks';
+import Feedbacks from './FeedbacksList';
 import { useState, useEffect } from 'react';
 
 function FeedbackBoard({all, ui, ux, enhancement, bug, feature} : FeedbackBoardProps): JSX.Element {
 
     const [numberOfFeedbacks, setNumberOfFeedbacks] = useState<number>(0);
-    const [sort, setSort] = useState<Sort>('most-upvotes');
+    const [sort, setSort] = useState<sortType>('most-upvotes');
     const [openedDropdown, setOpenedDropdown] = useState<boolean>(false);
 
     useEffect(() => {

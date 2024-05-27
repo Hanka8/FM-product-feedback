@@ -1,5 +1,5 @@
 import '../styles/feedbacks.css';
-import { FeedbacksProps, Feedback, Sort } from '../types';
+import { FeedbacksListProps, Feedback, sortType } from '../types';
 import { Link } from 'react-router-dom';
 import NoFeedbacks from './NoFeedbacks';
 import { useMemo, useEffect } from 'react';
@@ -7,7 +7,9 @@ import useUpvote from '../hooks/useUpvote';
 import useFeedbacks from '../hooks/useFeedbacks';
 import { motion } from 'framer-motion';
 
-function Feedbacks({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, feature, sort }: FeedbacksProps): JSX.Element {
+//přidat loading ať to neproblikává
+
+function FeedbacksList({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, feature, sort }: FeedbacksListProps): JSX.Element {
 
     const { feedbacks, error } = useFeedbacks();
     const handleUpvote = useUpvote();
@@ -28,7 +30,7 @@ function Feedbacks({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, featur
         return sortFeedbacks(filteredFeedbacks, sort);
     }, [feedbacks, sort, filteredFeedbacks]);
 
-    function sortFeedbacks(feedbacks: Feedback[], sort: Sort): Feedback[] {
+    function sortFeedbacks(feedbacks: Feedback[], sort: sortType): Feedback[] {
         let sortedFeedbacks: Feedback[] = [...feedbacks];
         switch(sort) {
             case "most-upvotes":
@@ -78,4 +80,4 @@ function Feedbacks({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, featur
     )
 }
 
-export default Feedbacks;
+export default FeedbacksList;

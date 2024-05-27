@@ -6,7 +6,7 @@ import { useState } from "react";
 import useComments from "../hooks/useComments";
 import { MAX_CHARACTERS } from "../constants";
 
-function AddComment( {id }: AddCommentProps ):JSX.Element {
+function AddComment( {id}: AddCommentProps ):JSX.Element {
 
     const currentNumberOfComments = useComments(id).comments.length;
 
