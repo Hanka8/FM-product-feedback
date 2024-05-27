@@ -17,5 +17,14 @@
         gap: 40px;
         padding-top: 56px;
         padding-bottom: 56px;
+        justify-content: flex-start;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .landing {
+        margin-inline: 0;
+        padding-top: 0;
+        gap: 0;
     }
 }

@@ -1,3 +1,10 @@
+@media screen and (max-width: 730px) {
+    .feedbacks {
+        padding: 0 24px;
+    }
+    
+}
+
 .feedback {
     border-radius: 10px;
     background-color: var(--white);
@@ -7,6 +14,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+@media screen and (max-width: 730px) {
+
+    .feedback {
+        align-items: flex-end;
+        font-size: calc(13rem / 16);
+    }
+
+    .feedback .flex-start {
+        flex-direction: column-reverse;
+        gap: calc(22rem / 16);
+    }
+    
 }
 
 .feedback:hover {
@@ -19,6 +40,12 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+@media screen and (max-width: 730px){
+    .feedback-info p {
+        font-size: calc(13rem / 16);
+    }
 }
 
 .feedback-title {
@@ -43,6 +70,12 @@
     font-weight: 600;
 }
 
+@media screen and (max-width: 730px) {
+    .feedback-category {
+        font-size: calc(13rem / 16);
+    }
+}
+
 .feedback-comments {
     display: flex;
     align-items: center;
@@ -62,6 +95,15 @@
     color: var(--dark-blue);
     padding: 26px 11px 11px 11px;
     width: calc(40rem / 16);
+}
+
+@media screen and (max-width: 730px){
+    .btn-upvote {
+        padding: 6px 13px 6px 6px;
+        width: calc(60rem / 16);
+        background-position: 25% center;
+        text-align: right;
+    }
 }
 
 .btn-upvote:hover {

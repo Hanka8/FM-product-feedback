@@ -28,6 +28,7 @@
 
 body {
   background-color: var(--light-grey);
+  overflow-x: hidden;
 }
 
 a {

@@ -53,7 +53,7 @@ function FeedbacksList({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, fe
     return (
 
         <div className='feedbacks'>
-            {feedbacks.length > 0 ? sortedFeedbacks.map((feedback) => (
+            {sortedFeedbacks.length > 0 ? sortedFeedbacks.map((feedback) => (
                 <motion.div
                     key={feedback.id}
                     initial={{opacity: 0}} 

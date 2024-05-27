@@ -64,6 +64,18 @@
     top: 8rem;
 }
 
+@media screen and (max-width: 930px) {
+    .dropdown-board {
+        top: 19rem;
+    } 
+}
+
+@media screen and (max-width: 730px) {
+    .dropdown-board {
+        top: 4rem;
+    }
+}
+
 .dropdown-board {
     width: calc(255rem / 16);
 }
@@ -78,6 +90,18 @@
 .dropdown-board.opened {
     position: absolute;
     top: 13rem;
+}
+
+@media screen and (max-width: 930px) {
+    .dropdown-board.opened {
+        top: 24rem;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .dropdown-board.opened {
+        top: 9rem;
+    }
 }
 
 .menu-option {

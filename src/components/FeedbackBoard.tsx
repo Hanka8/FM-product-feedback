@@ -4,7 +4,7 @@ import { sortType, FeedbackBoardProps } from '../types';
 import { Link } from 'react-router-dom';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
-import Feedbacks from './FeedbacksList';
+import FeedbacksList from './FeedbacksList';
 import { useState, useEffect } from 'react';
 
 function FeedbackBoard({all, ui, ux, enhancement, bug, feature} : FeedbackBoardProps): JSX.Element {
@@ -45,7 +45,7 @@ function FeedbackBoard({all, ui, ux, enhancement, bug, feature} : FeedbackBoardP
                         aria-expanded="false">
                         Sort by: <span className='bold'>{capitalize(sort.split("-").join(" "))}</span>
                     </button>
-                    <ul className={`dropdown-menu dropdown-board ${openedDropdown ? "opened" : ""} dropdown-board`} role="listbox" id="sort" onClick={() => setOpenedDropdown(!openedDropdown)}>
+                    <ul className={`dropdown-menu dropdown-board ${openedDropdown ? "opened" : ""}`} role="listbox" id="sort" onClick={() => setOpenedDropdown(!openedDropdown)}>
                         <li className={`menu-option ${sort == "most-upvotes" && "option-tagged"}`} role="option" onClick={() => setSort("most-upvotes")}>Most Upvotes</li>
                         <li className={`menu-option ${sort == "least-upvotes" && "option-tagged"}`} role="option" onClick={() => setSort("least-upvotes")}>Least Upvotes</li>
                         <li className={`menu-option ${sort == "most-comments" && "option-tagged"}`} role="option" onClick={() => setSort("most-comments")}>Most Comments</li>
@@ -54,7 +54,7 @@ function FeedbackBoard({all, ui, ux, enhancement, bug, feature} : FeedbackBoardP
                 </div>
                 <Link className='btn btn-primary' to='/addfeedback'>+ Add Feedback</Link>
             </header>
-                <Feedbacks
+                <FeedbacksList
                     setNumberOfFeedbacks={setNumberOfFeedbacks}
                     all={all}
                     ui={ui}

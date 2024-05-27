@@ -1,10 +1,10 @@
 import '../styles/filteringPanel.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FilteringPanelProps } from '../types';
 import useFeedbacks from '../hooks/useFeedbacks';
 
-function FilteringPanel({all, setAll, ui, setUi, ux, setUx, enhancement, setEnhancement, bug, setBug, feature, setFeature} : FilteringPanelProps): JSX.Element {
+function FilteringPanel( {all, setAll, ui, setUi, ux, setUx, enhancement, setEnhancement, bug, setBug, feature, setFeature} : FilteringPanelProps ): JSX.Element {
 
     useEffect(() => {
         if (!ui && !ux && !enhancement && !bug && !feature) {
@@ -13,19 +13,35 @@ function FilteringPanel({all, setAll, ui, setUi, ux, setUx, enhancement, setEnha
     }, [ui, ux, enhancement, bug, feature, setAll]);
 
     const {feedbacks, error} = useFeedbacks();
+    const [isMenuOpened, setIsMenuOpened] = useState(false);
+    const [screenSize, setScreenSize] = useState(window.innerWidth);
+
+    useEffect(() => {
+        function handleResize() {
+            setScreenSize(window.innerWidth);
+        }
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const planned = feedbacks.filter(feedback => feedback.status === 'planned');
     const inProgress = feedbacks.filter(feedback => feedback.status === 'in-progress');
     const live = feedbacks.filter(feedback => feedback.status === 'live');
-
 
     return (
         <section className='panel'>
             <div className='panel-header'>
                 <h1>Frontend Mentor</h1>
                 <h2>Feedback Board</h2>
+                <button 
+                    className={`hamburger-btn ${isMenuOpened && "opened"}`}
+                    aria-label='menu' 
+                    onClick={() => setIsMenuOpened(!isMenuOpened)}>
+                </button>
             </div>
-            <div className='panel-filtering'>
+            {screenSize < 730 && <div className={`panel-overlay ${isMenuOpened && "opened"}`} onClick={() => setIsMenuOpened(!isMenuOpened)}></div>}
+            {screenSize < 730 && <div className={`panel-box ${isMenuOpened && "opened"}`}></div>}
+            <div className={`panel-filtering ${isMenuOpened && "opened"}`}>
                 <button 
                     className={`filter-button ${all ? "active" : ""}`}
                     onClick={() => {
@@ -69,7 +85,7 @@ function FilteringPanel({all, setAll, ui, setUi, ux, setUx, enhancement, setEnha
                         Feature
                 </button>
             </div>
-            <div className='panel-roadmap'>
+            <div className={`panel-roadmap ${isMenuOpened && "opened"}`}>
                 <div className='panel-roadmap-header roadmap-flex'>
                     <h2>Roadmap</h2>
                     <Link className='link' to='/roadmap'>View</Link>
@@ -91,6 +107,7 @@ function FilteringPanel({all, setAll, ui, setUi, ux, setUx, enhancement, setEnha
                 </>
                 }
             </div>
+        
         </section>
     )
 }

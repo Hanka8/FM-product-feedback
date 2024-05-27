@@ -24,8 +24,27 @@
     margin-bottom: calc(24rem / 16);
 }
 
+@media screen and (max-width: 730px) {
+    .board-header {
+        border-radius: 0;
+        padding: 8px 24px;
+        background-image: none;
+    }
+
+    .board-header .btn {
+        font-size: calc(13rem / 16);
+        padding: 10px 16px;
+    }
+}
+
 .header-number {
     font-size: calc(18rem / 16);
     font-weight: 700;
+}
+
+@media screen and (max-width: 930px) {
+    .header-number {
+        display: none;
+    }
 }
 
