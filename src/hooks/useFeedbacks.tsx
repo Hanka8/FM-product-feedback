@@ -2,14 +2,16 @@ import { Feedback } from '../types';
 import { collection, onSnapshot} from 'firebase/firestore';
 import { db } from '../firebase';
 import { useState, useEffect } from 'react';
+import { set } from 'firebase/database';
 
 const useFeedbacks = () => {
     const [feedbacks, setFeedbacks] = useState<Feedback[]>([]);
     const [error, setError] = useState<string | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
         const feedbacksCollection = collection(db, 'feedback');
-
+        setLoading(true);
         const unsubscribe = onSnapshot(feedbacksCollection, (snapshot) => {
             let feedbacks: Feedback[] = [];
             snapshot.docs.forEach(doc => {
@@ -24,6 +26,7 @@ const useFeedbacks = () => {
                 });
             });
             setFeedbacks(feedbacks);
+            setLoading(false);
         }, () => {
             setError('Error fetching feedbacks');
             }
@@ -33,7 +36,7 @@ const useFeedbacks = () => {
         }
     }, []);
 
-    return {feedbacks, error};
+    return {feedbacks, error, loading};
 }
 
 export default useFeedbacks;

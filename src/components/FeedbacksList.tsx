@@ -11,7 +11,7 @@ import { motion } from 'framer-motion';
 
 function FeedbacksList({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, feature, sort }: FeedbacksListProps): JSX.Element {
 
-    const { feedbacks, error } = useFeedbacks();
+    const { feedbacks, error, loading } = useFeedbacks();
     const handleUpvote = useUpvote();
 
     const filteredFeedbacks = useMemo(() => {
@@ -53,7 +53,7 @@ function FeedbacksList({ setNumberOfFeedbacks, all, ui, ux, enhancement, bug, fe
     return (
 
         <div className='feedbacks'>
-            {sortedFeedbacks.length > 0 ? sortedFeedbacks.map((feedback) => (
+            {(sortedFeedbacks.length > 0 && !loading) ? sortedFeedbacks.map((feedback) => (
                 <motion.div
                     key={feedback.id}
                     initial={{opacity: 0}} 

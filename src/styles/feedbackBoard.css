@@ -22,7 +22,6 @@
     align-items: center;
     width: 100%;
     margin-bottom: calc(24rem / 16);
-    margin-top: 73px;
 }
 
 @media screen and (max-width: 730px) {
@@ -30,6 +29,7 @@
         border-radius: 0;
         padding: 8px 24px;
         background-image: none;
+        margin-top: 73px;
     }
 
     .board-header .btn {

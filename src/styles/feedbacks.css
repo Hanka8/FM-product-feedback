@@ -25,7 +25,7 @@
 
     .feedback .flex-start {
         flex-direction: column-reverse;
-        gap: calc(22rem / 16);
+        gap: calc(12rem / 16);
     }
     
 }

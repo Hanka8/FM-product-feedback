@@ -14,15 +14,33 @@
     margin-bottom: 107px;
 }
 
+@media screen and (max-width: 730px){
+    .no-feedbacks-img {
+        margin-bottom: 39px;
+    }
+}
+
 .no-feedbacks-title {
-    font-size: 24px;
+    font-size: calc(24rem / 16);
     font-weight: 600;
     color: var(--dark-blue);
     margin-bottom: 20px;
+}
+
+@media screen and (max-width: 730px) {
+    .no-feedbacks-title {
+        font-size: calc(18rem / 16);
+    }
 }
 
 .no-feedbacks-text {
     font-size: 16px;
     color: var(--grey);
     margin-bottom: 40px;
+}
+
+@media screen and (max-width: 730px) {
+    .no-feedbacks-text {
+        font-size: calc(13rem / 16);
+    }
 }

@@ -41,7 +41,6 @@
     div.panel-header {
         height: auto;
         padding: 16px 24px;
-        position: fixed;
     }
 }
 
@@ -49,7 +48,7 @@
     .panel-header {
         height: 100%;
         border-radius: 0;
-        position: relative;
+        position: fixed;
         z-index: 1;
     }  
 }

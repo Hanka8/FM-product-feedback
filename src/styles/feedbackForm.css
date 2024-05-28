@@ -30,6 +30,12 @@
     margin-bottom: 160px;
 }
 
+@media screen and (max-width: 730px){
+    .form {
+        margin-top: 108px;
+    }
+}
+
 .form-add::after {
     content: "";
     position: absolute;
@@ -50,7 +56,7 @@
     background: url(../assets/shared/icon-edit-feedback.svg) no-repeat center center;
 }
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 730px){
     .form {
         width: 87.2%;
         padding: 44px 24px;
@@ -66,7 +72,7 @@
 @media screen and (max-width: 500px){
     .form-title {
         font-size: calc(18rem / 16);
-        margin-bottom: calc(24rem / 16);
+        margin-bottom: 1rem;
     } 
 }
 
@@ -95,6 +101,13 @@
     font-size: calc(15rem / 16);
 }
 
+@media screen and (max-width: 730px){
+    .input {
+        font-size: calc(13rem / 16);
+    }
+    
+}
+
 .input:hover {
     outline: 2px solid var(--blue);
 }
@@ -111,12 +124,24 @@
     margin-top: 1rem;
 }
 
+@media screen and (max-width: 730px){
+    .buttons-container {
+        flex-direction: column-reverse;
+    } 
+}
+
 .buttons-container.edit {
     justify-content: space-between;
 }
 
 .delete {
     margin-right: 110px;  
+}
+
+@media screen and (max-width: 730px){
+    .delete {
+        margin-right: 0;
+    }
 }
 
 .form textarea {

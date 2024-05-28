@@ -8,6 +8,12 @@
     min-height: 100vh;
 }
 
+@media screen and (max-width: 730px) {
+    #feedbackDetail {
+        padding-top: 0;
+    }
+}
+
 #feedbackDetail .feedback:hover {
     transform: none;
     box-shadow: none;
@@ -23,6 +29,13 @@
         width: 100%;
         padding-left: 40px;
         padding-right: 40px;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .container {
+        padding-left: 24px;
+        padding-right: 24px;
     }
 }
 

@@ -82,6 +82,13 @@ li {
   transition: background-color 100ms ease-in-out;
 }
 
+@media screen and (max-width: 730px) {
+  .btn {
+    font-size: calc(13rem / 16);
+    padding: 10px 16px;
+  }
+}
+
 .btn-primary {
   background-color: var(--violet);
   color: var(--white);

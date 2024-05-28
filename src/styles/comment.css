@@ -39,6 +39,16 @@
     margin-top: 3rem;
 }
 
+@media screen and (max-width: 730px) {
+    .add-comment {
+        margin-top: 0;
+    }
+
+    .add-comment:not(.add-comment-header) {
+        font-size: calc(13rem / 16); 
+    }
+}
+
 .form-row {
     display: flex;
     justify-content: space-between;
@@ -74,11 +84,27 @@
     padding: 24px 34px;
 }
 
+@media screen and (max-width: 730px){
+    .comments {
+        margin-top: calc(24rem / 16);
+    }
+}
+
 .comment {
     padding-bottom: 1rem;
     margin-top: 1rem;
     border-bottom: 1px solid var(--lightblue-grey);
     color: var(--grey);
+}
+
+@media screen and (max-width: 730px){
+    .comment {
+        font-size: calc(13rem / 16);
+    }
+
+    .comment-heading {
+        margin-bottom: 1rem;
+    }
 }
 
 .comment:last-child {
