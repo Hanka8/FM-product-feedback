@@ -60,6 +60,9 @@ function AddFeedbackForm(): JSX.Element {
         }
     };
 
+    console.log(feedbackAdded);
+
+
     return (
         <motion.div
                 initial={{opacity: 0}} 

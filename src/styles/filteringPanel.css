@@ -28,7 +28,7 @@
 .panel-header {
     border-radius: 10px;
     width: 100%;
-    background-image: url("./assets/suggestions/desktop/background-header.png");
+    background-image: url("../assets/suggestions/desktop/background-header.png");
     background-repeat: no-repeat;
     background-size: cover;
     color: var(--white);
