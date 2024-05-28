@@ -38,9 +38,16 @@
     }
 }
 
-h1 {
+.roadmap-header h1 {
     font-size: calc(24rem / 16);
     font-weight: 700;
+}
+
+@media screen and (max-width: 730px) {
+    .roadmap-header h1 {
+        font-size: calc(20rem / 16);
+    }
+    
 }
 
 .header-container .go-back {
@@ -76,6 +83,12 @@ h1 {
     border-top-right-radius: 0;
     padding: 32px;
     position: relative;
+}
+
+@media screen and (max-width: 730px) {
+    .roadmap-feedback {
+        font-size: calc(13rem / 16);
+    }
 }
 
 .roadmap-feedback:hover {
