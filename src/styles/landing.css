@@ -8,6 +8,7 @@
     padding-top: 94px;
     padding-bottom: 94px;
     margin-inline: 40px;
+    overflow-y: hidden;
 }
 
 @media screen and (max-width: 930px) {

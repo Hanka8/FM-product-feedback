@@ -31,7 +31,7 @@ function FeedbackBoard({all, ui, ux, enhancement, bug, feature} : FeedbackBoardP
     return (
         <div className='feedback-board'>
             <header className='board-header'>
-                <p className='header-number'>{`${numberOfFeedbacks} suggestions`}</p>
+                <p className='header-number'>{`${numberOfFeedbacks} ${numberOfFeedbacks == 1 ? "suggestion" : "suggestions"}`}</p>
                 <div className='sort-dropdown'>
                     <button
                         onClick={() => setOpenedDropdown(!openedDropdown)}
