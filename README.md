@@ -1,4 +1,4 @@
-** test mode of database, update security seetings, otherwise 30 days left to testing mode
+** 30 days rule removed
 ** key to .env file
 
 * Using URL Parameters and a Custom Hook
