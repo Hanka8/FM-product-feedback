@@ -2,7 +2,6 @@ import { Feedback } from '../types';
 import { collection, onSnapshot} from 'firebase/firestore';
 import { db } from '../firebase';
 import { useState, useEffect } from 'react';
-import { set } from 'firebase/database';
 
 const useFeedbacks = () => {
     const [feedbacks, setFeedbacks] = useState<Feedback[]>([]);
