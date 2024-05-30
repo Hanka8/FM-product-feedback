@@ -36,13 +36,13 @@ function FeedbackBoard({all, ui, ux, enhancement, bug, feature} : FeedbackBoardP
                     <button
                         onClick={() => setOpenedDropdown(!openedDropdown)}
                         className={`dropdown-btn-board ${openedDropdown ? "opened" : ""}`}
-                        role="combobox"
+                        role="button"
                         id="select"
                         value="Select"
                         type='button'
                         aria-label="Sort by options"
-                        aria-controls="listbox"
-                        aria-haspopup="listbox"
+                        aria-controls="sort"
+                        aria-haspopup="sort"
                         aria-expanded="false">
                         Sort by: <span className='bold'>{capitalize(sort.split("-").join(" "))}</span>
                     </button>
