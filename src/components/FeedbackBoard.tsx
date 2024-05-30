@@ -40,12 +40,13 @@ function FeedbackBoard({all, ui, ux, enhancement, bug, feature} : FeedbackBoardP
                         id="select"
                         value="Select"
                         type='button'
+                        aria-label="Sort by options"
                         aria-controls="listbox"
                         aria-haspopup="listbox"
                         aria-expanded="false">
                         Sort by: <span className='bold'>{capitalize(sort.split("-").join(" "))}</span>
                     </button>
-                    <ul className={`dropdown-menu dropdown-board ${openedDropdown ? "opened" : ""}`} role="listbox" id="sort" onClick={() => setOpenedDropdown(!openedDropdown)}>
+                    <ul className={`dropdown-menu dropdown-board ${openedDropdown ? "opened" : ""}`} aria-label="Sort options" role="listbox" id="sort" onClick={() => setOpenedDropdown(!openedDropdown)}>
                         <li className={`menu-option ${sort == "most-upvotes" && "option-tagged"}`} role="option" onClick={() => setSort("most-upvotes")}>Most Upvotes</li>
                         <li className={`menu-option ${sort == "least-upvotes" && "option-tagged"}`} role="option" onClick={() => setSort("least-upvotes")}>Least Upvotes</li>
                         <li className={`menu-option ${sort == "most-comments" && "option-tagged"}`} role="option" onClick={() => setSort("most-comments")}>Most Comments</li>

@@ -110,7 +110,7 @@ function AddFeedbackForm(): JSX.Element {
                             aria-expanded="false">
                             {editString(category)}
                         </button>
-                        <ul className={`dropdown-menu ${openedDropdown ? "opened" : ""}`} role="listbox" id="category" onClick={() => setOpenedDropdown(!openedDropdown)}>
+                        <ul className={`dropdown-menu ${openedDropdown ? "opened" : ""}`} aria-label="Set category option" role="listbox" id="category" onClick={() => setOpenedDropdown(!openedDropdown)}>
                             <li className={`menu-option ${category == "bug" && "option-tagged"}`} role="option" onClick={() => setCategory("bug")}>Bug</li>
                             <li className={`menu-option ${category == "feature" && "option-tagged"}`} onClick={() => setCategory("feature")}>Feature</li>
                             <li className={`menu-option ${category == "enhancement" && "option-tagged"}`} onClick={() => setCategory("enhancement")}>Enhancement</li>
