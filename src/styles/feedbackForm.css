@@ -101,12 +101,12 @@
     font-size: calc(15rem / 16);
 }
 
-@media screen and (max-width: 730px){
+@media screen and (max-width: 730px) {
     .input {
         font-size: calc(13rem / 16);
     }
-    
 }
+
 
 .input:hover {
     outline: 2px solid var(--blue);

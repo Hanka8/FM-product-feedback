@@ -104,6 +104,7 @@
 
     .comment-heading {
         margin-bottom: 1rem;
+        font-size: calc(13rem / 16);
     }
 }
 

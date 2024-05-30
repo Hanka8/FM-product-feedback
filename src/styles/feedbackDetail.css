@@ -11,7 +11,7 @@
 @media screen and (max-width: 730px) {
     #feedbackDetail {
         padding-top: 0;
-    }
+        }
 }
 
 #feedbackDetail .feedback:hover {

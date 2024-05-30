@@ -20,6 +20,12 @@
     }
 }
 
+@media screen and (max-width: 730px) {
+    .roadmap p {
+        font-size: calc(13rem / 16);
+    }
+}
+
 .roadmap-header {
     color: var(--white);
     display: flex;
@@ -45,7 +51,7 @@
 
 @media screen and (max-width: 730px) {
     .roadmap-header h1 {
-        font-size: calc(20rem / 16);
+        font-size: calc(18rem / 16);
     }
     
 }
