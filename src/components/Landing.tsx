@@ -1,48 +1,57 @@
-import '../styles/landing.css';
-import FilteringPanel from './FilteringPanel';
-import FeedbackBoard from './FeedbackBoard';
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import "../styles/landing.css";
+import FilteringPanel from "./FilteringPanel";
+import FeedbackBoard from "./FeedbackBoard";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Filters } from "../types";
 
 function Landing(): JSX.Element {
+  const [filters, setFilters] = useState<Filters>({
+    all: true,
+    ui: false,
+    ux: false,
+    enhancement: false,
+    bug: false,
+    feature: false,
+  });
 
-    const [all, setAll] = useState<boolean>(true);
-    const [ui, setUi] = useState<boolean>(false);
-    const [ux, setUx] = useState<boolean>(false);
-    const [enhancement, setEnhancement] = useState<boolean>(false);
-    const [bug, setBug] = useState<boolean>(false);
-    const [feature, setFeature] = useState<boolean>(false);
+  const changeFilter = (filter: keyof Filters) => {
+    if (
+      filter === "all" ||
+      (filters[filter] === true &&
+        Object.values(filters).filter((value) => value === true).length === 1)
+    ) {
+      setFilters({
+        all: true,
+        ui: false,
+        ux: false,
+        enhancement: false,
+        bug: false,
+        feature: false,
+      });
+      return;
+    } else {
+      setFilters((prevFilters) => {
+        return {
+          ...prevFilters,
+          all: false,
+          [filter]: !prevFilters[filter],
+        };
+      });
+    }
+  };
 
-    return (
-        <motion.div
-            initial={{opacity: 0}} 
-            animate={{opacity: 1, transition: {duration: 0.15}}}>
-        <div className='landing'>
-            <FilteringPanel
-                all={all}
-                setAll={setAll}
-                ui={ui}
-                setUi={setUi}
-                ux={ux}
-                setUx={setUx}
-                enhancement={enhancement}
-                setEnhancement={setEnhancement}
-                bug={bug}
-                setBug={setBug}
-                feature={feature}
-                setFeature={setFeature}
-            />
-            <FeedbackBoard 
-                all={all}
-                ui={ui}
-                ux={ux}
-                enhancement={enhancement}
-                bug={bug}
-                feature={feature}
-            />
-        </div>
-        </motion.div>
-    )
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.15 } }}
+    >
+      <div className="landing">
+        <FilteringPanel filters={filters} changeFilter={changeFilter} />
+        <FeedbackBoard filters={filters} />
+      </div>
+    </motion.div>
+  );
 }
 
 export default Landing;

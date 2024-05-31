@@ -1,15 +1,14 @@
-import './styles/shared.css'
-import AnimatedRoutes from './components/AnimatedRoutes'
+import "./styles/shared.css";
+import AnimatedRoutes from "./components/AnimatedRoutes";
 
 function App(): JSX.Element {
-
   return (
     <>
-    <main>
-      <AnimatedRoutes />
-    </main>
+      <main>
+        <AnimatedRoutes />
+      </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

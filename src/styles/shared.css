@@ -1,22 +1,22 @@
 :root {
-  --violet: #AD1FEA;
-  --light-blue: #62BCFA;
-  --blue: #4661E6;
-  --very-dark-blue: #373F68;
-  --dark-blue: #3A4374;
-  --white: #FFFFFF;
-  --lightblue-grey: #F2F4FF;
-  --light-grey: #F7F8FD;
+  --violet: #ad1fea;
+  --light-blue: #62bcfa;
+  --blue: #4661e6;
+  --very-dark-blue: #373f68;
+  --dark-blue: #3a4374;
+  --white: #ffffff;
+  --lightblue-grey: #f2f4ff;
+  --light-grey: #f7f8fd;
   --grey: #647196;
-  --orange: #F49F85;
-  --red: #D73737;
-  --hover-1: #656EA3;
-  --hover-2: #C75AF6;
-  --hover-3: #E98888;
-  --hover-4: #7C91F9;
-  --filter-hover: #CFD7FF;
-  --border: #8C92B3;
-  --link-hover: #8397F8;
+  --orange: #f49f85;
+  --red: #d73737;
+  --hover-1: #656ea3;
+  --hover-2: #c75af6;
+  --hover-3: #e98888;
+  --hover-4: #7c91f9;
+  --filter-hover: #cfd7ff;
+  --border: #8c92b3;
+  --link-hover: #8397f8;
 }
 
 * {
@@ -41,6 +41,10 @@ li {
 
 .bold {
   font-weight: 700;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }
 
 .flex-start {
