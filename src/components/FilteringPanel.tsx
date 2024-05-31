@@ -4,21 +4,15 @@ import { Link } from 'react-router-dom';
 import { FilteringPanelProps } from '../types';
 import useFeedbacks from '../hooks/useFeedbacks';
 
-function FilteringPanel( {all, setAll, ui, setUi, ux, setUx, enhancement, setEnhancement, bug, setBug, feature, setFeature} : FilteringPanelProps ): JSX.Element {
-
-    useEffect(() => {
-        if (!ui && !ux && !enhancement && !bug && !feature) {
-            setAll(true);
-        }
-    }, [ui, ux, enhancement, bug, feature, setAll]);
+function FilteringPanel( { filter, handleFilterChange} : FilteringPanelProps ): JSX.Element {
 
     const {feedbacks, error} = useFeedbacks();
     const [isMenuOpened, setIsMenuOpened] = useState(false);
-    const [screenSize, setScreenSize] = useState(window.innerWidth);
+    const [screenSize, setScreenSize] = useState(window.innerWidth < 730);
 
     useEffect(() => {
         function handleResize() {
-            setScreenSize(window.innerWidth);
+            setScreenSize(window.innerWidth < 730);
         }
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
@@ -39,51 +33,13 @@ function FilteringPanel( {all, setAll, ui, setUi, ux, setUx, enhancement, setEnh
                     onClick={() => setIsMenuOpened(!isMenuOpened)}>
                 </button>
             </div>
-            {screenSize < 730 && <div className={`panel-overlay ${isMenuOpened && "opened"}`} onClick={() => setIsMenuOpened(!isMenuOpened)}></div>}
-            {screenSize < 730 && <div className={`panel-box ${isMenuOpened && "opened"}`}></div>}
+            {screenSize && <div className={`panel-overlay ${isMenuOpened && "opened"}`} onClick={() => setIsMenuOpened(!isMenuOpened)}></div>}
+            {screenSize && <div className={`panel-box ${isMenuOpened && "opened"}`}></div>}
             <div className={`panel-filtering ${isMenuOpened && "opened"}`}>
-                <button 
-                    className={`filter-button ${all ? "active" : ""}`}
-                    onClick={() => {
-                        setAll(true);
-                        setUi(false);
-                        setUx(false);
-                        setEnhancement(false);
-                        setBug(false);
-                        setFeature(false);
-                    }}>
-                        All
-                </button>
-                <button 
-                    className={`filter-button ${ui ? "active" : ""}`}
-                    onClick={() => {setAll(false); setUi(!ui)}}
-                    >
-                        UI
-                </button>
-                <button 
-                    className={`filter-button ${ux ? "active" : ""}`}
-                    onClick={() => {setAll(false); setUx(!ux)}}
-                    >
-                        UX
-                </button>
-                <button 
-                    className={`filter-button ${enhancement ? "active" : ""}`}
-                    onClick={() => {setAll(false); setEnhancement(!enhancement)}}
-                    >
-                        Enhancement
-                </button>
-                <button 
-                    className={`filter-button ${bug ? "active" : ""}`}
-                    onClick={() => {setAll(false); setBug(!bug)}}   
-                    >
-                        Bug
-                </button>
-                <button 
-                    className={`filter-button ${feature ? "active" : ""}`}
-                    onClick={() => {setAll(false); setFeature(!feature)}}
-                    >
-                        Feature
-                </button>
+              {filter.map(val=> (
+                <button key={val.label} className={`filter-button ${val.isActive ? "active" : ""}`} onClick={()=>handleFilterChange(val.label)}>{val.label}</button>
+              ))}
+                
             </div>
             <div className={`panel-roadmap ${isMenuOpened && "opened"}`}>
                 <div className='panel-roadmap-header roadmap-flex'>

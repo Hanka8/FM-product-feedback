@@ -13,8 +13,8 @@ function FeedbackDetail(): JSX.Element {
 
     const handleUpvote = useUpvote();
     const { id } = useParams<{ id: string }>() as { id: string };
-    let feedback = useFeedbackDetail(id!);
-    let { comments } = useComments(id!);
+    const feedback = useFeedbackDetail(id!);
+    const { comments } = useComments(id!);
 
     return (
          <motion.div
