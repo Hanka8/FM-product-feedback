@@ -95,7 +95,7 @@ function EditFeedback(): JSX.Element {
     if (string === "ux" || string === "ui") {
       return string.toUpperCase();
     } else {
-      let arr = string.split("-");
+      const arr = string.split("-");
       return arr
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
