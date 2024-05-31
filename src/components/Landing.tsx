@@ -1,48 +1,42 @@
-import '../styles/landing.css';
-import FilteringPanel from './FilteringPanel';
-import FeedbackBoard from './FeedbackBoard';
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import "../styles/landing.css";
+import FilteringPanel from "./FilteringPanel";
+import FeedbackBoard from "./FeedbackBoard";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { FilterType } from "../types";
 
 function Landing(): JSX.Element {
-
-    const [all, setAll] = useState<boolean>(true);
-    const [ui, setUi] = useState<boolean>(false);
-    const [ux, setUx] = useState<boolean>(false);
-    const [enhancement, setEnhancement] = useState<boolean>(false);
-    const [bug, setBug] = useState<boolean>(false);
-    const [feature, setFeature] = useState<boolean>(false);
-
-    return (
-        <motion.div
-            initial={{opacity: 0}} 
-            animate={{opacity: 1, transition: {duration: 0.15}}}>
-        <div className='landing'>
-            <FilteringPanel
-                all={all}
-                setAll={setAll}
-                ui={ui}
-                setUi={setUi}
-                ux={ux}
-                setUx={setUx}
-                enhancement={enhancement}
-                setEnhancement={setEnhancement}
-                bug={bug}
-                setBug={setBug}
-                feature={feature}
-                setFeature={setFeature}
-            />
-            <FeedbackBoard 
-                all={all}
-                ui={ui}
-                ux={ux}
-                enhancement={enhancement}
-                bug={bug}
-                feature={feature}
-            />
-        </div>
-        </motion.div>
-    )
+  const [filter, setFilter] = useState<FilterType[]>([
+    { isActive: false, label: "All" },
+    { isActive: false, label: "UI" },
+    { isActive: false, label: "UX" },
+    { isActive: false, label: "ENHANCEMENT" },
+    { isActive: false, label: "BUG" },
+    { isActive: false, label: "FEATURE" },
+  ]);
+  const handleFilterChange = (label: string) => {
+    const newFilter = filter.map((item) => (
+        
+        {
+      ...item,
+      isActive: item.label === label && !item.isActive,
+    }));
+    setFilter(newFilter);
+  };
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.15 } }}
+    >
+      <div className="landing">
+        <FilteringPanel
+          filter={filter}
+          handleFilterChange={handleFilterChange}
+        />
+        <FeedbackBoard filter={filter} />
+      </div>
+    </motion.div>
+  );
 }
 
 export default Landing;
