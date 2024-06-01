@@ -106,15 +106,20 @@ function EditFeedback(): JSX.Element {
           <Link to={`/${!deleted ? id : ""}`}>
             <button className="go-back">Go Back</button>
           </Link>
-          <h2 className="form-title">Editing '{feedback?.title}'</h2>
           {feedbackAdded ? (
-            <div className="added-message text">
-              Feedback edited successfully
-            </div>
+            <>
+              <h2 className="form-title">Editing '{feedback?.title}'</h2>
+              <div className="added-message text">
+                Feedback edited successfully
+              </div>
+            </>
           ) : deleted ? (
-            <div className="deleted-message text">
-              Feedback deleted successfully
-            </div>
+            <>
+              <h2 className="form-title">Deleting</h2>
+              <div className="deleted-message text">
+                Feedback deleted successfully
+              </div>
+            </>
           ) : (
             <>
               <label className="label" htmlFor="title">
