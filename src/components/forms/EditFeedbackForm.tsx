@@ -15,6 +15,7 @@ import { motion } from "framer-motion";
 import useFeedbackDetail from "../../hooks/useFeedbackDetail";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Dropdown from "../UI/Dropdown";
 
 function EditFeedback(): JSX.Element {
   const { id = "" } = useParams<{ id: string }>();
@@ -31,8 +32,6 @@ function EditFeedback(): JSX.Element {
 
   const [feedbackAdded, setFeedbackAdded] = useState<boolean>(false);
 
-  const [openedDropdown, setOpenedDropdown] = useState<boolean>(false);
-  const [openedDropdown2, setOpenedDropdown2] = useState<boolean>(false);
   //e a flag to track whether the initial feedback has been loaded
   const [initialLoad, setInitialLoad] = useState<boolean>(true);
 
@@ -91,17 +90,6 @@ function EditFeedback(): JSX.Element {
     setFeedbackAdded(true);
   };
 
-  const editString = (string: string) => {
-    if (string === "ux" || string === "ui") {
-      return string.toUpperCase();
-    } else {
-      const arr = string.split("-");
-      return arr
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ");
-    }
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -143,138 +131,22 @@ function EditFeedback(): JSX.Element {
               <p className="label-description">
                 Change a category for your feedback
               </p>
-              <button
-                onClick={() => setOpenedDropdown(!openedDropdown)}
-                className={`dropdown-btn ${openedDropdown ? "opened" : ""}`}
-                role="combobox"
-                id="select"
-                value="Select"
-                type="button"
-                aria-controls="listbox"
-                aria-haspopup="listbox"
-                aria-expanded="false"
-              >
-                {editString(category)}
-              </button>
-              <div className="dropdown-container">
-                <ul
-                  className={`dropdown-menu ${openedDropdown ? "opened" : ""}`}
-                  aria-label="Set category option"
-                  role="listbox"
-                  id="category"
-                  onClick={() => setOpenedDropdown(!openedDropdown)}
-                >
-                  <li
-                    className={`menu-option ${
-                      category == "bug" && "option-tagged"
-                    }`}
-                    role="option"
-                    onClick={() => setCategory("bug")}
-                  >
-                    Bug
-                  </li>
-                  <li
-                    className={`menu-option ${
-                      category == "feature" && "option-tagged"
-                    }`}
-                    role="option"
-                    onClick={() => setCategory("feature")}
-                  >
-                    Feature
-                  </li>
-                  <li
-                    className={`menu-option ${
-                      category == "enhancement" && "option-tagged"
-                    }`}
-                    role="option"
-                    onClick={() => setCategory("enhancement")}
-                  >
-                    Enhancement
-                  </li>
-                  <li
-                    className={`menu-option ${
-                      category == "ux" && "option-tagged"
-                    }`}
-                    role="option"
-                    onClick={() => setCategory("ux")}
-                  >
-                    UX
-                  </li>
-                  <li
-                    className={`menu-option ${
-                      category == "ui" && "option-tagged"
-                    }`}
-                    role="option"
-                    onClick={() => setCategory("ui")}
-                  >
-                    UI
-                  </li>
-                </ul>
-              </div>
+              <Dropdown
+                option={category}
+                setOption={setCategory}
+                dropdownType="category"
+              />
               <label className="label" htmlFor="updateStatus">
                 Update status
               </label>
               <p className="label-description">
                 Change {feedback?.category} state
               </p>
-              <button
-                onClick={() => setOpenedDropdown2(!openedDropdown2)}
-                className={`dropdown-btn ${openedDropdown2 ? "opened" : ""}`}
-                role="combobox"
-                id="select"
-                value="Select"
-                type="button"
-                aria-controls="listbox"
-                aria-haspopup="listbox"
-                aria-expanded="false"
-              >
-                {editString(status)}
-              </button>
-              <div className="dropdown-container">
-                <ul
-                  className={`dropdown-menu ${openedDropdown2 ? "opened" : ""}`}
-                  role="listbox"
-                  id="category"
-                  onClick={() => setOpenedDropdown2(!openedDropdown2)}
-                >
-                  <li
-                    className={`menu-option ${
-                      status == "suggestion" && "option-tagged"
-                    }`}
-                    role="option"
-                    onClick={() => setStatus("suggestion")}
-                  >
-                    Suggestion
-                  </li>
-                  <li
-                    className={`menu-option ${
-                      status == "planned" && "option-tagged"
-                    }`}
-                    role="option"
-                    onClick={() => setStatus("planned")}
-                  >
-                    Planned
-                  </li>
-                  <li
-                    className={`menu-option ${
-                      status == "in-progress" && "option-tagged"
-                    }`}
-                    role="option"
-                    onClick={() => setStatus("in-progress")}
-                  >
-                    In Progress
-                  </li>
-                  <li
-                    className={`menu-option ${
-                      status == "live" && "option-tagged"
-                    }`}
-                    role="option"
-                    onClick={() => setStatus("live")}
-                  >
-                    Live
-                  </li>
-                </ul>
-              </div>
+              <Dropdown
+                option={status}
+                setOption={setStatus}
+                dropdownType="status"
+              />
               <label className="label" htmlFor="detail">
                 Feedback Detail
               </label>

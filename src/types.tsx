@@ -1,5 +1,7 @@
 export type categoryType = "bug" | "feature" | "enhancement" | "ux" | "ui";
 
+export type statusType = "planned" | "in-progress" | "live" | "done";
+
 export type sortType =
   | "most-upvotes"
   | "least-upvotes"
@@ -58,4 +60,10 @@ export interface FilteringPanelProps {
 
 export interface NoFeedbacksProps {
   error: string | null;
+}
+
+export interface DropdownProps {
+  dropdownType: string;
+  option: string;
+  setOption: any;
 }
