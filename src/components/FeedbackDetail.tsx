@@ -40,7 +40,7 @@ function FeedbackDetail(): JSX.Element {
                 width={40}
               />
             )}
-            {(feedback && !loadingDetail) && (
+            {feedback && !loadingDetail && (
               <Feedback
                 feedback={feedback}
                 status={feedback.status}
@@ -62,11 +62,23 @@ function FeedbackDetail(): JSX.Element {
                 width={40}
               />
             )}
-            {(comments && !loadingComments) && comments.map((comment) => (
-              <div key={comment.id} className="comment">
-                <p>{comment.comment}</p>
-              </div>
-            ))}
+            {comments &&
+              !loadingComments &&
+              comments.map((comment) => (
+                <div key={comment.id} className="comment">
+                  <div className="avatar-container">
+                    <img
+                      className="avatar"
+                      src="assets/shared/avatar.webp"
+                      alt="avatar"
+                    />
+                  </div>
+                  <div>
+                    <p className="user bold dark-blue">Anonymous user</p>
+                    <p>{comment.comment}</p>
+                  </div>
+                </div>
+              ))}
           </div>
           <AddComment id={id} />
         </div>

@@ -47,6 +47,10 @@ li {
   text-transform: capitalize;
 }
 
+.dark-blue {
+  color: var(--dark-blue);
+}
+
 .loading {
   margin-inline: auto;
   margin-top: 5rem;

@@ -91,10 +91,14 @@
 }
 
 .comment {
-    padding-bottom: 1rem;
-    margin-top: 1rem;
+    padding-bottom: 1.4rem;
+    margin-top: 1.4rem;
     border-bottom: 1px solid var(--lightblue-grey);
     color: var(--grey);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: calc(32rem / 16);
 }
 
 @media screen and (max-width: 730px){
@@ -110,4 +114,19 @@
 
 .comment:last-child {
     border-bottom: none;
+}
+
+.avatar-container {
+    display: flex;
+    align-items: center;
+    flex-basis: fit-content;
+}
+
+.avatar {
+    width: calc(40rem / 16);
+    height: calc(40rem / 16);
+}
+
+.user {
+    margin-bottom: calc(19rem / 16);
 }

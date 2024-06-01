@@ -8,7 +8,7 @@ export default async function handleUpvote(feedback: Feedback, e: MouseEvent<HTM
         const localStorageKey = `${feedback.id}`;
         if (localStorage.getItem(localStorageKey)) {
             console.warn(
-            "Feedback has already been upvoted from this browser."
+             "Feedback has already been upvoted from this browser."
             );
             return;
         }
