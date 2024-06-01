@@ -1,7 +1,7 @@
-import "../styles/feedbackForm.css";
-import "../styles/dropdown.css";
-import GoBack from "./utils/GoBack";
-import { db } from "../firebase";
+import "../../styles/feedbackForm.css";
+import "../../styles/dropdown.css";
+import GoBack from "../UI/GoBack";
+import { db } from "../../firebase";
 import {
   doc,
   deleteDoc,
@@ -12,7 +12,7 @@ import {
   getDocs,
 } from "firebase/firestore";
 import { motion } from "framer-motion";
-import useFeedbackDetail from "../hooks/useFeedbackDetail";
+import useFeedbackDetail from "../../hooks/useFeedbackDetail";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -156,59 +156,61 @@ function EditFeedback(): JSX.Element {
               >
                 {editString(category)}
               </button>
-              <ul
-                className={`dropdown-menu ${openedDropdown ? "opened" : ""}`}
-                aria-label="Set category option"
-                role="listbox"
-                id="category"
-                onClick={() => setOpenedDropdown(!openedDropdown)}
-              >
-                <li
-                  className={`menu-option ${
-                    category == "bug" && "option-tagged"
-                  }`}
-                  role="option"
-                  onClick={() => setCategory("bug")}
+              <div className="dropdown-container">
+                <ul
+                  className={`dropdown-menu ${openedDropdown ? "opened" : ""}`}
+                  aria-label="Set category option"
+                  role="listbox"
+                  id="category"
+                  onClick={() => setOpenedDropdown(!openedDropdown)}
                 >
-                  Bug
-                </li>
-                <li
-                  className={`menu-option ${
-                    category == "feature" && "option-tagged"
-                  }`}
-                  role="option"
-                  onClick={() => setCategory("feature")}
-                >
-                  Feature
-                </li>
-                <li
-                  className={`menu-option ${
-                    category == "enhancement" && "option-tagged"
-                  }`}
-                  role="option"
-                  onClick={() => setCategory("enhancement")}
-                >
-                  Enhancement
-                </li>
-                <li
-                  className={`menu-option ${
-                    category == "ux" && "option-tagged"
-                  }`}
-                  role="option"
-                  onClick={() => setCategory("ux")}
-                >
-                  UX
-                </li>
-                <li
-                  className={`menu-option ${
-                    category == "ui" && "option-tagged"
-                  }`}
-                  role="option"
-                  onClick={() => setCategory("ui")}
-                >
-                  UI
-                </li>
-              </ul>
+                  <li
+                    className={`menu-option ${
+                      category == "bug" && "option-tagged"
+                    }`}
+                    role="option"
+                    onClick={() => setCategory("bug")}
+                  >
+                    Bug
+                  </li>
+                  <li
+                    className={`menu-option ${
+                      category == "feature" && "option-tagged"
+                    }`}
+                    role="option"
+                    onClick={() => setCategory("feature")}
+                  >
+                    Feature
+                  </li>
+                  <li
+                    className={`menu-option ${
+                      category == "enhancement" && "option-tagged"
+                    }`}
+                    role="option"
+                    onClick={() => setCategory("enhancement")}
+                  >
+                    Enhancement
+                  </li>
+                  <li
+                    className={`menu-option ${
+                      category == "ux" && "option-tagged"
+                    }`}
+                    role="option"
+                    onClick={() => setCategory("ux")}
+                  >
+                    UX
+                  </li>
+                  <li
+                    className={`menu-option ${
+                      category == "ui" && "option-tagged"
+                    }`}
+                    role="option"
+                    onClick={() => setCategory("ui")}
+                  >
+                    UI
+                  </li>
+                </ul>
+              </div>
               <label className="label" htmlFor="updateStatus">
                 Update status
               </label>
@@ -228,49 +230,51 @@ function EditFeedback(): JSX.Element {
               >
                 {editString(status)}
               </button>
-              <ul
-                className={`dropdown-menu ${openedDropdown2 ? "opened" : ""}`}
-                role="listbox"
-                id="category"
-                onClick={() => setOpenedDropdown2(!openedDropdown2)}
-              >
-                <li
-                  className={`menu-option ${
-                    status == "suggestion" && "option-tagged"
-                  }`}
-                  role="option"
-                  onClick={() => setStatus("suggestion")}
+              <div className="dropdown-container">
+                <ul
+                  className={`dropdown-menu ${openedDropdown2 ? "opened" : ""}`}
+                  role="listbox"
+                  id="category"
+                  onClick={() => setOpenedDropdown2(!openedDropdown2)}
                 >
-                  Suggestion
-                </li>
-                <li
-                  className={`menu-option ${
-                    status == "planned" && "option-tagged"
-                  }`}
-                  role="option"
-                  onClick={() => setStatus("planned")}
-                >
-                  Planned
-                </li>
-                <li
-                  className={`menu-option ${
-                    status == "in-progress" && "option-tagged"
-                  }`}
-                  role="option"
-                  onClick={() => setStatus("in-progress")}
-                >
-                  In Progress
-                </li>
-                <li
-                  className={`menu-option ${
-                    status == "live" && "option-tagged"
-                  }`}
-                  role="option"
-                  onClick={() => setStatus("live")}
-                >
-                  Live
-                </li>
-              </ul>
+                  <li
+                    className={`menu-option ${
+                      status == "suggestion" && "option-tagged"
+                    }`}
+                    role="option"
+                    onClick={() => setStatus("suggestion")}
+                  >
+                    Suggestion
+                  </li>
+                  <li
+                    className={`menu-option ${
+                      status == "planned" && "option-tagged"
+                    }`}
+                    role="option"
+                    onClick={() => setStatus("planned")}
+                  >
+                    Planned
+                  </li>
+                  <li
+                    className={`menu-option ${
+                      status == "in-progress" && "option-tagged"
+                    }`}
+                    role="option"
+                    onClick={() => setStatus("in-progress")}
+                  >
+                    In Progress
+                  </li>
+                  <li
+                    className={`menu-option ${
+                      status == "live" && "option-tagged"
+                    }`}
+                    role="option"
+                    onClick={() => setStatus("live")}
+                  >
+                    Live
+                  </li>
+                </ul>
+              </div>
               <label className="label" htmlFor="detail">
                 Feedback Detail
               </label>

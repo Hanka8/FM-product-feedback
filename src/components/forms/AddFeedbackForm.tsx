@@ -1,9 +1,9 @@
-import "../styles/feedbackForm.css";
-import "../styles/dropdown.css";
-import { categoryType } from "../types";
+import "../../styles/feedbackForm.css";
+import "../../styles/dropdown.css";
+import { categoryType } from "../../types";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../firebase";
-import GoBack from "./utils/GoBack";
+import { db } from "../../firebase";
+import GoBack from "../UI/GoBack";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
@@ -125,55 +125,57 @@ function AddFeedbackForm(): JSX.Element {
               >
                 {editString(category)}
               </button>
-              <ul
-                className={`dropdown-menu ${openedDropdown ? "opened" : ""}`}
-                aria-label="Set category option"
-                role="listbox"
-                id="category"
-                onClick={() => setOpenedDropdown(!openedDropdown)}
-              >
-                <li
-                  className={`menu-option ${
-                    category == "bug" && "option-tagged"
-                  }`}
-                  role="option"
-                  onClick={() => setCategory("bug")}
+              <div className="dropdown-container">
+                <ul
+                  className={`dropdown-menu ${openedDropdown ? "opened" : ""}`}
+                  aria-label="Set category option"
+                  role="listbox"
+                  id="category"
+                  onClick={() => setOpenedDropdown(!openedDropdown)}
                 >
-                  Bug
-                </li>
-                <li
-                  className={`menu-option ${
-                    category == "feature" && "option-tagged"
-                  }`}
-                  onClick={() => setCategory("feature")}
-                >
-                  Feature
-                </li>
-                <li
-                  className={`menu-option ${
-                    category == "enhancement" && "option-tagged"
-                  }`}
-                  onClick={() => setCategory("enhancement")}
-                >
-                  Enhancement
-                </li>
-                <li
-                  className={`menu-option ${
-                    category == "ux" && "option-tagged"
-                  }`}
-                  onClick={() => setCategory("ux")}
-                >
-                  UX
-                </li>
-                <li
-                  className={`menu-option ${
-                    category == "ui" && "option-tagged"
-                  }`}
-                  onClick={() => setCategory("ui")}
-                >
-                  UI
-                </li>
-              </ul>
+                  <li
+                    className={`menu-option ${
+                      category == "bug" && "option-tagged"
+                    }`}
+                    role="option"
+                    onClick={() => setCategory("bug")}
+                  >
+                    Bug
+                  </li>
+                  <li
+                    className={`menu-option ${
+                      category == "feature" && "option-tagged"
+                    }`}
+                    onClick={() => setCategory("feature")}
+                  >
+                    Feature
+                  </li>
+                  <li
+                    className={`menu-option ${
+                      category == "enhancement" && "option-tagged"
+                    }`}
+                    onClick={() => setCategory("enhancement")}
+                  >
+                    Enhancement
+                  </li>
+                  <li
+                    className={`menu-option ${
+                      category == "ux" && "option-tagged"
+                    }`}
+                    onClick={() => setCategory("ux")}
+                  >
+                    UX
+                  </li>
+                  <li
+                    className={`menu-option ${
+                      category == "ui" && "option-tagged"
+                    }`}
+                    onClick={() => setCategory("ui")}
+                  >
+                    UI
+                  </li>
+                </ul>
+              </div>
               <label className="label" htmlFor="detail">
                 Feedback Detail
               </label>

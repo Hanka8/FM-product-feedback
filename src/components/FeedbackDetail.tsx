@@ -1,8 +1,8 @@
 import "../styles/comment.css";
 import "../styles/feedbacks.css";
 import "../styles/feedbackDetail.css";
-import GoBack from "./utils/GoBack";
-import AddComment from "./AddComment";
+import GoBack from "./UI/GoBack";
+import AddComment from "./forms/AddComment";
 import Error from "./Error";
 import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";

@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Landing from "./Landing";
-import AddFeedbackForm from "./AddFeedbackForm";
+import AddFeedbackForm from "./forms/AddFeedbackForm";
 import FeedbackDetail from "./FeedbackDetail";
-import EditFeedback from "./EditFeedbackForm";
+import EditFeedback from "./forms/EditFeedbackForm";
 import Roadmap from "./Roadmap";
 
 function AnimatedRoutes(): JSX.Element {

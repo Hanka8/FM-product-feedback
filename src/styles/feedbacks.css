@@ -57,7 +57,8 @@
 
 .feedback-detail {
     color: var(--grey);
-    margin-bottom: calc(12rem / 16)
+    margin-bottom: calc(12rem / 16);
+    padding-right: 10px;
 }
 
 .feedback-category {

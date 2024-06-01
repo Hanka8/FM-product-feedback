@@ -81,8 +81,13 @@
     width: calc(255rem / 16);
 }
 
-.dropdown-menu.opened {
+.dropdown-container {
     position: relative;
+    width: 100%;
+}
+
+.dropdown-menu.opened {
+    position: absolute;
     top: 1rem;
     z-index: 1;
     transition: 150ms;

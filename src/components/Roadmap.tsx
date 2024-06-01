@@ -1,7 +1,7 @@
 import "../styles/feedbackBoard.css";
 import "../styles/roadmap.css";
 import "../styles/feedbacks.css";
-import GoBack from "./utils/GoBack";
+import GoBack from "./UI/GoBack";
 import Feedback from "./Feedback";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
