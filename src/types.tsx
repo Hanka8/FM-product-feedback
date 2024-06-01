@@ -29,6 +29,7 @@ export interface Feedback {
 export interface FeedbackProps {
   feedback: Feedback;
   status: string;
+  roadmap: boolean;
 }
 
 export interface FeedbackBoardProps {

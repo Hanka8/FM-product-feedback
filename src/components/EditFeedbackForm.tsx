@@ -18,7 +18,7 @@ import { useState, useEffect } from "react";
 
 function EditFeedback(): JSX.Element {
   const { id = "" } = useParams<{ id: string }>();
-  const feedback = useFeedbackDetail(id!);
+  const { feedback } = useFeedbackDetail(id!);
   const [deleted, setDeleted] = useState<boolean>(false);
 
   const [title, setTitle] = useState<string>("");
@@ -110,7 +110,7 @@ function EditFeedback(): JSX.Element {
       <main className="addfeedback-main">
         <form className="form form-edit" onSubmit={updateFeedback}>
           <GoBack deleted={deleted} />
-          <h2 className="form-title">Editing '{feedback?.title}'</h2>
+          <h2 className="form-title">Editing '{title}'</h2>
           {feedbackAdded ? (
             <div className="added-message text">
               Feedback edited successfully

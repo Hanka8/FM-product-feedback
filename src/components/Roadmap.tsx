@@ -42,11 +42,14 @@ function Roadmap(): JSX.Element {
               <p className="header-descp">Ideas prioritized for research</p>
             </div>
             {planned.map((feedback) => (
-              <Feedback
-                key={feedback.id}
-                feedback={feedback}
-                status="planned"
-              />
+              <Link to={`/${feedback.id}`} key={feedback.id}>
+                <Feedback
+                  key={feedback.id}
+                  feedback={feedback}
+                  status="planned"
+                  roadmap={true}
+                />
+              </Link>
             ))}
           </div>
           <div className="content-container">
@@ -55,11 +58,14 @@ function Roadmap(): JSX.Element {
               <p className="header-descp">Currently being developed</p>
             </div>
             {inProgress.map((feedback) => (
-              <Feedback
-                key={feedback.id}
-                feedback={feedback}
-                status="inProgress"
-              />
+              <Link to={`/${feedback.id}`} key={feedback.id}>
+                <Feedback
+                  key={feedback.id}
+                  feedback={feedback}
+                  status="inProgress"
+                  roadmap={true}
+                />
+              </Link>
             ))}
           </div>
           <div className="content-container">
@@ -68,7 +74,14 @@ function Roadmap(): JSX.Element {
               <p className="header-descp">Released features</p>
             </div>
             {live.map((feedback) => (
-              <Feedback key={feedback.id} feedback={feedback} status="live" />
+              <Link to={`/${feedback.id}`} key={feedback.id}>
+                <Feedback
+                  key={feedback.id}
+                  feedback={feedback}
+                  status="live"
+                  roadmap={true}
+                />
+              </Link>
             ))}
           </div>
         </section>

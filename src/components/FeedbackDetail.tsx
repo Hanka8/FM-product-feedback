@@ -3,16 +3,18 @@ import "../styles/feedbacks.css";
 import "../styles/feedbackDetail.css";
 import GoBack from "./utils/GoBack";
 import AddComment from "./AddComment";
+import Error from "./Error";
 import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";
 import useFeedbackDetail from "../hooks/useFeedbackDetail";
 import useComments from "../hooks/useComments";
-import handleUpvote from "./functions/handleUpvote";
+import Feedback from "./Feedback";
+import ReactLoading from "react-loading";
 
 function FeedbackDetail(): JSX.Element {
   const { id } = useParams<{ id: string }>() as { id: string };
-  let feedback = useFeedbackDetail(id!);
-  let { comments } = useComments(id!);
+  let { feedback, errorDetail, loadingDetail } = useFeedbackDetail(id!);
+  let { comments, errorComments, loadingComments } = useComments(id!);
 
   return (
     <motion.div
@@ -28,36 +30,39 @@ function FeedbackDetail(): JSX.Element {
             </Link>
           </div>
           <div className="feedback">
-            {feedback && (
-              <>
-                <div className="flex-start">
-                  <button
-                    className="btn btn-upvote"
-                    onClick={(e) => handleUpvote(feedback, e)}
-                  >
-                    {feedback.upvotes}
-                  </button>
-                  <div className="feedback-info">
-                    <p className="feedback-title">{feedback.title}</p>
-                    <p className="feedback-detail">{feedback.detail}</p>
-                    <p className="feedback-category">{feedback.category}</p>
-                  </div>
-                </div>
-                <div className="feedback-comments">
-                  <img
-                    src="assets/shared/icon-comments.svg"
-                    alt="comments ico"
-                  />
-                  <p className="comments-num">{comments.length}</p>
-                </div>
-              </>
+            {errorDetail && <Error error={errorDetail} />}
+            {loadingDetail && (
+              <ReactLoading
+                className="loading loading-detail"
+                type={"spokes"}
+                color={"#373f68"}
+                height={50}
+                width={40}
+              />
+            )}
+            {(feedback && !loadingDetail) && (
+              <Feedback
+                feedback={feedback}
+                status={feedback.status}
+                roadmap={false}
+              />
             )}
           </div>
           <div className="comments">
             <h2 className="comment-heading">
               {comments.length == 0 ? "No comments yet" : "Comments"}
             </h2>
-            {comments.map((comment) => (
+            {errorComments && <Error error={errorComments} />}
+            {loadingComments && (
+              <ReactLoading
+                className="loading loading-comments"
+                type={"spokes"}
+                color={"#373f68"}
+                height={50}
+                width={40}
+              />
+            )}
+            {(comments && !loadingComments) && comments.map((comment) => (
               <div key={comment.id} className="comment">
                 <p>{comment.comment}</p>
               </div>

@@ -47,6 +47,19 @@ li {
   text-transform: capitalize;
 }
 
+.loading {
+  margin-inline: auto;
+  margin-top: 5rem;
+}
+
+.loading-detail {
+  margin-top: 1rem;
+}
+
+.loading-comments {
+  margin-top: 0;
+}
+
 .flex-start {
   display: flex;
   justify-content: flex-start;

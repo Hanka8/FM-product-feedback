@@ -5,28 +5,30 @@ import { useState, useEffect } from "react";
 
 const useComments = (feedbackId: string) => {
   const [comments, setComments] = useState<Comment[]>([]);
-  const [error, setError] = useState<string | null>(null);
+  const [errorComments, setErrorComments] = useState<string | null>(null);
+  const [loadingComments, setLoadingComments] = useState<boolean>(true);
 
   useEffect(() => {
     const commentsCollection = collection(db, "comments");
     const q = query(commentsCollection, where("feedbackId", "==", feedbackId));
-
+    setLoadingComments(true);
     const unsubscribe = onSnapshot(
       q,
       (snapshot) => {
         setComments(
           snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as Comment))
         );
+        setLoadingComments(false);
       },
       () => {
-        setError("Error fetching comments");
+        setErrorComments("Error fetching comments");
       }
     );
 
     return () => unsubscribe();
   }, [feedbackId]);
 
-  return { comments, error };
+  return { comments, errorComments, loadingComments };
 };
 
 export default useComments;

@@ -1,13 +1,12 @@
 import "../styles/feedbacks.css";
-import { FeedbacksListProps, Feedback, sortType } from "../types";
+import { FeedbacksListProps, Feedback as FeedbackType, sortType } from "../types";
 import { Link } from "react-router-dom";
 import NoFeedbacks from "./NoFeedbacks";
+import ReactLoading from "react-loading";
 import { useMemo, useEffect } from "react";
-import handleUpvote from "./functions/handleUpvote";
+import Feedback from "./Feedback";
 import useFeedbacks from "../hooks/useFeedbacks";
 import { motion } from "framer-motion";
-
-//přidat loading ať to neproblikává
 
 function FeedbacksList({
   setNumberOfFeedbacks,
@@ -33,8 +32,8 @@ function FeedbacksList({
     return sortFeedbacks(filteredFeedbacks, sort);
   }, [feedbacks, sort, filteredFeedbacks]);
 
-  function sortFeedbacks(feedbacks: Feedback[], sort: sortType): Feedback[] {
-    let sortedFeedbacks: Feedback[] = [...feedbacks];
+  function sortFeedbacks(feedbacks: FeedbackType[], sort: sortType): FeedbackType[] {
+    let sortedFeedbacks: FeedbackType[] = [...feedbacks];
     switch (sort) {
       case "most-upvotes":
         return sortedFeedbacks.sort((a, b) => b.upvotes - a.upvotes);
@@ -59,7 +58,22 @@ function FeedbacksList({
 
   return (
     <div className="feedbacks">
-      {sortedFeedbacks.length > 0 && !loading ? (
+      {(error || filteredFeedbacks.length === 0 && !loading)
+        && 
+        <NoFeedbacks error={error} 
+        />
+        }
+      {loading && (
+        <ReactLoading
+          className="loading"
+          type={"spokes"}
+          color={"#373f68"}
+          height={667}
+          width={40}
+        />
+      )}
+      {sortedFeedbacks.length > 0 &&
+        !loading &&
         sortedFeedbacks.map((feedback) => (
           <motion.div
             key={feedback.id}
@@ -68,33 +82,11 @@ function FeedbacksList({
           >
             <Link to={`/${feedback.id}`} key={feedback.id}>
               <div key={feedback.id} className="feedback">
-                <div className="flex-start">
-                  <button
-                    className="btn btn-upvote"
-                    onClick={(e) => handleUpvote(feedback, e)}
-                  >
-                    {feedback.upvotes}
-                  </button>
-                  <div className="feedback-info">
-                    <p className="feedback-title">{feedback.title}</p>
-                    <p className="feedback-detail">{feedback.detail}</p>
-                    <p className="feedback-category">{feedback.category}</p>
-                  </div>
-                </div>
-                <div className="feedback-comments">
-                  <img
-                    src="assets/shared/icon-comments.svg"
-                    alt="comments ico"
-                  />
-                  <p className="comments-num">{feedback.numberOfComments}</p>
-                </div>
+                <Feedback feedback={feedback} status={feedback.status} roadmap={false} />
               </div>
             </Link>
           </motion.div>
-        ))
-      ) : (
-        <NoFeedbacks error={error} />
-      )}
+        ))}
     </div>
   );
 }

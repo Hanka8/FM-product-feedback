@@ -5,10 +5,12 @@ import { useEffect, useState } from "react";
 
 const useFeedbackDetail = (id: string) => {
   const [feedback, setFeedback] = useState<Feedback | null>(null);
+  const [errorDetail, setErrorDetail] = useState<string | null>(null);
+  const [loadingDetail, setLoadingDetail] = useState<boolean>(true);
 
   useEffect(() => {
     const feedbackRef = doc(db, "feedback", id);
-
+    setLoadingDetail(true);
     const unsubscribe = onSnapshot(
       feedbackRef,
       (docSnapshot) => {
@@ -23,6 +25,7 @@ const useFeedbackDetail = (id: string) => {
             numberOfComments: data.numberOfComments,
             upvotes: data.upvotes,
           });
+          setLoadingDetail(false);
         } else {
           console.error("No such document");
           setFeedback(null);
@@ -30,6 +33,7 @@ const useFeedbackDetail = (id: string) => {
       },
       (err) => {
         console.error("Error fetching feedback: ", err);
+        setErrorDetail(err.message);
         setFeedback(null);
       }
     );
@@ -37,7 +41,7 @@ const useFeedbackDetail = (id: string) => {
     return () => unsubscribe();
   }, [id]);
 
-  return feedback;
+  return { feedback, errorDetail, loadingDetail };
 };
 
 export default useFeedbackDetail;
