@@ -97,6 +97,10 @@
     min-width: calc(40rem / 16);
 }
 
+.btn-upvote:hover {
+    background-color: var(--filter-hover);
+}
+
 @media screen and (max-width: 730px){
     .btn-upvote {
         padding: 6px 13px 6px 6px;
@@ -106,8 +110,15 @@
     }
 }
 
-.btn-upvote:hover {
-    background-color: var(--filter-hover);
+.btn-upvote.upvoted {
+    background-color: var(--blue);
+    color: var(--white);
+    background-image: url(../assets/shared/icon-arrow-up-white.svg);
+}
+
+.btn-upvote.upvoted:hover {
+    background-color: var(--blue);
+    cursor: not-allowed;
 }
 
 .comments-num {

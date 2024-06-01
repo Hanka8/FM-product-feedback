@@ -1,8 +1,13 @@
 import "../styles/feedbacks.css";
 import { FeedbackProps } from "../types";
 import handleUpvote from "./functions/handleUpvote";
+import { useState } from "react";
 
 function Feedback({ feedback, status, roadmap }: FeedbackProps): JSX.Element {
+  const [upvoted, setUpvoted] = useState<boolean>(
+    localStorage.getItem(feedback.id) ? true : false
+  );
+
   return (
     <>
       {roadmap ? (
@@ -15,8 +20,11 @@ function Feedback({ feedback, status, roadmap }: FeedbackProps): JSX.Element {
           <p className="feedback-category">{feedback.category}</p>
           <div className="flex-between roadmap-upvotes-comments">
             <button
-              className="btn btn-upvote"
-              onClick={(e) => handleUpvote(feedback, e)}
+              className={`btn btn-upvote ${upvoted ? "upvoted" : ""}`}
+              onClick={(e) => {
+                handleUpvote(feedback, e);
+                setUpvoted(true);
+              }}
             >
               {feedback.upvotes}
             </button>
@@ -30,8 +38,11 @@ function Feedback({ feedback, status, roadmap }: FeedbackProps): JSX.Element {
         <>
           <div className="flex-start">
             <button
-              className="btn btn-upvote"
-              onClick={(e) => handleUpvote(feedback, e)}
+              className={`btn btn-upvote ${upvoted ? "upvoted" : ""}`}
+              onClick={(e) => {
+                handleUpvote(feedback, e);
+                setUpvoted(true);
+              }}
             >
               {feedback.upvotes}
             </button>
