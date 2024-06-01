@@ -23,7 +23,11 @@ function Feedback({ feedback, status, roadmap }: FeedbackProps): JSX.Element {
               className={`btn btn-upvote ${upvoted ? "upvoted" : ""}`}
               onClick={(e) => {
                 handleUpvote(feedback, e);
-                setUpvoted(true);
+                if (!upvoted) {
+                  setUpvoted(true);
+                } else {
+                  setUpvoted(false);
+                }
               }}
             >
               {feedback.upvotes}
@@ -41,7 +45,11 @@ function Feedback({ feedback, status, roadmap }: FeedbackProps): JSX.Element {
               className={`btn btn-upvote ${upvoted ? "upvoted" : ""}`}
               onClick={(e) => {
                 handleUpvote(feedback, e);
-                setUpvoted(true);
+                if (!upvoted) {
+                  setUpvoted(true);
+                } else {
+                  setUpvoted(false);
+                }
               }}
             >
               {feedback.upvotes}

@@ -116,11 +116,6 @@
     background-image: url(../assets/shared/icon-arrow-up-white.svg);
 }
 
-.btn-upvote.upvoted:hover {
-    background-color: var(--blue);
-    cursor: not-allowed;
-}
-
 .comments-num {
     color: var(--dark-blue);
 }
