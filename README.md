@@ -20,15 +20,26 @@
 # swipable mobile menu
 
 - [react-swipeable](https://www.npmjs.com/package/react-swipeable)
-- simply define swipe handlers using useSwipeable hook 
+- simply define swipe handlers using useSwipeable hook
 - then spread the handlers onto the div that needs to be swipeable
 
 //TODOS
 
 - eslint info ✓
 - padding over clickable elements ✓
-- font size css refactoring
-- css preprocessors - change units
+- font size css refactoring ✓
 - forms select relative/absolute parents height problem
 - weird ico in edit feedback
-- readme
+- co ty utils
+- css preprocessor ✓
+
+dist/index.html 0.74 kB │ gzip: 0.40 kB
+dist/assets/index-BC4ypS7N.css 17.07 kB │ gzip: 3.51 kB
+dist/assets/index-Del0qbMt.js 647.74 kB │ gzip: 181.90 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+  ✓ built in 8.13s

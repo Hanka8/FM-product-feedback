@@ -57,7 +57,6 @@
 
 .feedback-detail {
     color: var(--grey);
-    font-size: 1rem;
     margin-bottom: calc(12rem / 16)
 }
 
@@ -68,12 +67,6 @@
     background-color: var(--lightblue-grey);
     font-size: calc(13rem / 16);
     font-weight: 600;
-}
-
-@media screen and (max-width: 730px) {
-    .feedback-category {
-        font-size: calc(13rem / 16);
-    }
 }
 
 .feedback-comments {

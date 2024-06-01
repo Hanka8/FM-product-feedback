@@ -199,12 +199,6 @@
     font-weight: 600;
 }
 
-@media screen and (max-width: 730px) {
-    .filter-button {
-        font-size: calc(13rem / 16);
-    }   
-}
-
 .filter-button:hover {
     background-color: var(--filter-hover);
 }
@@ -218,7 +212,6 @@
     background-color: var(--white);
     border-radius: 10px;
     padding: 19px 24px;
-    font-size: 1rem;
 }
 
 .panel-roadmap-header {
