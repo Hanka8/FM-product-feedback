@@ -3,11 +3,10 @@ import "../../styles/dropdown.css";
 import { categoryType } from "../../types";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../firebase";
-import GoBack from "../UI/GoBack";
 import { motion } from "framer-motion";
 import { useState } from "react";
-
 import Dropdown from "../UI/Dropdown";
+import { Link } from "react-router-dom";
 
 function AddFeedbackForm(): JSX.Element {
   const [title, setTitle] = useState<string>("");
@@ -57,7 +56,9 @@ function AddFeedbackForm(): JSX.Element {
     >
       <main className="addfeedback-main">
         <form className="form form-add" onSubmit={addFeedback}>
-          <GoBack />
+          <Link to="/">
+            <button className="go-back">Go Back</button>
+          </Link>
           <h2 className="form-title">Create New Feedback</h2>
           {feedbackAdded ? (
             <>

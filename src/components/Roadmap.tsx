@@ -1,7 +1,6 @@
 import "../styles/feedbackBoard.css";
 import "../styles/roadmap.css";
 import "../styles/feedbacks.css";
-import GoBack from "./UI/GoBack";
 import Feedback from "./Feedback";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -28,7 +27,9 @@ function Roadmap(): JSX.Element {
       <main className="roadmap">
         <header className="roadmap-header">
           <div className="header-container">
-            <GoBack />
+            <Link to="/">
+              <button className="go-back">Go Back</button>
+            </Link>
             <h1>Roadmap</h1>
           </div>
           <Link className="btn btn-primary" to="/addfeedback">

@@ -1,7 +1,6 @@
 import "../styles/comment.css";
 import "../styles/feedbacks.css";
 import "../styles/feedbackDetail.css";
-import GoBack from "./UI/GoBack";
 import AddComment from "./forms/AddComment";
 import Error from "./Error";
 import { motion } from "framer-motion";
@@ -24,7 +23,9 @@ function FeedbackDetail(): JSX.Element {
       <section id="feedbackDetail">
         <div className="container">
           <div className="buttons">
-            <GoBack />
+            <Link to="/">
+              <button className="go-back">Go Back</button>
+            </Link>
             <Link to={`/${id}/editfeedback`}>
               <button className="btn btn-quaternary ">Edit Feedback</button>
             </Link>

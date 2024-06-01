@@ -1,6 +1,5 @@
 import "../../styles/feedbackForm.css";
 import "../../styles/dropdown.css";
-import GoBack from "../UI/GoBack";
 import { db } from "../../firebase";
 import {
   doc,
@@ -16,6 +15,7 @@ import useFeedbackDetail from "../../hooks/useFeedbackDetail";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Dropdown from "../UI/Dropdown";
+import { Link} from "react-router-dom";
 
 function EditFeedback(): JSX.Element {
   const { id = "" } = useParams<{ id: string }>();
@@ -44,10 +44,6 @@ function EditFeedback(): JSX.Element {
       setInitialLoad(false);
     }
   }, [initialLoad, feedback]);
-
-  const goBack = () => {
-    window.history.back();
-  };
 
   const deleteFeedback = async () => {
     try {
@@ -90,6 +86,16 @@ function EditFeedback(): JSX.Element {
     setFeedbackAdded(true);
   };
 
+  const revertChanges = () => {
+    if (!feedback) return;
+    setTitle(feedback.title);
+    setDetail(feedback.detail);
+    setCategory(feedback.category);
+    setStatus(feedback.status);
+    setEmptyTitle(false);
+    setEmptyDetail(false);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -97,8 +103,10 @@ function EditFeedback(): JSX.Element {
     >
       <main className="addfeedback-main">
         <form className="form form-edit" onSubmit={updateFeedback}>
-          <GoBack deleted={deleted} />
-          <h2 className="form-title">Editing '{title}'</h2>
+          <Link to={`/${!deleted ? id : ""}`}>
+            <button className="go-back">Go Back</button>
+          </Link>
+          <h2 className="form-title">Editing '{feedback?.title}'</h2>
           {feedbackAdded ? (
             <div className="added-message text">
               Feedback edited successfully
@@ -119,7 +127,7 @@ function EditFeedback(): JSX.Element {
                 className={`input text ${emptyTitle ? "empty-input" : ""}`}
                 type="text"
                 id="title"
-                defaultValue={feedback?.title}
+                value={title}
                 onChange={(e) => setTitle(e.target.value as string)}
               />
               <p className="error-message">
@@ -154,7 +162,7 @@ function EditFeedback(): JSX.Element {
                 Give more context on your feedback
               </p>
               <textarea
-                defaultValue={feedback?.detail}
+                value={detail}
                 className={`input ${emptyDetail ? "empty-input" : ""}`}
                 id="detail"
                 onChange={(e) => setDetail(e.target.value as string)}
@@ -174,7 +182,7 @@ function EditFeedback(): JSX.Element {
                 <button
                   className="btn btn-secondary"
                   type="button"
-                  onClick={goBack}
+                  onClick={revertChanges}
                 >
                   Cancel
                 </button>

@@ -36,24 +36,22 @@
     }
 }
 
-.form-add::after {
+.form::after {
     content: "";
     position: absolute;
     top: -28px;
     left: 42px;
     width: 56px;
     height: 56px;
+}
+
+.form-add::after {
     background: url(../assets/shared/icon-new-feedback.svg) no-repeat center center;
 }
 
 .form-edit::after {
-    content: "";
-    position: absolute;
-    top: -28px;
-    left: 42px;
-    width: 56px;
-    height: 56px;
     background: url(../assets/shared/icon-edit-feedback.svg) no-repeat center center;
+    background-size: cover;
 }
 
 @media screen and (max-width: 730px){

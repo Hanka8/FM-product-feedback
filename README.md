@@ -28,15 +28,19 @@
 - simply define swipe handlers using useSwipeable hook
 - then spread the handlers onto the div that needs to be swipeable
 
-//TODOS
+# TODOS
 
 - eslint info ✓
 - padding over clickable elements ✓
 - font size css refactoring ✓
 - co ty utils ✓
 - css preprocessor ✓
-- forms select relative/absolute parents height problem
-- weird ico in edit feedback
+- forms select relative/absolute parents height problem ✓
+- weird ico in edit feedback ✓
+- goBack bad functionality ✓
+- cancel button functionality ✓
+- v editu se změna titlu propisuje do názvu ✓
+- když vymažu feedback zmizí nadpis
 
 - rozeslat věci od rodiče do potomků - ale jak, když je to s routerem? proto volám dvakrát feedback z databáze
 - kam dát klíče z databáze v netlify?

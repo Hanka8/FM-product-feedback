@@ -11,7 +11,7 @@
 @media screen and (max-width: 730px) {
     #feedbackDetail {
         padding-top: 0;
-        }
+    }
 }
 
 #feedbackDetail .feedback:hover {
@@ -42,6 +42,7 @@
 .buttons {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
     margin-top: calc(32rem / 16);
     margin-bottom: calc(24rem / 16);
