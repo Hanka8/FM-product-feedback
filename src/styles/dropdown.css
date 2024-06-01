@@ -30,6 +30,7 @@
     background-position: right center;
     width: fit-content;
     position: relative;
+    padding: 12px;
 }
 
 .dropdown-btn-board:after {

@@ -84,7 +84,14 @@ li {
   cursor: pointer;
   font-weight: 700;
   color: var(--grey);
-  padding-left: 16px;
+  padding: 10px 16px;
+  transform: translateY(-10px);
+}
+
+@media screen and (max-width: 730px) {
+  .go-back {
+    transform: none;
+  }
 }
 
 .go-back:hover {

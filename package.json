@@ -16,7 +16,8 @@
     "react-dom": "^18.2.0",
     "react-loading": "^2.0.3",
     "react-router-dom": "^6.23.1",
-    "react-select": "^5.8.0"
+    "react-select": "^5.8.0",
+    "react-swipeable": "^7.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

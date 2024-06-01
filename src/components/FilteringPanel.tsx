@@ -2,6 +2,7 @@ import "../styles/filteringPanel.css";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FilteringPanelProps } from "../types";
+import { useSwipeable } from "react-swipeable";
 import useFeedbacks from "../hooks/useFeedbacks";
 
 function FilteringPanel({
@@ -26,6 +27,11 @@ function FilteringPanel({
   );
   const live = feedbacks.filter((feedback) => feedback.status === "live");
 
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => setIsMenuOpened(true),
+    onSwipedRight: () => setIsMenuOpened(false),
+  });
+
   return (
     <section className="panel">
       <div className="panel-header">
@@ -38,13 +44,16 @@ function FilteringPanel({
         ></button>
       </div>
       {screenSizeM && (
-        <div
-          className={`panel-overlay ${isMenuOpened && "opened"}`}
-          onClick={() => setIsMenuOpened(!isMenuOpened)}
-        ></div>
-      )}
-      {screenSizeM && (
-        <div className={`panel-box ${isMenuOpened && "opened"}`}></div>
+        <>
+          <div
+            className={`panel-overlay ${isMenuOpened && "opened"}`}
+            onClick={() => setIsMenuOpened(!isMenuOpened)}
+          ></div>
+          <div
+            className={`panel-box ${isMenuOpened && "opened"}`}
+            {...swipeHandlers}
+          ></div>
+        </>
       )}
       <div className={`panel-filtering ${isMenuOpened && "opened"}`}>
         <button
