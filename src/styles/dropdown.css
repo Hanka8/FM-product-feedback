@@ -46,6 +46,18 @@
     background-position: center center;
 }
 
+@media screen and (max-width: 730px) {
+    .dropdown-btn-board {
+        transform: translateX(-12px);
+    }    
+}
+
+@media screen and (max-width: 375px) {
+    .dropdown-btn-board:after {
+        content: none;
+    }
+}
+
 .dropdown-btn-board.opened::after {
     background-image: url(../assets/shared/icon-arrow-up-white.svg);
 }

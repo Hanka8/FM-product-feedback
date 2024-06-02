@@ -53,6 +53,13 @@
     }  
 }
 
+@media screen and (max-width: 375px) {
+    div.panel-header {
+        padding: 16px 12px;
+    }
+    
+}
+
 .hamburger-btn {
     display: none;
     z-index: -1;
@@ -83,7 +90,12 @@
     .hamburger-btn.opened {
         background-image: url("../assets/shared/mobile/icon-close.svg");
     }
-    
+}
+
+@media screen and (max-width: 375px) {
+    .hamburger-btn {
+        right: 14px;
+    }
 }
 
 .panel-header h1 {
@@ -168,7 +180,7 @@
     .panel-overlay.opened {
         right: 0;
         height: 100vh;
-        z-index: 0;
+        z-index: 1;
         opacity: 1;
     }
 

@@ -27,7 +27,7 @@
 @media screen and (max-width: 730px) {
     .board-header {
         border-radius: 0;
-        padding: 8px 14px;
+        padding: 8px 24px;
         background-image: none;
         margin-top: 72px;
     }
@@ -36,6 +36,13 @@
         font-size: calc(13rem / 16);
         padding: 10px 16px;
     }
+}
+
+@media screen and (max-width: 375px) {
+    .board-header {
+        padding: 8px 12px;
+    }
+    
 }
 
 .header-number {

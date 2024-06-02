@@ -2,7 +2,12 @@
     .feedbacks {
         padding: 0 24px;
     }
-    
+}
+
+@media screen and (max-width: 375px) {
+    .feedbacks {
+        padding: 0 12px;
+    }
 }
 
 .feedback {
@@ -14,6 +19,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 @media screen and (max-width: 730px) {
@@ -77,6 +83,15 @@
     justify-content: center;
     gap: calc(7rem / 16);
     font-weight: 600;
+}
+
+@media screen and (max-width: 730px){
+    .feedback-comments {
+        position: absolute;
+        right: 32px;
+        bottom: 40px;
+    }
+    
 }
 
 .btn-upvote {
