@@ -13,6 +13,7 @@
     "firebase": "^10.11.1",
     "framer-motion": "^11.1.9",
     "postcss": "^8.4.38",
+    "postcss-em-media-query": "^4.1.1",
     "postcss-preset-env": "^9.5.14",
     "postcss-pxtorem": "^6.1.0",
     "react": "^18.2.0",
