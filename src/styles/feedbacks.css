@@ -27,6 +27,7 @@
     .feedback {
         align-items: flex-end;
         font-size: calc(13rem / 16);
+        padding: 24px;
     }
 
     .feedback .flex-start {

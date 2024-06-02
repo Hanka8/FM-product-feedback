@@ -90,7 +90,7 @@
     }
 }
 
-@media screen and (max-width: 730px) {
+@media screen and (max-width: 375px) {
     .roadmap-content {
         padding: 18px 12px;
     }
@@ -107,6 +107,13 @@
     border-top-right-radius: 0;
     padding: 32px;
     position: relative;
+}
+
+@media screen and (max-width: 730px) {
+    .roadmap-feedback {
+        padding: 24px;
+    }
+    
 }
 
 .roadmap-feedback:hover {

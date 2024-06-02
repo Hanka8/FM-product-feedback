@@ -42,6 +42,7 @@
 @media screen and (max-width: 730px) {
     .add-comment {
         margin-top: 0;
+        padding: 24px;
     }
 
     .add-comment:not(.add-comment-header) {
@@ -87,6 +88,7 @@
 @media screen and (max-width: 730px){
     .comments {
         margin-top: calc(24rem / 16);
+        padding: 24px;
     }
 }
 
