@@ -15,6 +15,10 @@ function FeedbackDetail(): JSX.Element {
   let { feedback, errorDetail, loadingDetail } = useFeedbackDetail(id!);
   let { comments, errorComments, loadingComments } = useComments(id!);
 
+  const sortedComments = comments.sort(
+    (a, b) => a.timestamp.toDate() - b.timestamp.toDate()
+  );
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -63,9 +67,9 @@ function FeedbackDetail(): JSX.Element {
                 width={40}
               />
             )}
-            {comments &&
+            {sortedComments &&
               !loadingComments &&
-              comments.map((comment) => (
+              sortedComments.map((comment) => (
                 <div key={comment.id} className="comment">
                   <div className="avatar-container">
                     <img

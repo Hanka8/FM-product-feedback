@@ -16,6 +16,7 @@ export interface Comment {
   id: string;
   feedbackId: string;
   comment: string;
+  timestamp: any;
 }
 
 export interface Feedback {

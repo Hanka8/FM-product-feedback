@@ -1,6 +1,6 @@
 import "../../styles/comment.css";
 import { AddCommentProps } from "../../types";
-import { doc, collection, addDoc, updateDoc } from "firebase/firestore";
+import { doc, collection, addDoc, updateDoc, Timestamp } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useState } from "react";
 import useComments from "../../hooks/useComments";
@@ -22,6 +22,7 @@ function AddComment({ id }: AddCommentProps): JSX.Element {
       await addDoc(collection(db, "comments"), {
         feedbackId: id,
         comment: comment,
+        timestamp: Timestamp.now(),
       });
       await updateDoc(doc(db, "feedback", id), {
         numberOfComments: currentNumberOfComments + 1,

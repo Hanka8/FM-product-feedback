@@ -40,7 +40,8 @@
 - goBack bad functionality ✓
 - cancel button functionality ✓
 - v editu se změna titlu propisuje do názvu ✓
-- když vymažu feedback zmizí nadpis
+- když vymažu feedback zmizí nadpis ✓
+- bad order in comments
 
 - rozeslat věci od rodiče do potomků - ale jak, když je to s routerem? proto volám dvakrát feedback z databáze
 - kam dát klíče z databáze v netlify?

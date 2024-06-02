@@ -96,7 +96,6 @@
     border-bottom: 1px solid var(--lightblue-grey);
     color: var(--grey);
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
     gap: calc(32rem / 16);
 }
