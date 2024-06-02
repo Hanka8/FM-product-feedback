@@ -215,7 +215,7 @@
 }
 
 .panel-roadmap-header {
-    margin-bottom: calc(24rem / 16);
+    margin-bottom: calc(20rem / 16);
     color: var(--dark-blue);
     font-weight: 700;
 }

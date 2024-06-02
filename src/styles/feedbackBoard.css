@@ -15,7 +15,7 @@
     background-repeat: no-repeat;
     background-position: 24px 50%;
     color: var(--white);
-    padding: 24px;
+    padding: 14px;
     padding-left: 63px;
     display: flex;
     justify-content: space-between;
@@ -27,7 +27,7 @@
 @media screen and (max-width: 730px) {
     .board-header {
         border-radius: 0;
-        padding: 8px 24px;
+        padding: 8px 14px;
         background-image: none;
         margin-top: 72px;
     }

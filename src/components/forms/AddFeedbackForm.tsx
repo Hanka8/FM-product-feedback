@@ -4,7 +4,7 @@ import { categoryType } from "../../types";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Dropdown from "../UI/Dropdown";
 import { Link } from "react-router-dom";
 
@@ -18,6 +18,8 @@ function AddFeedbackForm(): JSX.Element {
 
   const [feedbackAdded, setFeedbackAdded] = useState<boolean>(false);
 
+  const formRef = useRef<HTMLFormElement>(null);
+
   const addFeedback = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!title || !detail) {
@@ -27,9 +29,9 @@ function AddFeedbackForm(): JSX.Element {
     }
     try {
       await addDoc(collection(db, "feedback"), {
-        title: title.slice(0, 1).toUpperCase() + title.slice(1),
+        title: title.trim().slice(0, 1).toUpperCase() + title.slice(1),
         category: category,
-        detail: detail,
+        detail: detail.trim(),
         status: "planned",
         numberOfComments: 0,
         upvotes: 0,
@@ -45,9 +47,16 @@ function AddFeedbackForm(): JSX.Element {
     setFeedbackAdded(true);
   };
 
-  const goBack = () => {
-    window.history.back();
-  };
+    const resetForm = () => {
+      setTitle("");
+      setCategory("bug");
+      setDetail("");
+      setEmptyTitle(false);
+      setEmptyDetail(false);
+      if (formRef.current) {
+        formRef.current.reset();
+      }
+    };
 
   return (
     <motion.div
@@ -57,7 +66,7 @@ function AddFeedbackForm(): JSX.Element {
       <main className="addfeedback-main">
         <form className="form form-add" onSubmit={addFeedback}>
           <Link to="/">
-            <button className="go-back">Go Back</button>
+            <button className="go-back" type="button">Go Back</button>
           </Link>
           <h2 className="form-title">Create New Feedback</h2>
           {feedbackAdded ? (
@@ -85,6 +94,7 @@ function AddFeedbackForm(): JSX.Element {
                 Add a short, descriptive headline
               </p>
               <input
+                value={title}
                 className={`input text ${emptyTitle ? "empty-input" : ""}`}
                 onChange={(e) => {
                   setTitle(e.target.value);
@@ -114,6 +124,7 @@ function AddFeedbackForm(): JSX.Element {
                 Give more context on your feedback
               </p>
               <textarea
+                value={detail}
                 className={`input ${emptyDetail ? "empty-input" : ""}`}
                 onChange={(e) => {
                   setDetail(e.target.value);
@@ -128,7 +139,7 @@ function AddFeedbackForm(): JSX.Element {
                 <button
                   className="btn btn-secondary"
                   type="button"
-                  onClick={goBack}
+                  onClick={resetForm}
                 >
                   Cancel
                 </button>

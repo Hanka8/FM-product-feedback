@@ -2,6 +2,7 @@
 
 - [Tanstack Query](https://tanstack.com/) for routing, asynchronous state management and more
 - [class-names](https://github.com/JedWatson/classnames) for conditionally joining classNames together
+- [React Hook Form](https://react-hook-form.com/) performant, flexible and extensible forms with easy-to-use validation
 
 # custom hooks useComments, useFeedbackDetail, useFeedbacks vs handleUpvote function
 
@@ -43,8 +44,9 @@
 - když vymažu feedback zmizí nadpis ✓
 - bad order in comments ✓
 - jdou přidávat věci co obsahují jen mezery nebo entery ✓
-- jak povolit entery u commentů
-- mezery a prázdné znaky u ostatních inputů
+- jak povolit entery u commentů ✓
+- mezery a prázdné znaky u ostatních inputů ✓
+- blbé chování add/edit feedback po enteru ✓
 
 - rozeslat věci od rodiče do potomků - ale jak, když je to s routerem? proto volám dvakrát feedback z databáze
 - kam dát klíče z databáze v netlify?

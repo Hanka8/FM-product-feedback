@@ -59,6 +59,7 @@
     color: var(--grey);
     margin-bottom: calc(12rem / 16);
     padding-right: 10px;
+    white-space: preserve-breaks;
 }
 
 .feedback-category {
@@ -97,9 +98,9 @@
 
 @media screen and (max-width: 730px){
     .btn-upvote {
-        padding: 6px 13px 6px 6px;
-        min-width: calc(60rem / 16);
-        background-position: 25% center;
+        padding: 11px 12px 10px 34px;
+        width: fit-content;
+        background-position: 16px center;
         text-align: right;
     }
 }

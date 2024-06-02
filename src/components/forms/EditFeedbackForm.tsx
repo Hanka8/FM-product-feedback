@@ -32,7 +32,6 @@ function EditFeedback(): JSX.Element {
 
   const [feedbackAdded, setFeedbackAdded] = useState<boolean>(false);
 
-  //e a flag to track whether the initial feedback has been loaded
   const [initialLoad, setInitialLoad] = useState<boolean>(true);
 
   useEffect(() => {
@@ -73,8 +72,8 @@ function EditFeedback(): JSX.Element {
     try {
       const feedbackRef = doc(db, "feedback", id);
       await updateDoc(feedbackRef, {
-        title: title.slice(0, 1).toUpperCase() + title.slice(1),
-        detail: detail,
+        title: title.trim().slice(0, 1).toUpperCase() + title.slice(1),
+        detail: detail.trim(),
         category: category,
         status: status,
       });
@@ -104,7 +103,7 @@ function EditFeedback(): JSX.Element {
       <main className="addfeedback-main">
         <form className="form form-edit" onSubmit={updateFeedback}>
           <Link to={`/${!deleted ? id : ""}`}>
-            <button className="go-back">Go Back</button>
+            <button className="go-back" type="button">Go Back</button>
           </Link>
           {feedbackAdded ? (
             <>
