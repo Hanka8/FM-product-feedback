@@ -41,7 +41,10 @@
 - cancel button functionality ✓
 - v editu se změna titlu propisuje do názvu ✓
 - když vymažu feedback zmizí nadpis ✓
-- bad order in comments
+- bad order in comments ✓
+- jdou přidávat věci co obsahují jen mezery nebo entery ✓
+- jak povolit entery u commentů
+- mezery a prázdné znaky u ostatních inputů
 
 - rozeslat věci od rodiče do potomků - ale jak, když je to s routerem? proto volám dvakrát feedback z databáze
 - kam dát klíče z databáze v netlify?

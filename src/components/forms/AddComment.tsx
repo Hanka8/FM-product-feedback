@@ -14,14 +14,14 @@ function AddComment({ id }: AddCommentProps): JSX.Element {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!comment) {
+    if (!comment || comment.trim() === ""){
       setEmptyComment(true);
       return;
     }
     try {
       await addDoc(collection(db, "comments"), {
         feedbackId: id,
-        comment: comment,
+        comment: comment.trim(),
         timestamp: Timestamp.now(),
       });
       await updateDoc(doc(db, "feedback", id), {
@@ -46,7 +46,7 @@ function AddComment({ id }: AddCommentProps): JSX.Element {
         id="comment"
         placeholder="Type your comment here"
         rows={3}
-        onChange={(e) => setComment(e.target.value)}
+        onChange={(e) => {setComment(e.target.value), setEmptyComment(false)}}
         maxLength={MAX_CHARACTERS}
       ></textarea>
       <p className="error-message">{emptyComment ? "Can´t be empty" : ""}</p>

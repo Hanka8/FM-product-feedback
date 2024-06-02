@@ -98,6 +98,7 @@
     display: flex;
     align-items: flex-start;
     gap: calc(32rem / 16);
+    white-space: preserve-breaks;
 }
 
 @media screen and (max-width: 730px){
