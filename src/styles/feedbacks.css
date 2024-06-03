@@ -22,6 +22,12 @@
     position: relative;
 }
 
+.feedback:hover {
+    transform: translateY(-5px);
+    transition: 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 @media screen and (max-width: 730px) {
 
     .feedback {
@@ -30,17 +36,17 @@
         padding: 24px;
     }
 
+    .feedback:hover {
+        transform: none;
+        transition: none;
+        box-shadow: none;
+    }
+
     .feedback .flex-start {
         flex-direction: column-reverse;
-        gap: calc(12rem / 16);
+        gap: calc(14rem / 16);
     }
     
-}
-
-.feedback:hover {
-    transform: translateY(-5px);
-    transition: 0.2s;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .feedback-info {
@@ -90,7 +96,7 @@
     .feedback-comments {
         position: absolute;
         right: 32px;
-        bottom: 40px;
+        bottom: 34px;
     }
     
 }

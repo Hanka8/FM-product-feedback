@@ -47,7 +47,10 @@
 - jak povolit entery u commentů ✓
 - mezery a prázdné znaky u ostatních inputů ✓
 - blbé chování add/edit feedback po enteru ✓
-- mobily responzivita (hlavně xs)
+- probliknutí po otevření menu ✓
+- posunout o 05.px ty divy ✓
+- mobil responzivita (hlavně xs) ✓
+
 
 - rozeslat věci od rodiče do potomků - ale jak, když je to s routerem? proto volám dvakrát feedback z databáze
 - kam dát klíče z databáze v netlify?

@@ -11,6 +11,7 @@
     cursor: pointer;
     color: var(--dark-blue);
     position: relative;
+    font-size: 15px;
 }
 
 .dropdown-btn.opened {
@@ -31,6 +32,7 @@
     width: fit-content;
     position: relative;
     padding: 12px;
+    font-size: 1rem;
 }
 
 .dropdown-btn-board:after {
@@ -49,6 +51,7 @@
 @media screen and (max-width: 730px) {
     .dropdown-btn-board {
         transform: translateX(-12px);
+        font-size: 13px;
     }    
 }
 
