@@ -94,4 +94,4 @@ Next time, I would use these tools:
 
 ## Author
 
-- Website - [Hana Maruškevičová](https://www.hanamarus.cz)
+- Website - [Hana Maruškevičová](hanamarus.cz)
