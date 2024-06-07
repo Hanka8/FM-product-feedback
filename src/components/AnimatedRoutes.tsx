@@ -1,13 +1,12 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import Landing from "./Landing";
+import Landing from "./Landing/Landing";
 import AddFeedbackForm from "./forms/AddFeedbackForm";
-import FeedbackDetail from "./FeedbackDetail";
+import FeedbackDetail from "./FeedbackDetail/FeedbackDetail";
 import EditFeedback from "./forms/EditFeedbackForm";
-import Roadmap from "./Roadmap";
+import Roadmap from "./Roadmap/Roadmap";
 
 function AnimatedRoutes(): JSX.Element {
-
   const location = useLocation();
 
   return (

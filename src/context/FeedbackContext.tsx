@@ -1,6 +1,6 @@
 import { createContext, useContext, ReactNode } from "react";
-import { FeedbackContextType } from "../../types";
-import useFeedbacks from "../../hooks/useFeedbacks";
+import { FeedbackContextType } from "../types";
+import useFeedbacks from "../hooks/useFeedbacks";
 
 const FeedbackContext = createContext<FeedbackContextType | undefined>(
   undefined
@@ -8,7 +8,7 @@ const FeedbackContext = createContext<FeedbackContextType | undefined>(
 
 const FeedbackProvider = ({ children }: { children: ReactNode }) => {
   const feedbacksData = useFeedbacks();
-  
+
   return (
     <FeedbackContext.Provider value={feedbacksData}>
       {children}

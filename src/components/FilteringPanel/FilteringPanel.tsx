@@ -1,9 +1,9 @@
-import "../styles/filteringPanel.css";
+import "./filteringPanel.css";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { FilteringPanelProps } from "../types";
+import { FilteringPanelProps } from "../../types";
 import { useSwipeable } from "react-swipeable";
-import useFeedbacks from "../hooks/useFeedbacks";
+import useFeedbacks from "../../hooks/useFeedbacks";
 
 function FilteringPanel({
   filters,

@@ -1,9 +1,9 @@
-import "../styles/noFeedbacks.css";
+import "./noFeedback.css";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { NoFeedbacksProps } from "../types";
+import { NoFeedbacksProps } from "../../types";
 
-function NoFeedbacks({ error }: NoFeedbacksProps): JSX.Element {
+function NoFeedback({ error }: NoFeedbacksProps): JSX.Element {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -36,4 +36,4 @@ function NoFeedbacks({ error }: NoFeedbacksProps): JSX.Element {
   );
 }
 
-export default NoFeedbacks;
+export default NoFeedback;

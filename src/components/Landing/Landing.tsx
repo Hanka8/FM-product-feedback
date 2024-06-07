@@ -1,9 +1,9 @@
-import "../styles/landing.css";
-import FilteringPanel from "./FilteringPanel";
-import FeedbackBoard from "./FeedbackBoard";
+import "./landing.css";
+import FilteringPanel from "../FilteringPanel/FilteringPanel";
+import FeedbackBoard from "../FeedbackBoard/FeedbackBoard";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Filters } from "../types";
+import { Filters } from "../../types";
 
 function Landing(): JSX.Element {
   const [filters, setFilters] = useState<Filters>({

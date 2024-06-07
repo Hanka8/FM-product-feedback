@@ -74,3 +74,7 @@ export interface FeedbackContextType {
   error: string | null;
   loading: boolean;
 }
+
+export interface CommentProps {
+  comment: Comment;
+}

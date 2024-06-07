@@ -1,5 +1,4 @@
-import "../../styles/feedbackForm.css";
-import "../../styles/dropdown.css";
+import "./feedbackForm.css";
 import { db } from "../../../firebase.config";
 import {
   doc,
@@ -13,9 +12,9 @@ import {
 import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Dropdown from "../UI/Dropdown";
+import Dropdown from "../Dropdown/Dropdown";
 import { Link } from "react-router-dom";
-import { useFeedbackContext } from "../context/FeedbackContext";
+import { useFeedbackContext } from "../../context/FeedbackContext";
 
 function EditFeedback(): JSX.Element {
   const { id = "" } = useParams<{ id: string }>();

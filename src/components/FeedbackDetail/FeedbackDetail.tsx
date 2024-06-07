@@ -1,14 +1,13 @@
-import "../styles/comment.css";
-import "../styles/feedbacks.css";
-import "../styles/feedbackDetail.css";
-import AddComment from "./forms/AddComment";
-import Error from "./Error";
+import "./feedbackDetail.css";
+import AddComment from "../forms/AddComment/AddComment";
+import Error from "../Error";
+import Comment from "../Comment/Comment";
 import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";
-import useComments from "../hooks/useComments";
-import Feedback from "./Feedback";
+import useComments from "../../hooks/useComments";
+import Feedback from "../Feedback/Feedback";
 import ReactLoading from "react-loading";
-import { useFeedbackContext } from "./context/FeedbackContext";
+import { useFeedbackContext } from "../../context/FeedbackContext";
 
 function FeedbackDetail(): JSX.Element {
   const { id } = useParams<{ id: string }>() as { id: string };
@@ -70,21 +69,7 @@ function FeedbackDetail(): JSX.Element {
             )}
             {sortedComments &&
               !loadingComments &&
-              sortedComments.map((comment) => (
-                <div key={comment.id} className="comment">
-                  <div className="avatar-container">
-                    <img
-                      className="avatar"
-                      src="assets/shared/avatar.webp"
-                      alt="avatar"
-                    />
-                  </div>
-                  <div>
-                    <p className="user bold dark-blue">Anonymous user</p>
-                    <p>{comment.comment}</p>
-                  </div>
-                </div>
-              ))}
+              sortedComments.map((comment) => <Comment comment={comment} />)}
           </div>
           <AddComment id={id} />
         </div>

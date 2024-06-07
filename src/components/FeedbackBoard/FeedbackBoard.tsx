@@ -1,10 +1,9 @@
-import "../styles/feedbackBoard.css";
-import "../styles/dropdown.css";
-import { sortType, FeedbackBoardProps } from "../types";
+import "./feedbackBoard.css";
+import { sortType, FeedbackBoardProps } from "../../types";
 import { Link } from "react-router-dom";
 import { collection, onSnapshot } from "firebase/firestore";
-import { db } from "../../firebase.config";
-import FeedbacksList from "./FeedbacksList";
+import { db } from "../../../firebase.config";
+import FeedbacksList from "../FeedbacksList";
 import { useState, useEffect } from "react";
 
 function FeedbackBoard({ filters }: FeedbackBoardProps): JSX.Element {

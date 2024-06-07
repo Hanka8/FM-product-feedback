@@ -47,3 +47,19 @@
     margin-top: calc(32rem / 16);
     margin-bottom: calc(24rem / 16);
 }
+
+.comments {
+    margin-top: 3rem;
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: calc(27rem / 16);
+    padding: 24px 34px;
+}
+
+@media screen and (max-width: 730px){
+    .comments {
+        margin-top: calc(24rem / 16);
+        padding: 24px;
+    }
+}

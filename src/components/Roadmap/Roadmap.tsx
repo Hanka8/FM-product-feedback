@@ -1,10 +1,8 @@
-import "../styles/feedbackBoard.css";
-import "../styles/roadmap.css";
-import "../styles/feedbacks.css";
-import Feedback from "./Feedback";
+import "./roadmap.css";
+import Feedback from "../Feedback/Feedback";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import useFeedbacks from "../hooks/useFeedbacks";
+import useFeedbacks from "../../hooks/useFeedbacks";
 
 function Roadmap(): JSX.Element {
   const { feedbacks } = useFeedbacks();

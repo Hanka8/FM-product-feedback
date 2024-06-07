@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DropdownProps } from "../../types";
+import "./dropdown.css"
 
 function Dropdown({
   dropdownType,

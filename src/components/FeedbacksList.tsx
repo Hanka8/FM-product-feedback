@@ -1,19 +1,21 @@
-import "../styles/feedbacks.css";
-import { FeedbacksListProps, Feedback as FeedbackType, sortType } from "../types";
+import {
+  FeedbacksListProps,
+  Feedback as FeedbackType,
+  sortType,
+} from "../types";
 import { Link } from "react-router-dom";
-import NoFeedbacks from "./NoFeedbacks";
+import NoFeedbacks from "./NoFeedback/NoFeedback";
 import ReactLoading from "react-loading";
 import { useMemo, useEffect } from "react";
-import Feedback from "./Feedback";
+import Feedback from "./Feedback/Feedback";
 import { motion } from "framer-motion";
-import { useFeedbackContext } from "./context/FeedbackContext";
+import { useFeedbackContext } from "../context/FeedbackContext";
 
 function FeedbacksList({
   setNumberOfFeedbacks,
   filters,
   sort,
 }: FeedbacksListProps): JSX.Element {
-  
   const { feedbacks, error, loading } = useFeedbackContext();
 
   const filteredFeedbacks = useMemo(() => {
@@ -33,7 +35,10 @@ function FeedbacksList({
     return sortFeedbacks(filteredFeedbacks, sort);
   }, [feedbacks, sort, filteredFeedbacks]);
 
-  function sortFeedbacks(feedbacks: FeedbackType[], sort: sortType): FeedbackType[] {
+  function sortFeedbacks(
+    feedbacks: FeedbackType[],
+    sort: sortType
+  ): FeedbackType[] {
     let sortedFeedbacks: FeedbackType[] = [...feedbacks];
     switch (sort) {
       case "most-upvotes":
@@ -59,11 +64,9 @@ function FeedbacksList({
 
   return (
     <div className="feedbacks">
-      {(error || filteredFeedbacks.length === 0 && !loading)
-        && 
-        <NoFeedbacks error={error} 
-        />
-        }
+      {(error || (filteredFeedbacks.length === 0 && !loading)) && (
+        <NoFeedbacks error={error} />
+      )}
       {loading && (
         <ReactLoading
           className="loading"
@@ -83,7 +86,11 @@ function FeedbacksList({
           >
             <Link to={`/${feedback.id}`} key={feedback.id}>
               <div key={feedback.id} className="feedback">
-                <Feedback feedback={feedback} status={feedback.status} roadmap={false} />
+                <Feedback
+                  feedback={feedback}
+                  status={feedback.status}
+                  roadmap={false}
+                />
               </div>
             </Link>
           </motion.div>

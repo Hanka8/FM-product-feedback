@@ -1,6 +1,6 @@
-import "../styles/feedbacks.css";
-import { FeedbackProps } from "../types";
-import handleUpvote from "../functions/handleUpvote";
+import "./feedback.css";
+import { FeedbackProps } from "../../types";
+import handleUpvote from "../../functions/handleUpvote";
 import { useState } from "react";
 
 function Feedback({ feedback, status, roadmap }: FeedbackProps): JSX.Element {

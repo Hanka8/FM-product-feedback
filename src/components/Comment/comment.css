@@ -1,0 +1,40 @@
+.comment {
+    padding-bottom: 1.4rem;
+    margin-top: 1.4rem;
+    border-bottom: 1px solid var(--lightblue-grey);
+    color: var(--grey);
+    display: flex;
+    align-items: flex-start;
+    gap: calc(32rem / 16);
+    white-space: preserve-breaks;
+}
+
+@media screen and (max-width: 730px){
+    .comment {
+        font-size: calc(13rem / 16);
+    }
+
+    .comment-heading {
+        margin-bottom: 1rem;
+        font-size: calc(13rem / 16);
+    }
+}
+
+.comment:last-child {
+    border-bottom: none;
+}
+
+.avatar-container {
+    display: flex;
+    align-items: center;
+    flex-basis: fit-content;
+}
+
+.avatar {
+    width: calc(40rem / 16);
+    height: calc(40rem / 16);
+}
+
+.user {
+    margin-bottom: calc(19rem / 16);
+}

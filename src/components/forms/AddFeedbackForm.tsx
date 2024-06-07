@@ -1,11 +1,10 @@
-import "../../styles/feedbackForm.css";
-import "../../styles/dropdown.css";
+import "./feedbackForm.css";
 import { categoryType } from "../../types";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../../firebase.config";
 import { motion } from "framer-motion";
 import { useState, useRef } from "react";
-import Dropdown from "../UI/Dropdown";
+import Dropdown from "../Dropdown/Dropdown";
 import { Link } from "react-router-dom";
 
 function AddFeedbackForm(): JSX.Element {

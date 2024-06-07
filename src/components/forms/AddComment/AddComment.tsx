@@ -1,5 +1,5 @@
-import "../../styles/comment.css";
-import { AddCommentProps } from "../../types";
+import "./addComment.css";
+import { AddCommentProps } from "../../../types";
 import {
   doc,
   collection,
@@ -7,10 +7,10 @@ import {
   updateDoc,
   Timestamp,
 } from "firebase/firestore";
-import { db } from "../../../firebase.config";
+import { db } from "../../../../firebase.config";
 import { useState } from "react";
-import useComments from "../../hooks/useComments";
-import { MAX_CHARACTERS } from "../../constants";
+import useComments from "../../../hooks/useComments";
+import { MAX_CHARACTERS } from "../../../constants";
 
 function AddComment({ id }: AddCommentProps): JSX.Element {
   const currentNumberOfComments = useComments(id).comments.length;
