@@ -1,6 +1,6 @@
 import { Comment } from "../types";
 import { collection, query, where, onSnapshot } from "firebase/firestore";
-import { db } from "../firebase";
+import { db } from "../../firebase.config";
 import { useState, useEffect } from "react";
 
 const useComments = (feedbackId: string) => {

@@ -1,7 +1,13 @@
 import "../../styles/comment.css";
 import { AddCommentProps } from "../../types";
-import { doc, collection, addDoc, updateDoc, Timestamp } from "firebase/firestore";
-import { db } from "../../firebase";
+import {
+  doc,
+  collection,
+  addDoc,
+  updateDoc,
+  Timestamp,
+} from "firebase/firestore";
+import { db } from "../../../firebase.config";
 import { useState } from "react";
 import useComments from "../../hooks/useComments";
 import { MAX_CHARACTERS } from "../../constants";
@@ -14,7 +20,7 @@ function AddComment({ id }: AddCommentProps): JSX.Element {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!comment || comment.trim() === ""){
+    if (!comment || comment.trim() === "") {
       setEmptyComment(true);
       return;
     }
@@ -46,7 +52,9 @@ function AddComment({ id }: AddCommentProps): JSX.Element {
         id="comment"
         placeholder="Type your comment here"
         rows={3}
-        onChange={(e) => {setComment(e.target.value), setEmptyComment(false)}}
+        onChange={(e) => {
+          setComment(e.target.value), setEmptyComment(false);
+        }}
         maxLength={MAX_CHARACTERS}
       ></textarea>
       <p className="error-message">{emptyComment ? "Can´t be empty" : ""}</p>

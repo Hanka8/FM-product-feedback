@@ -3,7 +3,7 @@ import "../styles/dropdown.css";
 import { sortType, FeedbackBoardProps } from "../types";
 import { Link } from "react-router-dom";
 import { collection, onSnapshot } from "firebase/firestore";
-import { db } from "../firebase";
+import { db } from "../../firebase.config";
 import FeedbacksList from "./FeedbacksList";
 import { useState, useEffect } from "react";
 

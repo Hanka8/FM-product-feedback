@@ -1,6 +1,6 @@
 import { Feedback } from "../types";
 import { updateDoc, doc } from "firebase/firestore";
-import { db } from "../firebase";
+import { db } from "../../firebase.config";
 import { MouseEvent } from "react";
 
 export default async function handleUpvote(

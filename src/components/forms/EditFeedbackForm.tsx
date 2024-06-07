@@ -1,6 +1,6 @@
 import "../../styles/feedbackForm.css";
 import "../../styles/dropdown.css";
-import { db } from "../../firebase";
+import { db } from "../../../firebase.config";
 import {
   doc,
   deleteDoc,
@@ -14,7 +14,7 @@ import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Dropdown from "../UI/Dropdown";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useFeedbackContext } from "../context/FeedbackContext";
 
 function EditFeedback(): JSX.Element {
@@ -104,7 +104,9 @@ function EditFeedback(): JSX.Element {
       <main className="addfeedback-main">
         <form className="form form-edit" onSubmit={updateFeedback}>
           <Link to={`/${!deleted ? id : ""}`}>
-            <button className="go-back" type="button">Go Back</button>
+            <button className="go-back" type="button">
+              Go Back
+            </button>
           </Link>
           {feedbackAdded ? (
             <>

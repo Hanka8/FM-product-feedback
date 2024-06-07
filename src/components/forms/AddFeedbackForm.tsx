@@ -2,7 +2,7 @@ import "../../styles/feedbackForm.css";
 import "../../styles/dropdown.css";
 import { categoryType } from "../../types";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../../firebase";
+import { db } from "../../../firebase.config";
 import { motion } from "framer-motion";
 import { useState, useRef } from "react";
 import Dropdown from "../UI/Dropdown";
@@ -47,16 +47,16 @@ function AddFeedbackForm(): JSX.Element {
     setFeedbackAdded(true);
   };
 
-    const resetForm = () => {
-      setTitle("");
-      setCategory("bug");
-      setDetail("");
-      setEmptyTitle(false);
-      setEmptyDetail(false);
-      if (formRef.current) {
-        formRef.current.reset();
-      }
-    };
+  const resetForm = () => {
+    setTitle("");
+    setCategory("bug");
+    setDetail("");
+    setEmptyTitle(false);
+    setEmptyDetail(false);
+    if (formRef.current) {
+      formRef.current.reset();
+    }
+  };
 
   return (
     <motion.div
@@ -66,7 +66,9 @@ function AddFeedbackForm(): JSX.Element {
       <main className="addfeedback-main">
         <form className="form form-add" onSubmit={addFeedback}>
           <Link to="/">
-            <button className="go-back" type="button">Go Back</button>
+            <button className="go-back" type="button">
+              Go Back
+            </button>
           </Link>
           <h2 className="form-title">Create New Feedback</h2>
           {feedbackAdded ? (
