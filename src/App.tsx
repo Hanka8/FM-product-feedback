@@ -4,9 +4,7 @@ import AnimatedRoutes from "./components/AnimatedRoutes";
 function App(): JSX.Element {
   return (
     <>
-      <main>
         <AnimatedRoutes />
-      </main>
     </>
   );
 }

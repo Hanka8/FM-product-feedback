@@ -11,15 +11,16 @@ import {
   getDocs,
 } from "firebase/firestore";
 import { motion } from "framer-motion";
-import useFeedbackDetail from "../../hooks/useFeedbackDetail";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Dropdown from "../UI/Dropdown";
 import { Link} from "react-router-dom";
+import { useFeedbackContext } from "../context/FeedbackContext";
 
 function EditFeedback(): JSX.Element {
   const { id = "" } = useParams<{ id: string }>();
-  const { feedback } = useFeedbackDetail(id!);
+  const { feedbacks } = useFeedbackContext();
+  const feedback = feedbacks.find((feedback) => feedback.id === id);
   const [deleted, setDeleted] = useState<boolean>(false);
 
   const [title, setTitle] = useState<string>("");

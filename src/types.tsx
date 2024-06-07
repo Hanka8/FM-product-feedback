@@ -68,3 +68,9 @@ export interface DropdownProps {
   option: string;
   setOption: any;
 }
+
+export interface FeedbackContextType {
+  feedbacks: Feedback[];
+  error: string | null;
+  loading: boolean;
+}

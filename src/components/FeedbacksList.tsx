@@ -5,15 +5,16 @@ import NoFeedbacks from "./NoFeedbacks";
 import ReactLoading from "react-loading";
 import { useMemo, useEffect } from "react";
 import Feedback from "./Feedback";
-import useFeedbacks from "../hooks/useFeedbacks";
 import { motion } from "framer-motion";
+import { useFeedbackContext } from "./context/FeedbackContext";
 
 function FeedbacksList({
   setNumberOfFeedbacks,
   filters,
   sort,
 }: FeedbacksListProps): JSX.Element {
-  const { feedbacks, error, loading } = useFeedbacks();
+  
+  const { feedbacks, error, loading } = useFeedbackContext();
 
   const filteredFeedbacks = useMemo(() => {
     return feedbacks.filter((feedback) => {

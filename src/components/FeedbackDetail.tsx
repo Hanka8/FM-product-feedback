@@ -5,15 +5,16 @@ import AddComment from "./forms/AddComment";
 import Error from "./Error";
 import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";
-import useFeedbackDetail from "../hooks/useFeedbackDetail";
 import useComments from "../hooks/useComments";
 import Feedback from "./Feedback";
 import ReactLoading from "react-loading";
+import { useFeedbackContext } from "./context/FeedbackContext";
 
 function FeedbackDetail(): JSX.Element {
   const { id } = useParams<{ id: string }>() as { id: string };
-  let { feedback, errorDetail, loadingDetail } = useFeedbackDetail(id!);
   let { comments, errorComments, loadingComments } = useComments(id!);
+  const { feedbacks, error, loading } = useFeedbackContext();
+  const feedback = feedbacks.find((feedback) => feedback.id === id);
 
   const sortedComments = comments.sort(
     (a, b) => a.timestamp.toDate() - b.timestamp.toDate()
@@ -35,8 +36,8 @@ function FeedbackDetail(): JSX.Element {
             </Link>
           </div>
           <div className="feedback">
-            {errorDetail && <Error error={errorDetail} />}
-            {loadingDetail && (
+            {error && <Error error={error} />}
+            {loading && (
               <ReactLoading
                 className="loading loading-detail"
                 type={"spokes"}
@@ -45,7 +46,7 @@ function FeedbackDetail(): JSX.Element {
                 width={40}
               />
             )}
-            {feedback && !loadingDetail && (
+            {feedback && !loading && (
               <Feedback
                 feedback={feedback}
                 status={feedback.status}
