@@ -82,3 +82,21 @@ export type CommentProps = {
 export type FeedbackAddedProps = {
   setFeedbackAdded: any;
 }
+
+export type StateAddFeedbackForm = {
+  title: string;
+  category: categoryType;
+  detail: string;
+  emptyTitleOnSubmit: boolean;
+  emptyDetailOnSubmit: boolean;
+  feedbackAdded: boolean;
+};
+
+export type ActionAddFeedbackForm =
+  | { type: "SET_TITLE"; payload: string }
+  | { type: "SET_CATEGORY"; payload: categoryType }
+  | { type: "SET_DETAIL"; payload: string }
+  | { type: "SET_EMPTY_TITLE_ON_SUBMIT"; payload: boolean }
+  | { type: "SET_EMPTY_DETAIL_ON_SUBMIT"; payload: boolean }
+  | { type: "SET_FEEDBACK_ADDED"; payload: boolean }
+  | { type: "RESET_FORM" };

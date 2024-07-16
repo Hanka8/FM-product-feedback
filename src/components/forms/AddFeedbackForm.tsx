@@ -1,5 +1,5 @@
 import "./feedbackForm.css";
-import { categoryType } from "../../types";
+import { categoryType, StateAddFeedbackForm as State, ActionAddFeedbackForm as Action } from "../../types";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../../firebase.config";
 import { motion } from "framer-motion";
@@ -7,25 +7,6 @@ import { useReducer } from "react";
 import Dropdown from "../Dropdown/Dropdown";
 import FeedbackAdded from "./FeedbackAdded";
 import { Link } from "react-router-dom";
-
-type State = {
-  title: string;
-  category: categoryType;
-  detail: string;
-  emptyTitleOnSubmit: boolean;
-  emptyDetailOnSubmit: boolean;
-  feedbackAdded: boolean;
-}
-
-type Action = 
-  | { type: "SET_TITLE"; payload: string }
-  | { type: "SET_CATEGORY"; payload: categoryType }
-  | { type: "SET_DETAIL"; payload: string }
-  | { type: "SET_EMPTY_TITLE_ON_SUBMIT"; payload: boolean }
-  | { type: "SET_EMPTY_DETAIL_ON_SUBMIT"; payload: boolean }
-  | { type: "SET_FEEDBACK_ADDED"; payload: boolean }
-  | { type: "RESET_FORM" }
-
 
 
 function AddFeedbackForm(): JSX.Element {
@@ -80,7 +61,6 @@ function AddFeedbackForm(): JSX.Element {
         upvotes: 0,
       });
       dispatch({ type: "RESET_FORM" });
-      (e.target as HTMLFormElement).reset();
     } catch (error) {
       console.error("Error adding document: ", error);
       return;
