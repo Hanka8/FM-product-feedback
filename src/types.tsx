@@ -8,18 +8,18 @@ export type sortType =
   | "most-comments"
   | "least-comments";
 
-export interface AddCommentProps {
+export type AddCommentProps = {
   id: string;
 }
 
-export interface Comment {
+export type Comment = {
   id: string;
   feedbackId: string;
   comment: string;
   timestamp: any;
 }
 
-export interface Feedback {
+export type Feedback = {
   id: string;
   title: string;
   category: string;
@@ -29,23 +29,23 @@ export interface Feedback {
   upvotes: number;
 }
 
-export interface FeedbackProps {
+export type FeedbackProps = {
   feedback: Feedback;
   status: string;
   roadmap: boolean;
 }
 
-export interface FeedbackBoardProps {
+export type FeedbackBoardProps = {
   filters: Filters;
 }
 
-export interface FeedbacksListProps {
+export type FeedbacksListProps = {
   setNumberOfFeedbacks: (num: number) => void;
   filters: Filters;
   sort: sortType;
 }
 
-export interface Filters {
+export type Filters = {
   all: boolean;
   ui: boolean;
   ux: boolean;
@@ -54,27 +54,27 @@ export interface Filters {
   feature: boolean;
 }
 
-export interface FilteringPanelProps {
+export type FilteringPanelProps = {
   filters: Filters;
   changeFilter: (filter: keyof Filters) => void;
 }
 
-export interface NoFeedbacksProps {
+export type NoFeedbacksProps = {
   error: string | null;
 }
 
-export interface DropdownProps {
+export type DropdownProps = {
   dropdownType: string;
   option: string;
   setOption: any;
 }
 
-export interface FeedbackContextType {
+export type FeedbackContextType = {
   feedbacks: Feedback[];
   error: string | null;
   loading: boolean;
 }
 
-export interface CommentProps {
+export type CommentProps = {
   comment: Comment;
 }
