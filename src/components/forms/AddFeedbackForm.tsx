@@ -3,54 +3,93 @@ import { categoryType } from "../../types";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../../firebase.config";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useReducer } from "react";
 import Dropdown from "../Dropdown/Dropdown";
 import FeedbackAdded from "./FeedbackAdded";
 import { Link } from "react-router-dom";
 
+type State = {
+  title: string;
+  category: categoryType;
+  detail: string;
+  emptyTitleOnSubmit: boolean;
+  emptyDetailOnSubmit: boolean;
+  feedbackAdded: boolean;
+}
+
+type Action = 
+  | { type: "SET_TITLE"; payload: string }
+  | { type: "SET_CATEGORY"; payload: categoryType }
+  | { type: "SET_DETAIL"; payload: string }
+  | { type: "SET_EMPTY_TITLE_ON_SUBMIT"; payload: boolean }
+  | { type: "SET_EMPTY_DETAIL_ON_SUBMIT"; payload: boolean }
+  | { type: "SET_FEEDBACK_ADDED"; payload: boolean }
+  | { type: "RESET_FORM" }
+
+
+
 function AddFeedbackForm(): JSX.Element {
-  const [title, setTitle] = useState<string>("");
-  const [category, setCategory] = useState<categoryType>("bug");
-  const [detail, setDetail] = useState<string>("");
 
-  const [emptyTitle, setEmptyTitle] = useState<boolean>(false);
-  const [emptyDetail, setEmptyDetail] = useState<boolean>(false);
+  const initialState: State = {
+    title: "",
+    category: "bug",
+    detail: "",
+    emptyTitleOnSubmit: false,
+    emptyDetailOnSubmit: false,
+    feedbackAdded: false,
+  };
 
-  const [feedbackAdded, setFeedbackAdded] = useState<boolean>(false);
+  const formReducer = (state: State, action: Action): State => {
+    switch (action.type) {
+      case "SET_TITLE":
+        return { ...state, title: action.payload };
+      case "SET_CATEGORY":
+        return { ...state, category: action.payload };
+      case "SET_DETAIL":
+        return { ...state, detail: action.payload };
+      case "SET_EMPTY_TITLE_ON_SUBMIT":
+        return { ...state, emptyTitleOnSubmit: action.payload };
+      case "SET_EMPTY_DETAIL_ON_SUBMIT":
+        return { ...state, emptyDetailOnSubmit: action.payload };
+      case "SET_FEEDBACK_ADDED":
+        return { ...state, feedbackAdded: action.payload };
+      case "RESET_FORM":
+        return {
+          ...initialState
+        };
+      default:
+        return state;
+  }}
+
+  const [state, dispatch] = useReducer(formReducer, initialState);
 
   const addFeedback = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!title || !detail) {
-      if (!title) setEmptyTitle(true);
-      if (!detail) setEmptyDetail(true);
+    if (!state.title || !state.detail) {
+      if (!state.title) dispatch({ type: "SET_EMPTY_TITLE_ON_SUBMIT", payload: true });
+      if (!state.detail) dispatch({ type: "SET_EMPTY_DETAIL_ON_SUBMIT", payload: true });
       return;
     }
     try {
       await addDoc(collection(db, "feedback"), {
-        title: title.trim().slice(0, 1).toUpperCase() + title.slice(1),
-        category: category,
-        detail: detail.trim(),
+        title: state.title.trim().slice(0, 1).toUpperCase() + state.title.slice(1),
+        category: state.category,
+        detail: state.detail.trim(),
         status: "planned",
         numberOfComments: 0,
         upvotes: 0,
       });
-      setTitle("");
-      setCategory("bug");
-      setDetail("");
+      dispatch({ type: "RESET_FORM" });
       (e.target as HTMLFormElement).reset();
     } catch (error) {
       console.error("Error adding document: ", error);
       return;
     }
-    setFeedbackAdded(true);
+    dispatch({ type: "SET_FEEDBACK_ADDED", payload: true });
   };
 
   const resetForm = () => {
-    setTitle("");
-    setCategory("bug");
-    setDetail("");
-    setEmptyTitle(false);
-    setEmptyDetail(false);
+    dispatch({ type: "RESET_FORM" });
   };
 
   return (
@@ -66,8 +105,8 @@ function AddFeedbackForm(): JSX.Element {
             </button>
           </Link>
           <h2 className="form-title">Create New Feedback</h2>
-          {feedbackAdded ? (
-            <FeedbackAdded setFeedbackAdded={setFeedbackAdded} />
+          {state.feedbackAdded ? (
+            <FeedbackAdded setFeedbackAdded={(value: boolean) => dispatch({ type: "SET_FEEDBACK_ADDED", payload: value })} />
           ) : (
             <>
               <label className="label" htmlFor="title">
@@ -77,17 +116,19 @@ function AddFeedbackForm(): JSX.Element {
                 Add a short, descriptive headline
               </p>
               <input
-                value={title}
-                className={`input text ${emptyTitle ? "empty-input" : ""}`}
+                value={state.title}
+                className={`input text ${
+                  state.emptyTitleOnSubmit ? "empty-input" : ""
+                }`}
                 onChange={(e) => {
-                  setTitle(e.target.value);
-                  setEmptyTitle(false);
+                  dispatch({ type: "SET_TITLE", payload: e.target.value });
+                  dispatch({ type: "SET_EMPTY_TITLE_ON_SUBMIT", payload: false });
                 }}
                 type="text"
                 id="title"
               />
               <p className="error-message">
-                {emptyTitle ? "Can´t be empty" : ""}
+                {state.emptyTitleOnSubmit ? "Can´t be empty" : ""}
               </p>
               <label className="label" htmlFor="category">
                 Category
@@ -97,8 +138,8 @@ function AddFeedbackForm(): JSX.Element {
               </p>
               <Dropdown
                 dropdownType="category"
-                option={category}
-                setOption={setCategory}
+                option={state.category}
+                setOption={(value: categoryType) => dispatch({ type: "SET_CATEGORY", payload: value })}
               />
               <label className="label" htmlFor="detail">
                 Feedback Detail
@@ -107,16 +148,16 @@ function AddFeedbackForm(): JSX.Element {
                 Give more context on your feedback
               </p>
               <textarea
-                value={detail}
-                className={`input ${emptyDetail ? "empty-input" : ""}`}
+                value={state.detail}
+                className={`input ${state.emptyDetailOnSubmit ? "empty-input" : ""}`}
                 onChange={(e) => {
-                  setDetail(e.target.value);
-                  setEmptyDetail(false);
+                  dispatch({ type: "SET_DETAIL", payload: e.target.value });
+                  dispatch({ type: "SET_EMPTY_DETAIL_ON_SUBMIT", payload: false });
                 }}
                 id="detail"
               ></textarea>
               <p className="error-message">
-                {emptyDetail ? "Can´t be empty" : ""}
+                {state.emptyDetailOnSubmit ? "Can´t be empty" : ""}
               </p>
               <div className="buttons-container">
                 <button

@@ -61,28 +61,32 @@ Users should be able to:
 
 - **General Skills**
 
-    - React:
-        - Functional Components: Practiced building the application using functional components, which promote cleaner and more maintainable code.
-        - State Management: Gained experience in managing state within components using hooks like useState and useEffect.
-        - Props and Data Flow: Enhanced understanding of how to pass data between components using props, ensuring effective communication between   different parts of the application.
-        - Handling asynchronous operations and implementing loading states.
-    - TypeScript:
-        - Static Typing: Learned to leverage TypeScript for static typing, which helps catch errors at compile time and improves code reliability.
-        - Interfaces and Types: Defined and utilized interfaces and types to describe data structures and function signatures, enhancing code clarity and maintenance.
+  - React:
+    - Functional Components: Practiced building the application using functional components, which promote cleaner and more maintainable code.
+    - State Management: Gained experience in managing state within components using hooks like useState and useEffect.
+    - Props and Data Flow: Enhanced understanding of how to pass data between components using props, ensuring effective communication between different parts of the application.
+    - Handling asynchronous operations and implementing loading states.
+  - TypeScript:
+    - Static Typing: Learned to leverage TypeScript for static typing, which helps catch errors at compile time and improves code reliability.
+    - Interfaces and Types: Defined and utilized interfaces and types to describe data structures and function signatures, enhancing code clarity and maintenance.
 
 - **Specific Skills**
 
-    - Firebase Integration:
-        Realtime Database: Integrated the application with Firebase to enable real-time data fetching and synchronization, ensuring the UI stays up-to-date with the latest data.
-    - Filtering and Sorting Logic:
-        Data Manipulation: Implemented logic to filter and sort feedback items based on various criteria, improving the usability and functionality of the application.
-        useMemo Hook: Learned to use the useMemo hook to memoize expensive calculations and avoid unnecessary recalculations, optimizing performance even though it might not be critical for an app of this size.
-    - localStorage:
-        In spite of my aim on frontend there is no user authentification logic, therefore I chose to use localStorage. Its just for learning purposes, because its easy for users to bypass it.
+  - Firebase Integration:
+    Realtime Database: Integrated the application with Firebase to enable real-time data fetching and synchronization, ensuring the UI stays up-to-date with the latest data.
+  - Filtering and Sorting Logic:
+    Data Manipulation: Implemented logic to filter and sort feedback items based on various criteria, improving the usability and functionality of the application.
+    useMemo Hook: Learned to use the useMemo hook to memoize expensive calculations and avoid unnecessary recalculations, optimizing performance even though it might not be critical for an app of this size.
+  - localStorage:
+    In spite of my aim on frontend there is no user authentification logic, therefore I chose to use localStorage. Its just for learning purposes, because its easy for users to bypass it.
+  - state management with useReducer:
+    Refactored State Management: Replaced useState with useReducer to manage form state more effectively. This refactor centralizes state management and makes state transitions more predictable and easier to debug.
+    Reducer Function: Implemented a formReducer function to handle state updates based on dispatched actions, improving the separation of concerns and making the state management more explicit.
 
 ### Continued development
 
 Next time, I would use these tools:
+
 - [Tanstack Query](https://tanstack.com/) for routing, asynchronous state management and more
 - [class-names](https://github.com/JedWatson/classnames) for conditionally joining classNames together
 - [React Hook Form](https://react-hook-form.com/) performant, flexible and extensible forms with easy-to-use validation
