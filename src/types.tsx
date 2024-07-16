@@ -78,3 +78,7 @@ export type FeedbackContextType = {
 export type CommentProps = {
   comment: Comment;
 }
+
+export type FeedbackAddedProps = {
+  setFeedbackAdded: any;
+}

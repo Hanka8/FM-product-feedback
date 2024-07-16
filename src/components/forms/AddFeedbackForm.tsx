@@ -3,8 +3,9 @@ import { categoryType } from "../../types";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../../firebase.config";
 import { motion } from "framer-motion";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Dropdown from "../Dropdown/Dropdown";
+import FeedbackAdded from "./FeedbackAdded";
 import { Link } from "react-router-dom";
 
 function AddFeedbackForm(): JSX.Element {
@@ -16,8 +17,6 @@ function AddFeedbackForm(): JSX.Element {
   const [emptyDetail, setEmptyDetail] = useState<boolean>(false);
 
   const [feedbackAdded, setFeedbackAdded] = useState<boolean>(false);
-
-  const formRef = useRef<HTMLFormElement>(null);
 
   const addFeedback = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,9 +51,6 @@ function AddFeedbackForm(): JSX.Element {
     setDetail("");
     setEmptyTitle(false);
     setEmptyDetail(false);
-    if (formRef.current) {
-      formRef.current.reset();
-    }
   };
 
   return (
@@ -71,21 +67,7 @@ function AddFeedbackForm(): JSX.Element {
           </Link>
           <h2 className="form-title">Create New Feedback</h2>
           {feedbackAdded ? (
-            <>
-              <div className="added-message text">
-                Feedback added successfully
-              </div>
-              <button
-                className="btn btn-primary"
-                type="button"
-                onClick={() => {
-                  setFeedbackAdded(true);
-                  window.location.reload();
-                }}
-              >
-                Add Another
-              </button>
-            </>
+            <FeedbackAdded setFeedbackAdded={setFeedbackAdded} />
           ) : (
             <>
               <label className="label" htmlFor="title">
