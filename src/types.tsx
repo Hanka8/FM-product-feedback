@@ -100,3 +100,22 @@ export type ActionAddFeedbackForm =
   | { type: "SET_EMPTY_DETAIL_ON_SUBMIT"; payload: boolean }
   | { type: "SET_FEEDBACK_ADDED"; payload: boolean }
   | { type: "RESET_FORM" };
+
+  export type StateEditFeedbackForm = {
+    title: string;
+    detail: string;
+    category: string;
+    status: string;
+    emptyTitleOnSubmit: boolean;
+    emptyDetailOnSubmit: boolean;
+    feedbackAdded: boolean;
+  };
+
+  export type ActionEditFeedbackForm =
+    | { type: "SET_TITLE"; payload: string }
+    | { type: "SET_DETAIL"; payload: string }
+    | { type: "SET_CATEGORY"; payload: string }
+    | { type: "SET_STATUS"; payload: string }
+    | { type: "SET_EMPTY_TITLE"; payload: boolean }
+    | { type: "SET_EMPTY_DETAIL"; payload: boolean }
+    | { type: "SET_FEEDBACK_ADDED"; payload: boolean };

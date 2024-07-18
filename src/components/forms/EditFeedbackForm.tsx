@@ -11,10 +11,11 @@ import {
 } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
 import Dropdown from "../Dropdown/Dropdown";
 import { Link } from "react-router-dom";
 import { useFeedbackContext } from "../../context/FeedbackContext";
+import { ActionEditFeedbackForm as Action, StateEditFeedbackForm as State} from "../../types";
 
 function EditFeedback(): JSX.Element {
   const { id = "" } = useParams<{ id: string }>();
@@ -22,24 +23,47 @@ function EditFeedback(): JSX.Element {
   const feedback = feedbacks.find((feedback) => feedback.id === id);
   const [deleted, setDeleted] = useState<boolean>(false);
 
-  const [title, setTitle] = useState<string>("");
-  const [detail, setDetail] = useState<string>("");
-  const [category, setCategory] = useState<string>("bug");
-  const [status, setStatus] = useState<string>("planned");
+  const initialState = {
+    title: "",
+    detail: "",
+    category: "bug",
+    status: "planned",
+    emptyTitleOnSubmit: false,
+    emptyDetailOnSubmit: false,
+    feedbackAdded: false,
+  };
 
-  const [emptyTitle, setEmptyTitle] = useState<boolean>(false);
-  const [emptyDetail, setEmptyDetail] = useState<boolean>(false);
+  function formReducer(state: State, action: Action): State {
+    switch (action.type) {
+      case "SET_TITLE":
+        return { ...state, title: action.payload };
+      case "SET_DETAIL":
+        return { ...state, detail: action.payload };
+      case "SET_CATEGORY":
+        return { ...state, category: action.payload };
+      case "SET_STATUS":
+        return { ...state, status: action.payload };
+      case "SET_EMPTY_TITLE":
+        return { ...state, emptyTitleOnSubmit: action.payload };
+      case "SET_EMPTY_DETAIL":
+        return { ...state, emptyDetailOnSubmit: action.payload };
+      case "SET_FEEDBACK_ADDED":
+        return { ...state, feedbackAdded: action.payload };
+      default:
+        return state;
+    }
+  }
 
-  const [feedbackAdded, setFeedbackAdded] = useState<boolean>(false);
+  const [state, dispatch] = useReducer(formReducer, initialState);
 
   const [initialLoad, setInitialLoad] = useState<boolean>(true);
 
   useEffect(() => {
     if (feedback && initialLoad) {
-      setTitle(feedback.title);
-      setDetail(feedback.detail);
-      setCategory(feedback.category);
-      setStatus(feedback.status);
+      dispatch({ type: "SET_TITLE", payload: feedback.title });
+      dispatch({ type: "SET_DETAIL", payload: feedback.detail });
+      dispatch({ type: "SET_CATEGORY", payload: feedback.category });
+      dispatch({ type: "SET_STATUS", payload: feedback.status });
       setInitialLoad(false);
     }
   }, [initialLoad, feedback]);
@@ -64,9 +88,10 @@ function EditFeedback(): JSX.Element {
 
   const updateFeedback = async (e: React.FormEvent) => {
     e.preventDefault();
+    const { title, detail, category, status } = state;
     if (!title || !detail) {
-      if (!title) setEmptyTitle(true);
-      if (!detail) setEmptyDetail(true);
+      if (!title) dispatch({ type: "SET_EMPTY_TITLE", payload: true });
+      if (!detail) dispatch({ type: "SET_EMPTY_DETAIL", payload: true });
       return;
     }
     try {
@@ -82,17 +107,17 @@ function EditFeedback(): JSX.Element {
       console.error("Error updating document: ", error);
       return;
     }
-    setFeedbackAdded(true);
+    dispatch({ type: "SET_FEEDBACK_ADDED", payload: true });
   };
 
   const revertChanges = () => {
     if (!feedback) return;
-    setTitle(feedback.title);
-    setDetail(feedback.detail);
-    setCategory(feedback.category);
-    setStatus(feedback.status);
-    setEmptyTitle(false);
-    setEmptyDetail(false);
+    dispatch({ type: "SET_TITLE", payload: feedback.title });
+    dispatch({ type: "SET_DETAIL", payload: feedback.detail });
+    dispatch({ type: "SET_CATEGORY", payload: feedback.category });
+    dispatch({ type: "SET_STATUS", payload: feedback.status });
+    dispatch({ type: "SET_EMPTY_TITLE", payload: false });
+    dispatch({ type: "SET_EMPTY_DETAIL", payload: false });
   };
 
   return (
@@ -107,7 +132,7 @@ function EditFeedback(): JSX.Element {
               Go Back
             </button>
           </Link>
-          {feedbackAdded ? (
+          {state.feedbackAdded? (
             <>
               <h2 className="form-title">Editing '{feedback?.title}'</h2>
               <div className="added-message text">
@@ -130,14 +155,14 @@ function EditFeedback(): JSX.Element {
                 Add a short, descriptive headline
               </p>
               <input
-                className={`input text ${emptyTitle ? "empty-input" : ""}`}
+                className={`input text ${state.emptyTitleOnSubmit ? "empty-input" : ""}`}
                 type="text"
                 id="title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value as string)}
+                value={state.title}
+                onChange={(e) => dispatch({ type: "SET_TITLE", payload: e.target.value })}
               />
               <p className="error-message">
-                {emptyTitle ? "Can´t be empty" : ""}
+                {state.emptyTitleOnSubmit ? "Can´t be empty" : ""}
               </p>
               <label className="label" htmlFor="category">
                 Category
@@ -146,8 +171,8 @@ function EditFeedback(): JSX.Element {
                 Change a category for your feedback
               </p>
               <Dropdown
-                option={category}
-                setOption={setCategory}
+                option={state.category}
+                setOption={(value: string) => dispatch({ type: "SET_CATEGORY", payload: value })}
                 dropdownType="category"
               />
               <label className="label" htmlFor="updateStatus">
@@ -157,8 +182,8 @@ function EditFeedback(): JSX.Element {
                 Change {feedback?.category} state
               </p>
               <Dropdown
-                option={status}
-                setOption={setStatus}
+                option={state.status}
+                setOption={(value: string) => dispatch({ type: "SET_STATUS", payload: value })}
                 dropdownType="status"
               />
               <label className="label" htmlFor="detail">
@@ -168,13 +193,13 @@ function EditFeedback(): JSX.Element {
                 Give more context on your feedback
               </p>
               <textarea
-                value={detail}
-                className={`input ${emptyDetail ? "empty-input" : ""}`}
+                value={state.detail}
+                className={`input ${state.emptyDetailOnSubmit ? "empty-input" : ""}`}
                 id="detail"
-                onChange={(e) => setDetail(e.target.value as string)}
+                onChange={(e) => dispatch({ type: "SET_DETAIL", payload: e.target.value })}
               ></textarea>
               <p className="error-message">
-                {emptyDetail ? "Can´t be empty" : ""}
+                {state.emptyDetailOnSubmit ? "Can´t be empty" : ""}
               </p>
               <p className="error-message"></p>
               <div className="buttons-container edit">

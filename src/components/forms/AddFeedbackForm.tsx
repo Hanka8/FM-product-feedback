@@ -1,5 +1,9 @@
 import "./feedbackForm.css";
-import { categoryType, StateAddFeedbackForm as State, ActionAddFeedbackForm as Action } from "../../types";
+import {
+  categoryType,
+  StateAddFeedbackForm as State,
+  ActionAddFeedbackForm as Action,
+} from "../../types";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../../firebase.config";
 import { motion } from "framer-motion";
@@ -8,9 +12,7 @@ import Dropdown from "../Dropdown/Dropdown";
 import FeedbackAdded from "./FeedbackAdded";
 import { Link } from "react-router-dom";
 
-
 function AddFeedbackForm(): JSX.Element {
-
   const initialState: State = {
     title: "",
     category: "bug",
@@ -36,24 +38,28 @@ function AddFeedbackForm(): JSX.Element {
         return { ...state, feedbackAdded: action.payload };
       case "RESET_FORM":
         return {
-          ...initialState
+          ...initialState,
         };
       default:
         return state;
-  }}
+    }
+  };
 
   const [state, dispatch] = useReducer(formReducer, initialState);
 
   const addFeedback = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!state.title || !state.detail) {
-      if (!state.title) dispatch({ type: "SET_EMPTY_TITLE_ON_SUBMIT", payload: true });
-      if (!state.detail) dispatch({ type: "SET_EMPTY_DETAIL_ON_SUBMIT", payload: true });
+      if (!state.title)
+        dispatch({ type: "SET_EMPTY_TITLE_ON_SUBMIT", payload: true });
+      if (!state.detail)
+        dispatch({ type: "SET_EMPTY_DETAIL_ON_SUBMIT", payload: true });
       return;
     }
     try {
       await addDoc(collection(db, "feedback"), {
-        title: state.title.trim().slice(0, 1).toUpperCase() + state.title.slice(1),
+        title:
+          state.title.trim().slice(0, 1).toUpperCase() + state.title.slice(1),
         category: state.category,
         detail: state.detail.trim(),
         status: "planned",
@@ -86,7 +92,11 @@ function AddFeedbackForm(): JSX.Element {
           </Link>
           <h2 className="form-title">Create New Feedback</h2>
           {state.feedbackAdded ? (
-            <FeedbackAdded setFeedbackAdded={(value: boolean) => dispatch({ type: "SET_FEEDBACK_ADDED", payload: value })} />
+            <FeedbackAdded
+              setFeedbackAdded={(value: boolean) =>
+                dispatch({ type: "SET_FEEDBACK_ADDED", payload: value })
+              }
+            />
           ) : (
             <>
               <label className="label" htmlFor="title">
@@ -102,7 +112,10 @@ function AddFeedbackForm(): JSX.Element {
                 }`}
                 onChange={(e) => {
                   dispatch({ type: "SET_TITLE", payload: e.target.value });
-                  dispatch({ type: "SET_EMPTY_TITLE_ON_SUBMIT", payload: false });
+                  dispatch({
+                    type: "SET_EMPTY_TITLE_ON_SUBMIT",
+                    payload: false,
+                  });
                 }}
                 type="text"
                 id="title"
@@ -119,7 +132,9 @@ function AddFeedbackForm(): JSX.Element {
               <Dropdown
                 dropdownType="category"
                 option={state.category}
-                setOption={(value: categoryType) => dispatch({ type: "SET_CATEGORY", payload: value })}
+                setOption={(value: categoryType) =>
+                  dispatch({ type: "SET_CATEGORY", payload: value })
+                }
               />
               <label className="label" htmlFor="detail">
                 Feedback Detail
@@ -129,10 +144,15 @@ function AddFeedbackForm(): JSX.Element {
               </p>
               <textarea
                 value={state.detail}
-                className={`input ${state.emptyDetailOnSubmit ? "empty-input" : ""}`}
+                className={`input ${
+                  state.emptyDetailOnSubmit ? "empty-input" : ""
+                }`}
                 onChange={(e) => {
                   dispatch({ type: "SET_DETAIL", payload: e.target.value });
-                  dispatch({ type: "SET_EMPTY_DETAIL_ON_SUBMIT", payload: false });
+                  dispatch({
+                    type: "SET_EMPTY_DETAIL_ON_SUBMIT",
+                    payload: false,
+                  });
                 }}
                 id="detail"
               ></textarea>
