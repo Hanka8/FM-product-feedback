@@ -19,7 +19,7 @@ function FeedbackDetail(): JSX.Element {
   const idPattern = /^[a-zA-Z0-9]{20}$/;
 
     if (!idPattern.test(id)) {
-      return <Navigate to="/not_found" replace />;
+      return <Navigate to="*" replace />;
     }
 
   const sortedComments = comments.sort(

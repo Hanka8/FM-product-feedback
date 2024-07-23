@@ -5,7 +5,7 @@ import AddFeedbackForm from "./forms/AddFeedbackForm";
 import FeedbackDetail from "./FeedbackDetail/FeedbackDetail";
 import EditFeedback from "./forms/EditFeedbackForm";
 import Roadmap from "./Roadmap/Roadmap";
-import Error from "./Error/NotFound";
+import NotFound from "./NotFound/NotFound";
 
 function AnimatedRoutes(): JSX.Element {
   const location = useLocation();
@@ -18,7 +18,7 @@ function AnimatedRoutes(): JSX.Element {
         <Route path={"/roadmap"} element={<Roadmap />} />
         <Route path="/:id" element={<FeedbackDetail />} />
         <Route path={"/:id/editfeedback"} element={<EditFeedback />} />
-        <Route path="/not_found" element={<Error />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>
   );
