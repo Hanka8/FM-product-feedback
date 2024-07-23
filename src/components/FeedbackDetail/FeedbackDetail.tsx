@@ -3,17 +3,24 @@ import AddComment from "../forms/AddComment/AddComment";
 import Error from "../Error";
 import Comment from "../Comment/Comment";
 import { motion } from "framer-motion";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, Navigate } from "react-router-dom";
 import useComments from "../../hooks/useComments";
 import Feedback from "../Feedback/Feedback";
 import ReactLoading from "react-loading";
 import { useFeedbackContext } from "../../context/FeedbackContext";
+
 
 function FeedbackDetail(): JSX.Element {
   const { id } = useParams<{ id: string }>() as { id: string };
   let { comments, errorComments, loadingComments } = useComments(id!);
   const { feedbacks, error, loading } = useFeedbackContext();
   const feedback = feedbacks.find((feedback) => feedback.id === id);
+
+  const idPattern = /^[a-zA-Z0-9]{20}$/;
+
+    if (!idPattern.test(id)) {
+      return <Navigate to="/not_found" replace />;
+    }
 
   const sortedComments = comments.sort(
     (a, b) => a.timestamp.toDate() - b.timestamp.toDate()
