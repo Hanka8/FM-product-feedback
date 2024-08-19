@@ -128,7 +128,7 @@ VITE_MEASUREMENT_ID
     Refactored State Management: Replaced useState with useReducer to manage form state more effectively. This refactor centralizes state management and makes state transitions more predictable and easier to debug.
     Reducer Function: Implemented a formReducer function to handle state updates based on dispatched actions, improving the separation of concerns and making the state management more explicit.
 
-### USeful reaources
+### Useful resources
 
 Next time, I would use these tools:
 
