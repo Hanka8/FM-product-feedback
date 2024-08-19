@@ -68,6 +68,7 @@ Make sure you have the following installed:
 
 Make sure to set up your Firebase project and configure the app with your Firebase credentials. This can be done by adding your Firebase configuration in a .env file.
 
+'''
 VITE_API_KEY
 VITE_AUTH_DOMAIN
 VITE_PROJECT_ID
@@ -75,6 +76,7 @@ VITE_STORAGE_BUCKET
 VITE_MESSAGING_SENDER_ID
 VITE_APP_ID
 VITE_MEASUREMENT_ID
+'''
 
 ## My process
 
