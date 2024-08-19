@@ -15,7 +15,16 @@
 
 ## Overview
 
-The application provides a structured way to filter, sort, gather, edit and display feedback. Users can also upvote or downvote feedbacks and provide comments.
+The Product Feedback App provides a platform for collecting, managing, and engaging with user feedback. It allows users to submit, edit, and vote on feedback, as well as comment on suggestions. With built-in filtering and sorting functionality, users can easily navigate through feedback items based on their preferences. The app's real-time updates and responsive design ensure a seamless experience across devices.
+
+Key features:
+- Submit & Edit Feedback: Users can contribute by adding new feedback or editing their previous submissions to refine their ideas.
+- Upvote & Downvote System: Engage with feedback through a simple voting mechanism.
+- Real-Time Data Sync: Powered by Firebase, the app ensures feedback and comments are instantly updated across all users.
+- Interactive Filtering & Sorting: Quickly browse feedback by categories or sort by the number of votes or comments.
+- Commenting System: Participate in discussions by leaving comments on feedback items to offer further insights or support (maximum 250 characters )
+- Roadmap Display: Visualize the progress of various feedback items with a roadmap view that categorizes suggestions based on their status.
+- Seamless Navigation: Smoothly navigate through the app using React Router and Framer Motion library with smooth transitions.
 
 ### Screenshot
 
@@ -40,25 +49,25 @@ Make sure you have the following installed:
 
 1. **Clone the repository:**
 
-   git clone https://github.com/your-username/your-repo-name.git
+   `git clone https://github.com/your-username/your-repo-name.git`
 
 2. **Navigate into the project directory:**
    
-   cd your-repo-name
+   `cd your-repo-name`
 
 3. **Install the dependencies:**
    
    using npm:
-   npm install
+  `npm install`
 
    using yarn:
-   yarn install
+   `yarn install`
 
 ### Running the app
 
 1. **Start the development server:**
 
-   npm run dev
+   `npm run dev`
 
 2. **Open the app in your browser:**
 
