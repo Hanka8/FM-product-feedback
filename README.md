@@ -4,7 +4,7 @@
 
 - [Overview](#overview)
   - [Screenshot](#screenshot)
-  - [Links](#links)
+  - [Link](#link)
 - [How to run the app](#how-to-run-the-app)
 - [My process](#my-process)
   - [Built with](#built-with)
@@ -30,7 +30,7 @@ Key features:
 
 ![](./screenshot.png)
 
-### Links
+### Link
 
 - Live Site URL: [feedback-dashboard.netlify.app](https://www.fm-feedback.netlify.app/)
 
