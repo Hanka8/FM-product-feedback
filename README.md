@@ -49,11 +49,11 @@ Make sure you have the following installed:
 
 1. **Clone the repository:**
 
-   `git clone https://github.com/your-username/your-repo-name.git`
+   `git clone git@github.com:Hanka8/FM-product-feedback.git`
 
 2. **Navigate into the project directory:**
    
-   `cd your-repo-name`
+   `cd FM-product-feedback`
 
 3. **Install the dependencies:**
    
