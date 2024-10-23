@@ -76,7 +76,7 @@ function FeedbackDetail(): JSX.Element {
             )}
             {sortedComments &&
               !loadingComments &&
-              sortedComments.map((comment) => <Comment comment={comment} />)}
+              sortedComments.map((comment) => <Comment comment={comment} key={comment.id} />)}
           </div>
           <AddComment id={id} />
         </div>

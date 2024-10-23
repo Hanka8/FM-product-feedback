@@ -69,41 +69,6 @@ function Dropdown({
                     {editString(status)}
                 </li>
                 ))}
-          {/* <li
-            className={`menu-option ${category == "bug" && "option-tagged"}`}
-            role="option"
-            onClick={() => setCategory("bug")}
-          >
-            Bug
-          </li>
-          <li
-            className={`menu-option ${
-              category == "feature" && "option-tagged"
-            }`}
-            onClick={() => setCategory("feature")}
-          >
-            Feature
-          </li>
-          <li
-            className={`menu-option ${
-              category == "enhancement" && "option-tagged"
-            }`}
-            onClick={() => setCategory("enhancement")}
-          >
-            Enhancement
-          </li>
-          <li
-            className={`menu-option ${category == "ux" && "option-tagged"}`}
-            onClick={() => setCategory("ux")}
-          >
-            UX
-          </li>
-          <li
-            className={`menu-option ${category == "ui" && "option-tagged"}`}
-            onClick={() => setCategory("ui")}
-          >
-            UI
-          </li> */}
         </ul>
       </div>
     </>
