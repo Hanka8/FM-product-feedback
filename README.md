@@ -135,6 +135,7 @@ Next time, I would use these tools:
 - [Tanstack Query](https://tanstack.com/) easier approach for handling loading states while fetching data etc.
 - [class-names](https://github.com/JedWatson/classnames) for conditionally joining classNames together
 - [React Hook Form](https://react-hook-form.com/) performant, flexible and extensible forms with easy-to-use validation
+- styled components or Tailwind
 
 ## Author
 
