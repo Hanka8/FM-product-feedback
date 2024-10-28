@@ -14,23 +14,21 @@ const useFeedbacks = () => {
     const unsubscribe = onSnapshot(
       feedbacksCollection,
       (snapshot) => {
-        let feedbacks: Feedback[] = [];
-        snapshot.docs.forEach((doc) => {
-          feedbacks.push({
-            id: doc.id,
-            title: doc.data().title,
-            category: doc.data().category,
-            detail: doc.data().detail,
-            numberOfComments: doc.data().numberOfComments,
-            upvotes: doc.data().upvotes,
-            status: doc.data().status,
-          });
-        });
-        setFeedbacks(feedbacks);
+        const collectedFeedbacks = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          title: doc.data().title,
+          category: doc.data().category,
+          detail: doc.data().detail,
+          numberOfComments: doc.data().numberOfComments,
+          upvotes: doc.data().upvotes,
+          status: doc.data().status,
+        }));
+        setFeedbacks(collectedFeedbacks);
         setLoading(false);
       },
       () => {
         setError("Error fetching feedbacks");
+        setLoading(false);
       }
     );
     return () => {
