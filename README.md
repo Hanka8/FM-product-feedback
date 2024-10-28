@@ -139,5 +139,6 @@ Next time, I would use these tools:
 
 ## Author
 
+- Hana Maruškevičová
 - This is a solution to the [Product feedback app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/product-feedback-app-wbvUYqjR6)
 - Website - [Hana Maruškevičová](hanamarus.cz)
