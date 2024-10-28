@@ -1,12 +1,13 @@
 import ReactDOM from "react-dom/client";
+import "./App.css";
 import { BrowserRouter } from "react-router-dom";
-import App from "./App";
+import AnimatedRoutes from "./components/AnimatedRoutes";
 import { FeedbackProvider } from "./context/FeedbackContext";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <FeedbackProvider>
-      <App />
+      <AnimatedRoutes />
     </FeedbackProvider>
   </BrowserRouter>
 );
